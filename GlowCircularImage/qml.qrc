@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>CircularImage.qml</file>
+        <file>GlowCircularImage.qml</file>
+        <file>GlowRectangle.qml</file>
+        <file>test.png</file>
+    </qresource>
+</RCC>
