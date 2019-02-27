@@ -1,6 +1,6 @@
-# QmlControls
+﻿# QmlControls
 
-һЩ����Qml�ؼ�
+提供一些有用Qml控件
 
 ------
 
@@ -12,3 +12,10 @@ GlowCircularImage
 ------
 
 
+使用Qt开发
+
+
+
+开发环境windows 7，Qt 5.12.0
+
+ 
