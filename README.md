@@ -12,6 +12,13 @@ GlowCircularImage
 ------
 
 
+MagicFish
+
+![Image text](demonstrate/MagicFish.gif)
+
+------
+
+
 使用Qt开发
 
 
