@@ -34,7 +34,6 @@ private:
     bool m_startCircle;
     QTimer *m_circleTimer;
     QTimer *m_moveTimer;
-    QTimer *m_swimTimer;
     int m_circleRadius;
     int m_circleAlpha;
     QPointF m_pos;

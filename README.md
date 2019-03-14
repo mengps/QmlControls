@@ -19,6 +19,11 @@ MagicFish
 ------
 
 
+ImageHelper
+
+![Image text](demonstrate/ImageHelper.gif)
+
+------
 使用Qt开发
 
 
