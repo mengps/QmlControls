@@ -134,46 +134,53 @@ void FramelessWindow::setWindowGeometry(const QPoint &pos)
     if (offset.x() == 0 && offset.y() == 0)
         return;
 
-    static auto set_geometry = [this](const QSize &size, const QPoint &pos) {
+    static auto set_geometry_func = [this](const QSize &size, const QPoint &pos) {
         QPoint temp_pos = m_oldPos;
         QSize temp_size = minimumSize();
         if (size.width() > minimumWidth()) {
             temp_pos.setX(pos.x());
             temp_size.setWidth(size.width());
+        } else {
+            //防止瞬间拉过头，会导致错误的计算位置，这里纠正
+            if (pos.x() != temp_pos.x())
+                temp_pos.setX(m_oldPos.x() +  m_oldSize.width() - minimumWidth());
         }
         if (size.height() > minimumHeight()) {
             temp_pos.setY(pos.y());
             temp_size.setHeight(size.height());
+        } else {
+            //防止瞬间拉过头，会导致错误的计算位置，这里纠正
+            if (pos.y() != temp_pos.y())
+                temp_pos.setY(m_oldPos.y() + m_oldSize.height() - minimumHeight());
         }
-        setPosition(temp_pos);
-        resize(temp_size);
+        setGeometry(QRect(temp_pos, temp_size));
         update();
     };
 
     switch (m_currentArea) {
     case TopLeft:
-        set_geometry(m_oldSize + QSize(offset.x(), offset.y()), m_oldPos - offset);
+        set_geometry_func(m_oldSize + QSize(offset.x(), offset.y()), m_oldPos - offset);
         break;
     case Top:
-        set_geometry(m_oldSize + QSize(0, offset.y()), m_oldPos - QPoint(0, offset.y()));
+        set_geometry_func(m_oldSize + QSize(0, offset.y()), m_oldPos - QPoint(0, offset.y()));
         break;
     case TopRight:
-        set_geometry(m_oldSize - QSize(offset.x(), -offset.y()), m_oldPos - QPoint(0, offset.y()));
+        set_geometry_func(m_oldSize - QSize(offset.x(), -offset.y()), m_oldPos - QPoint(0, offset.y()));
         break;
     case Left:
-        set_geometry(m_oldSize + QSize(offset.x(), 0), m_oldPos - QPoint(offset.x(), 0));;
+        set_geometry_func(m_oldSize + QSize(offset.x(), 0), m_oldPos - QPoint(offset.x(), 0));;
         break;
     case Right:
-        set_geometry(m_oldSize - QSize(offset.x(), 0), position());
+        set_geometry_func(m_oldSize - QSize(offset.x(), 0), position());
         break;
     case ButtomLeft:
-        set_geometry(m_oldSize + QSize(offset.x(), -offset.y()), m_oldPos - QPoint(offset.x(), 0));
+        set_geometry_func(m_oldSize + QSize(offset.x(), -offset.y()), m_oldPos - QPoint(offset.x(), 0));
         break;
     case Buttom:
-        set_geometry(m_oldSize + QSize(0, -offset.y()), position());
+        set_geometry_func(m_oldSize + QSize(0, -offset.y()), position());
         break;
     case ButtomRight:
-        set_geometry(m_oldSize - QSize(offset.x(), offset.y()), position());
+        set_geometry_func(m_oldSize - QSize(offset.x(), offset.y()), position());
         break;
     default:
         break;

@@ -2,7 +2,6 @@
 #include <QGuiApplication>
 
 #ifdef Q_OS_WIN
-#include <QtWin>
 #include <windowsx.h>
 #define aeroBorderlessFlag LONG(WS_THICKFRAME | WS_CAPTION | WS_SYSMENU | WS_MAXIMIZEBOX | WS_MINIMIZEBOX)
 #endif
@@ -35,14 +34,6 @@ bool FramelessWindow::nativeEvent(const QByteArray &eventType, void *message, lo
     {
         *result = 0;
         return true;
-    }
-    case WM_NCACTIVATE:
-    {
-        if (!QtWin::isCompositionEnabled()) {
-            *result = 1;
-            return true;
-        }
-        break;
     }
     case WM_NCHITTEST:
     {
