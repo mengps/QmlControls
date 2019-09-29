@@ -1,26 +1,26 @@
 ﻿# QmlControls
 
-提供一些有用Qml控件
+提供一些有用Qml基础控件
 
 ------
 
 ### 控件预览
 
- - GlowCircularImage 圆形发光Image
+ - GlowCircularImage 圆形发光图像
 
-![Image text](demonstrate/GlowCircularImage.gif)
+<div align=center><img src="demonstrate/GlowCircularImage.gif" width="400" height="320" /></div>
 
  - MagicFish 灵动的小鱼
 
-![Image text](demonstrate/MagicFish.gif)
+<div align=center><img src="demonstrate/MagicFish.gif" width="400" height="320" /></div>
 
- - ImageHelper 支持动图的Edit
+ - ImageHelper 支持动图的编辑器
 
-![Image text](demonstrate/ImageHelper.gif)
+<div align=center><img src="demonstrate/ImageHelper.gif" width="320" height="400" /></div>
 
- - FramelessWindow 无边框的Window(QQuickWindow)
+ - FramelessWindow 无边框窗口
 
-![Image text](demonstrate/FramelessWindow.gif)
+<div align=center><img src="demonstrate/FramelessWindow.gif" width="400" height="320" /></div>
 
 ------
 
