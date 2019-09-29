@@ -4,30 +4,28 @@
 
 ------
 
+### 控件预览
 
-GlowCircularImage
+ - GlowCircularImage 圆形发光Image
 
 ![Image text](demonstrate/GlowCircularImage.gif)
 
-------
-
-
-MagicFish
+ - MagicFish 灵动的小鱼
 
 ![Image text](demonstrate/MagicFish.gif)
 
-------
-
-
-ImageHelper
+ - ImageHelper 支持动图的Edit
 
 ![Image text](demonstrate/ImageHelper.gif)
 
+ - FramelessWindow 无边框的Window(QQuickWindow)
+
+![Image text](demonstrate/FramelessWindow.gif)
+
 ------
-使用Qt开发
 
+### 开发环境
 
-
-开发环境windows 7，Qt 5.12.0
+windows 7，Qt 5.12.0
 
  
