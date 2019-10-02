@@ -17,9 +17,9 @@ class FramelessWindow : public QQuickWindow
         Left,
         Move,
         Right,
-        ButtomLeft,
-        Buttom,
-        ButtomRight,
+        BottomLeft,
+        Bottom,
+        BottomRight,
         Client
     };
 

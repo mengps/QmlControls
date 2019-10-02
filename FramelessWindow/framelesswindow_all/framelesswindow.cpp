@@ -113,11 +113,11 @@ FramelessWindow::MouseArea FramelessWindow::getArea(const QPoint &pos)
     } else if (x >=(w - 8) && x <= w && y > 8 && y < (h - 8)) {
         area = Right;
     } else if (x >= 0 && x <= 8 && y >= (h - 8) && y <= h) {
-        area = ButtomLeft;
+        area = BottomLeft;
     } else if (x > 8 && x < (w - 8) && y >= (h - 8) && y <= h) {
-        area = Buttom;
+        area = Bottom;
     } else if (x >=(w - 8) && x <= w && y >= (h - 8) && y <= h) {
-        area = ButtomRight;
+        area = BottomRight;
     } else if (MoveArea.contains(x, y)) {
         area = Move;
     } else {
@@ -173,13 +173,13 @@ void FramelessWindow::setWindowGeometry(const QPoint &pos)
     case Right:
         set_geometry_func(m_oldSize - QSize(offset.x(), 0), position());
         break;
-    case ButtomLeft:
+    case BottomLeft:
         set_geometry_func(m_oldSize + QSize(offset.x(), -offset.y()), m_oldPos - QPoint(offset.x(), 0));
         break;
-    case Buttom:
+    case Bottom:
         set_geometry_func(m_oldSize + QSize(0, -offset.y()), position());
         break;
-    case ButtomRight:
+    case BottomRight:
         set_geometry_func(m_oldSize - QSize(offset.x(), offset.y()), position());
         break;
     default:
@@ -193,17 +193,17 @@ void FramelessWindow::setCursorIcon()
 
     switch (m_currentArea) {
     case TopLeft:
-    case ButtomRight:
+    case BottomRight:
         unset = true;
         setCursor(Qt::SizeFDiagCursor);
         break;
     case Top:
-    case Buttom:
+    case Bottom:
         unset = true;
         setCursor(Qt::SizeVerCursor);
         break;
     case TopRight:
-    case ButtomLeft:
+    case BottomLeft:
         unset = true;
         setCursor(Qt::SizeBDiagCursor);
         break;
