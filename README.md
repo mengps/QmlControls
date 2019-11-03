@@ -22,10 +22,14 @@
 
 <div align=center><img src="demonstrate/FramelessWindow.gif" width="400" height="320" /></div>
 
+ - PolygonWindow 多边形窗口
+
+<div align=center><img src="demonstrate/PolygonWindow.gif" width="520" height="300" /></div>
+
 ------
 
 ### 开发环境
 
-windows 7，Qt 5.12.0
+windows 10，Qt 5.13.0
 
  
