@@ -6,7 +6,7 @@
 
 ### 所有控件预览
 
-[预览图均为GIF，较大](http://www.jianshu.com)
+[预览图均为GIF，较大](https://github.com/mengps/QmlControls/blob/master/demonstrate/demonstrate.md)
 
 ------
 
