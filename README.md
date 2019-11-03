@@ -4,27 +4,21 @@
 
 ------
 
-### 控件预览
+### 所有控件预览
+
+[预览图均为GIF，较大](http://www.jianshu.com)
+
+------
 
  - GlowCircularImage 圆形发光图像
 
-<div align=center><img src="demonstrate/GlowCircularImage.gif" width="400" height="320" /></div>
-
  - MagicFish 灵动的小鱼
-
-<div align=center><img src="demonstrate/MagicFish.gif" width="400" height="320" /></div>
 
  - ImageHelper 支持动图的编辑器
 
-<div align=center><img src="demonstrate/ImageHelper.gif" width="320" height="400" /></div>
-
  - FramelessWindow 无边框窗口
 
-<div align=center><img src="demonstrate/FramelessWindow.gif" width="400" height="320" /></div>
-
  - PolygonWindow 多边形窗口
-
-<div align=center><img src="demonstrate/PolygonWindow.gif" width="520" height="300" /></div>
 
 ------
 
