@@ -133,4 +133,5 @@ void PolygonWindow::changeTexture()
             d->m_centerItem->setTexture(createTextureFromImage(d->m_background.toImage(), TextureHasAlphaChannel));
         }
     }
+    update();
 }
