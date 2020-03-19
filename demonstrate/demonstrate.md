@@ -19,3 +19,7 @@
  - PolygonWindow 多边形窗口
 
 <div align=center><img src="PolygonWindow.gif" width="520" height="300" /></div>
+
+ - HistoryEditor 历史编辑器(支持历史搜索 & 关键字匹配)
+
+<div align=center><img src="HistoryEditor.gif" width="520" height="416" /></div>

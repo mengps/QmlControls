@@ -22,6 +22,8 @@
 
  - PolygonWindow 多边形窗口
 
+ - HistoryEditor 历史编辑器 ( 支持历史搜索 & 关键字匹配 )
+
 ------
 
 ### 许可证
