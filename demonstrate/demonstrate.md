@@ -23,3 +23,8 @@
  - HistoryEditor 历史编辑器(支持历史搜索 & 关键字匹配)
 
 <div align=center><img src="HistoryEditor.gif" width="520" height="416" /></div>
+
+
+ - VideoOutput Qml中支持原始视频图像格式(YUV / RGB)
+
+<div align=center><img src="VideoOutput.gif" width="520" height="416" /></div>
