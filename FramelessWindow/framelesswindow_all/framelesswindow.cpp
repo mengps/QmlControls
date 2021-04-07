@@ -1,7 +1,5 @@
 #include "framelesswindow.h"
 
-static QRect MoveArea;
-
 FramelessWindow::FramelessWindow(QWindow *parent)
     : QQuickWindow (parent)
 
@@ -10,9 +8,8 @@ FramelessWindow::FramelessWindow(QWindow *parent)
 
    //在这里改变默认移动区域
    //只有鼠标在移动区域内，才能移动窗口
-   MoveArea = {8, 8, width() - 16, 100};
-   connect(this, &QQuickWindow::widthChanged, this, [](int arg){
-       MoveArea.setWidth(arg - 16);
+   connect(this, &QQuickWindow::widthChanged, this, [this](int arg){
+       m_moveArea.setWidth(arg - 16);
    });
 }
 
@@ -47,6 +44,7 @@ void FramelessWindow::mousePressEvent(QMouseEvent *event)
     m_startPos = event->globalPos();
     m_oldPos = position();
     m_oldSize = size();
+
     event->ignore();
 
     QQuickWindow::mousePressEvent(event);
@@ -118,7 +116,7 @@ FramelessWindow::MouseArea FramelessWindow::getArea(const QPoint &pos)
         area = Bottom;
     } else if (x >=(w - 8) && x <= w && y >= (h - 8) && y <= h) {
         area = BottomRight;
-    } else if (MoveArea.contains(x, y)) {
+    } else if (m_moveArea.contains(x, y)) {
         area = Move;
     } else {
         area = Client;

@@ -10,6 +10,7 @@ FramelessWindow {
     minimumHeight: 320
     color: "#000"
     title: qsTr("Hello World")
+    resizable: true
 
     Rectangle {
         width: 100
@@ -29,6 +30,7 @@ FramelessWindow {
                 parent.color = "red";
             }
             onPressed: parent.color = "yellow";
+            onReleased: parent.color = "blue";
         }
     }
 }

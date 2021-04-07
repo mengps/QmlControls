@@ -1,4 +1,5 @@
 import QtQuick 2.12
+import QtQuick.Window 2.12
 import an.window 1.0
 
 FramelessWindow {
@@ -29,6 +30,7 @@ FramelessWindow {
                 parent.color = "red";
             }
             onPressed: parent.color = "yellow";
+            onReleased: parent.color = "blue";
         }
     }
 }

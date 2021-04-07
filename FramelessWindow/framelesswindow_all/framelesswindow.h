@@ -53,6 +53,7 @@ private:
     QPoint m_startPos;
     QPoint m_oldPos;
     QSize m_oldSize;
+    QRect m_moveArea = { 8, 8, width() - 16, 35 };
 };
 
 #endif
