@@ -28,3 +28,8 @@
  - VideoOutput Qml中支持原始视频图像格式(YUV / RGB)
 
 <div align=center><img src="VideoOutput.gif" width="520" height="416" /></div>
+
+
+ - FpsItem Qml中显示帧率的组件
+
+<div align=center><img src="FpsItem.gif" width="520" height="416" /></div>

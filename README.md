@@ -1,4 +1,4 @@
-﻿# QmlControls
+# QmlControls
 
 提供一些有用Qml基础控件
 
@@ -25,6 +25,8 @@
  - HistoryEditor 历史编辑器 ( 支持历史搜索 & 关键字匹配 )
 
  - VideoOutput Qml中支持原始视频图像格式(YUV / RGB)
+
+ - FpsItem Qml中显示帧率的组件
 
 ------
 
