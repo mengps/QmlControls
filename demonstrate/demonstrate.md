@@ -33,3 +33,7 @@
  - FpsItem Qml中显示帧率的组件
 
 <div align=center><img src="FpsItem.gif" width="520" height="416" /></div>
+
+ - ColorPicker / ColorPickerPopup 仿 `Windows10 画图3D` 的颜色选择器, 但更加强大
+
+<div align=center><img src="ColorPicker.gif" width="520" height="416" /></div>
