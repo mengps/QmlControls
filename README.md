@@ -2,6 +2,14 @@
 
 提供一些有用Qml基础控件
 
+一些是 `QtQuick C++实现`, 也有 `纯Qml实现`
+
+------
+
+### 如何使用
+
+所有示例与控件同目录, 可直接构建
+
 ------
 
 ### 所有控件预览
@@ -27,6 +35,8 @@
  - VideoOutput Qml中支持原始视频图像格式(YUV / RGB)
 
  - FpsItem Qml中显示帧率的组件
+
+ - ColorPicker / ColorPickerPopup 仿 `Windows10 画图3D` 的颜色选择器, 但更加强大
 
 ------
 

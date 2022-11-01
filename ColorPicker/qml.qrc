@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ColorPicker.qml</file>
+        <file>ColorPickerPopup.qml</file>
+    </qresource>
+</RCC>
