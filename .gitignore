@@ -8,3 +8,4 @@ Makefile
 *.rc
 *.exe
 *.qmlc
+*qmlcache.qrc
