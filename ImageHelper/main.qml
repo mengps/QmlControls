@@ -1,4 +1,4 @@
-﻿import QtQuick 2.12
+import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Window 2.3
 import Qt.labs.platform 1.0
@@ -12,7 +12,7 @@ Window
     color: "transparent"
     visible: true
 
-    Component.onCompleted: flags |= Qt.Tool | Qt.FramelessWindowHint;
+    Component.onCompleted: flags |= Qt.Window | Qt.FramelessWindowHint;
 
     MoveMouseArea
     {
