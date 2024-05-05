@@ -77,11 +77,29 @@ Window {
                         font.pixelSize: 18
                         font.wordSpacing: 3
 
+                        TextMetrics {
+                            id: startWidth
+                            font: displayText.font
+                            text: {
+                                let index = display.indexOf(inputField.text);
+                                if (index !== -1)
+                                    return displayText.text.substring(0, index);
+                                else
+                                    return "";
+                            }
+                        }
+
+                        TextMetrics {
+                            id: keyWidth
+                            font: displayText.font
+                            text: inputField.text
+                        }
+
                         Rectangle {
                             color: "red"
                             opacity: 0.4
-                            x: display.indexOf(inputField.text) * displayText.font.pixelSize / 2
-                            width: displayText.font.pixelSize / 2 * inputField.text.length
+                            x: startWidth.advanceWidth
+                            width: keyWidth.advanceWidth
                             height: parent.height
                         }
                     }

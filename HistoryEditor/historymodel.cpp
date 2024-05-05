@@ -1,5 +1,6 @@
 #include "historymodel.h"
 #include <QMultiMap>
+#include <QRandomGenerator>
 
 HistoryModel::HistoryModel()
 {
@@ -8,14 +9,12 @@ HistoryModel::HistoryModel()
      * 用于存储历史记录。
      * 可自由填充，我这里直接手动填充了。
      */
-    qsrand(uint(time(nullptr)));
-
     for (int i = 0; i < 20; ++i) {
         QString randStr;
         for (int j = 0; j < 10; ++j) {
-            randStr += QString::number(qrand() % 10);
+            randStr += QString::number(QRandomGenerator::global()->generate() % 10);
         }
-        m_historyData.push_back(randStr);
+        m_historyData.push_back("测试" + randStr);
     }
 
     m_data = m_historyData;
@@ -57,7 +56,7 @@ void HistoryModel::sortByKey(const QString &key)
         endResetModel();
     } else {
         QMultiMap<int, QString> temp;
-        for (auto str : m_historyData) {
+        for (const auto &str : qAsConst(m_historyData)) {
             int ret = str.indexOf(key);
             if (ret == -1) continue;
             else temp.insert(ret, str);
