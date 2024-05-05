@@ -9,3 +9,4 @@ Makefile
 *.exe
 *.qmlc
 *qmlcache.qrc
+.qtc_clangd/
