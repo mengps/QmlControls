@@ -1,4 +1,4 @@
-﻿import QtQuick 2.15
+import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 import QtGraphicalEffects 1.15
@@ -331,35 +331,35 @@ Item {
 
             ColorEditor {
                 id: redEditor
-                label: "红色"
+                label: qsTr("红色")
                 validator: IntValidator { top: 255; bottom: 0 }
                 onAccepted: pickerRect.fromColor();
             }
 
             ColorEditor {
                 id: greenEditor
-                label: "绿色"
+                label: qsTr("绿色")
                 validator: IntValidator { top: 255; bottom: 0 }
                 onAccepted: pickerRect.fromColor();
             }
 
             ColorEditor {
                 id: blueEditor
-                label: "蓝色"
+                label: qsTr("蓝色")
                 validator: IntValidator { top: 255; bottom: 0 }
                 onAccepted: pickerRect.fromColor();
             }
 
             ColorEditor {
                 id: alphaEditor
-                label: "透明度"
+                label: qsTr("透明度")
                 validator: IntValidator { top: 255; bottom: 0 }
                 onAccepted: pickerRect.fromColor();
             }
 
             ColorEditor {
                 id: argbEditor
-                label: "十六进制 (ARGB)"
+                label: qsTr("十六进制 (ARGB)")
                 validator: RegularExpressionValidator { regularExpression: /[0-9a-fA-F]{0,8}/ }
                 onAccepted: pickerRect.fromArgbColor();
             }

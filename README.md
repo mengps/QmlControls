@@ -38,6 +38,8 @@
 
  - ColorPicker / ColorPickerPopup 仿 `Windows10 画图3D` 的颜色选择器, 但更加强大
 
+ - WaterfallFlow 瀑布流视图(并且可以自适应)，类似小红书
+
 ------
 
 ### 许可证
