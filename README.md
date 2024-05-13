@@ -20,7 +20,7 @@
 
 ### 控件列表
 
- - GlowCircularImage 圆形发光图像
+ - GlowCircularImage 圆形图像/发光图像
 
  - MagicFish 灵动的小鱼
 
@@ -37,6 +37,8 @@
  - FpsItem Qml中显示帧率的组件
 
  - ColorPicker / ColorPickerPopup 仿 `Windows10 画图3D` 的颜色选择器, 但更加强大
+
+ - WaterfallFlow 瀑布流视图(并且可以自适应)，类似小红书
 
 ------
 
