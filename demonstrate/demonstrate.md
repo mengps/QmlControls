@@ -39,4 +39,4 @@
 
  - WaterfallFlow 瀑布流视图(并且可以自适应)，类似小红书
 
-<div align=center><video src="WaterfallFlow.mp4" controls="" height=400 width=600 /></div>
+ <div align=center><img src="WaterfallFlow.gif" width="360" height="500" /></div>
