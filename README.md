@@ -51,4 +51,9 @@
 ### 开发环境
 
 windows 11，Qt 5.15.2
- 
+
+------
+
+### Star 历史
+
+[![Star History Chart](https://api.star-history.com/svg?repos=mengps/QmlControls&type=Date)](https://star-history.com/#mengps/QmlControls&Date)
