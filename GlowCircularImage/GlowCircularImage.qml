@@ -1,7 +1,6 @@
-import QtQuick 2.7
+import QtQuick 2.15
 
-Item
-{
+Item {
     id: root
 
     property alias spread: back.spread;          //光圈强度
@@ -12,15 +11,13 @@ Item
     property alias source: image.source;
     property alias fillMode: image.fillMode;
 
-    GlowRectangle
-    {
+    GlowRectangle {
         id: back
         anchors.fill: parent
         color: "black"          //默认为黑色
         glowColor: color
 
-        CircularImage
-        {
+        CircularImage {
             id: image
             anchors.fill: parent
             radius: parent.radius

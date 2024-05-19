@@ -1,50 +1,41 @@
-import QtQuick 2.9
-import QtQuick.Window 2.2
+import QtQuick 2.15
+import QtQuick.Window 2.15
 import an.utility 1.0
 
-Window
-{
+Window {
     visible: true
     width: 640
     height: 480
-    flags: Qt.FramelessWindowHint | Qt.Tool
+    flags: Qt.FramelessWindowHint | Qt.Window
     color: "transparent"
     title: qsTr("Magic Fish~~~")
 
-    Rectangle
-    {
+    Rectangle {
         anchors.fill: parent
         color: "#1109A3DC"
     }
 
-    MagicPool
-    {
+    MagicPool {
         id: magicPool
-
         anchors.fill: parent
+        Component.onCompleted: randomMove();
 
-        function randomMove()
-        {
+        function randomMove() {
             var r_x = Math.random() * width;
             var r_y = Math.random() * height;
             magicPool.moveFish(r_x, r_y, false);
         }
 
-        Timer
-        {
+        Timer {
             interval: 1500
             repeat: true
             running: true
-            onTriggered:
-            {
+            onTriggered: {
                 if (Math.random() > 0.6 && !magicPool.moving) magicPool.randomMove();
             }
         }
 
-        Component.onCompleted: randomMove();
-
-        MouseArea
-        {
+        MouseArea {
             anchors.fill: parent
             onClicked: magicPool.moveFish(mouse.x, mouse.y, true);
         }

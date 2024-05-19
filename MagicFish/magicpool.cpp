@@ -27,8 +27,7 @@ void MagicPool::updateValue()
     m_circleRadius += 2;
     m_circleAlpha -= 3;
 
-    if(m_circleAlpha <= 0)
-    {
+    if (m_circleAlpha <= 0) {
         m_circleAlpha = 150;
         m_circleRadius = 4;
         m_startCircle = false;
@@ -40,27 +39,21 @@ void MagicPool::updateValue()
 void MagicPool::updateMove()
 {
     qreal tmp = 0.00;
-    if(m_moveStep >= 0.85)
-    {
+    if (m_moveStep >= 0.85) {
         tmp = qSin(qDegreesToRadians(m_moveStep * 180)) * 0.02;
         m_fish->setFinAnimation(false);
         m_fish->setWave(1.0);
-    }
-    else
-    {
+    } else {
         tmp = 0.012 + qCos(qDegreesToRadians(m_moveStep * 90)) * 0.02;
         //m_fish->setWave(1.0 / (m_moveStep + 0.1));
     }
     m_moveStep += tmp;
-    if(m_moveStep >= 1.0 || (1 - m_moveStep) <= 0.003)
-    {
+    if (m_moveStep >= 1.0 || (1 - m_moveStep) <= 0.003) {
         m_moving = false;
         m_moveStep = 0.0;
         m_path = QPainterPath();
         m_moveTimer->stop();
-    }
-    else
-    {
+    } else {
         QPointF p = m_path.pointAtPercent(m_moveStep);
         m_fish->setCurrentAngle(m_path.angleAtPercent(m_moveStep));
         m_fish->setPosition(QPointF(p.x(), p.y()));
@@ -95,16 +88,13 @@ void MagicPool::moveFish(qreal x, qreal y, bool hasCircle)
 
 void MagicPool::paint(QPainter *painter)
 {
-    if(m_startCircle)
-    {
+    if (m_startCircle) {
         painter->setRenderHint(QPainter::Antialiasing);
         painter->setPen(QPen(QColor(20, 203, 232, m_circleAlpha), 3));
         painter->drawEllipse(m_pos, m_circleRadius, m_circleRadius);
-        if (m_circleRadius >= 15)
-        {
+        if (m_circleRadius >= 15) {
             painter->drawEllipse(m_pos, m_circleRadius - 15, m_circleRadius - 15);
-            if (m_circleRadius >= 30)
-            {
+            if (m_circleRadius >= 30) {
                 painter->drawEllipse(m_pos, m_circleRadius - 30, m_circleRadius - 30);
                 if (m_circleRadius >= 45)
                     painter->drawEllipse(m_pos, m_circleRadius - 45, m_circleRadius - 45);
@@ -122,25 +112,16 @@ qreal MagicPool::calcIncludedAngle(const QPointF &center, const QPointF &head, c
     qreal tmp_angle = qRadiansToDegrees(qAcos(cos_abc));
     qreal direction = (center.x() - touch.x()) * (head.y() - touch.y()) -
                       (center.y() - touch.y()) * (head.x() - touch.x());
-    if(direction == 0)
-    {
-        if(abc >= 0)
-        {
+    if (direction == 0) {
+        if (abc >= 0) {
             return 0;
-        }
-        else
-        {
+        } else {
             return 180;
         }
-    }
-    else
-    {
-        if(direction > 0)
-        {
+    } else {
+        if (direction > 0) {
             return -tmp_angle;
-        }
-        else
-        {
+        } else {
             return tmp_angle;
         }
     }

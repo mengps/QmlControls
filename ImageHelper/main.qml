@@ -1,11 +1,10 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Window 2.3
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Window 2.15
 import Qt.labs.platform 1.0
 import an.controls 1.0
 
-Window
-{
+Window {
     id: root
     width: 400
     height: 500
@@ -14,14 +13,12 @@ Window
 
     Component.onCompleted: flags |= Qt.Window | Qt.FramelessWindowHint;
 
-    MoveMouseArea
-    {
+    MoveMouseArea {
         anchors.fill: parent
         target: root
     }
 
-    GlowRectangle
-    {
+    GlowRectangle {
         id: background
         width: parent.width - 20
         height: parent.height - 20
@@ -32,8 +29,7 @@ Window
         color: "#C4D6FA"
         glowColor: color
 
-        Text
-        {
+        Text {
             id: title
             anchors.top: parent.top
             anchors.topMargin: 10
@@ -47,8 +43,7 @@ Window
             antialiasing: true
         }
 
-        Text
-        {
+        Text {
             id: label
             text: "请输入文本或插入表情："
             font.pointSize: 12
@@ -58,8 +53,7 @@ Window
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        Rectangle
-        {
+        Rectangle {
             id: rect
             width: parent.width - 20
             anchors.top: label.bottom
@@ -69,14 +63,11 @@ Window
             anchors.horizontalCenter: parent.horizontalCenter
             border.color: "gray"
 
-            Flickable
-            {
+            Flickable {
                 id: flick
                 flickableDirection: Flickable.VerticalFlick
                 anchors.fill: parent
-
-                TextArea.flickable: MyTextArea
-                {
+                TextArea.flickable: MyTextArea {
                     id: mytext
                     focus: true
                     font.pointSize: 12
@@ -86,15 +77,11 @@ Window
                     topPadding: 16
                     bottomPadding: 16
 
-                    DropArea
-                    {
+                    DropArea {
                         anchors.fill: parent;
-                        onDropped:
-                        {
-                            if(drop.hasUrls)
-                            {
-                                for(var i = 0; i < drop.urls.length; i++)
-                                {
+                        onDropped: {
+                            if (drop.hasUrls) {
+                                for (var i = 0; i < drop.urls.length; i++) {
                                     console.log(drop.urls[i]);
                                     mytext.insertImage(drop.urls[i]);
                                 }
@@ -102,40 +89,34 @@ Window
                         }
                     }
                 }
-
-                ScrollBar.vertical: ScrollBar
-                {
+                ScrollBar.vertical: ScrollBar {
                     width: 14
                     policy: ScrollBar.AsNeeded
                 }
             }
         }
 
-        Row
-        {
+        Row {
             id: row
             spacing: 5
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
 
-            Button
-            {
+            Button {
                 id: insertFaces
                 text: "插入表情"
                 onClicked: facesManager.visible = !facesManager.visible;
             }
 
-            Button
-            {
+            Button {
                 id: openFile
                 text: "插入本地图片"
                 onClicked: fileDialog.open();
             }
         }
 
-        Rectangle
-        {
+        Rectangle {
             id: previewRect
             z: 10
             radius: 10
@@ -145,8 +126,7 @@ Window
             width: 80
             height: 80
 
-            AnimatedImage
-            {
+            AnimatedImage {
                 id: gifPreview
                 anchors.centerIn: parent
                 width: 30
@@ -156,8 +136,7 @@ Window
                 onPlayingChanged: playing = true;
             }
 
-            Image
-            {
+            Image {
                 id: imagePreview
                 anchors.centerIn: parent
                 width: 30
@@ -166,8 +145,7 @@ Window
             }
         }
 
-        FacesManager
-        {
+        FacesManager {
             id: facesManager
             visible: false
             width: parent.width - 160
@@ -177,8 +155,7 @@ Window
             anchors.horizontalCenter: row.horizontalCenter
         }
 
-        FileDialog
-        {
+        FileDialog {
             id: fileDialog
             folder: StandardPaths.writableLocation(StandardPaths.PicturesLocation)
             title: "请打开一张图片"

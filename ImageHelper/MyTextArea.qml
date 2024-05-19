@@ -1,9 +1,8 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 import an.controls 1.0
 
-TextArea
-{
+TextArea {
     id: editor
     smooth: true
     textFormat: Text.RichText
@@ -12,27 +11,22 @@ TextArea
     selectByKeyboard: true
     wrapMode: TextEdit.Wrap
 
-    function insertImage(src)
-    {
+    function insertImage(src) {
         imageHelper.insertImage(src);
     }
 
-    function cleanup()
-    {
+    function cleanup() {
         editor.remove(0, length)
         imageHelper.cleanup();
     }
 
-    ImageHelper
-    {
+    ImageHelper {
         id: imageHelper
         document: editor.textDocument
         cursorPosition: editor.cursorPosition
         selectionStart: editor.selectionStart
         selectionEnd: editor.selectionEnd
-
-        onNeedUpdate:
-        {
+        onNeedUpdate: {
             //editor.update() 这句不起作用，编辑器未改变，就不会更新，用下面的方法
             let alpha = editor.color.a;
             editor.color.a = alpha - 0.01;

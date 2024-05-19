@@ -37,15 +37,14 @@ ImageHelper::~ImageHelper()
 void ImageHelper::insertImage(const QUrl &url)
 {
     QImage image = QImage(QQmlFile::urlToLocalFileOrQrc(url));
-    if (image.isNull())
-    {
+    if (image.isNull()) {
         qDebug() << "不支持的图像格式";
         return;
     }
     QString filename = url.toString();
     QString suffix = QFileInfo(filename).suffix();
-    if (suffix == "GIF" || suffix == "gif") //如果是gif，则单独处理
-    {
+    //如果是gif，则单独处理
+    if (suffix == "GIF" || suffix == "gif") {
         QString gif = filename;
         if (gif.left(4) == "file")
             gif = gif.mid(8);
@@ -58,13 +57,11 @@ void ImageHelper::insertImage(const QUrl &url)
         textDocument()->addResource(QTextDocument::ImageResource, url, image);
         if (m_urls.contains(url))
             return;
-        else
-        {
+        else {
             QMovie *movie = new QMovie(gif);
             movie->setCacheMode(QMovie::CacheNone);
             connect(movie, &QMovie::finished, movie, &QMovie::start);   //循环播放
-            connect(movie, &QMovie::frameChanged, this, [url, this](int)
-            {
+            connect(movie, &QMovie::frameChanged, this, [url, this](int) {
                 QMovie *movie = qobject_cast<QMovie *>(sender());
                 textDocument()->addResource(QTextDocument::ImageResource, url, movie->currentPixmap());
                 emit needUpdate();
@@ -72,9 +69,7 @@ void ImageHelper::insertImage(const QUrl &url)
             m_urls[url] = movie;
             movie->start();
         }
-    }
-    else
-    {        
+    } else {
         QTextImageFormat format;
         format.setName(filename);
         format.setWidth(qMin(m_maxWidth, image.width()));
@@ -97,8 +92,7 @@ QQuickTextDocument* ImageHelper::document() const
 
 void ImageHelper::setDocument(QQuickTextDocument *document)
 {
-    if (document != m_document)
-    {
+    if (document != m_document) {
         m_document = document;
         emit documentChanged();
     }
@@ -111,8 +105,7 @@ int ImageHelper::cursorPosition() const
 
 void ImageHelper::setCursorPosition(int position)
 {
-    if (position != m_cursorPosition)
-    {
+    if (position != m_cursorPosition) {
         m_cursorPosition = position;
         emit cursorPositionChanged();
     }
@@ -125,8 +118,7 @@ int ImageHelper::selectionStart() const
 
 void ImageHelper::setSelectionStart(int position)
 {
-    if (position != m_selectionStart)
-    {
+    if (position != m_selectionStart) {
         m_selectionStart = position;
         emit selectionStartChanged();
     }
@@ -139,8 +131,7 @@ int ImageHelper::selectionEnd() const
 
 void ImageHelper::setSelectionEnd(int position)
 {
-    if (position != m_selectionEnd)
-    {
+    if (position != m_selectionEnd) {
         m_selectionEnd = position;
         emit selectionEndChanged();
     }
@@ -153,8 +144,7 @@ int ImageHelper::maxWidth() const
 
 void ImageHelper::setMaxWidth(int max)
 {
-    if (max != m_maxWidth)
-    {
+    if (max != m_maxWidth) {
         m_maxWidth = max;
         emit maxWidthChanged();
     }
@@ -167,8 +157,7 @@ int ImageHelper::maxHeight() const
 
 void ImageHelper::setMaxHeight(int max)
 {
-    if (max != m_maxHeight)
-    {
+    if (max != m_maxHeight) {
         m_maxHeight = max;
         emit maxHeightChanged();
     }
@@ -188,13 +177,10 @@ QTextCursor ImageHelper::textCursor() const
         return QTextCursor();
 
     QTextCursor cursor = QTextCursor(doc);
-    if (m_selectionStart != m_selectionEnd)
-    {
+    if (m_selectionStart != m_selectionEnd) {
         cursor.setPosition(m_selectionStart);
         cursor.setPosition(m_selectionEnd, QTextCursor::KeepAnchor);
-    }
-    else
-    {
+    } else {
         cursor.setPosition(m_cursorPosition);
     }
 

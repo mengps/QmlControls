@@ -23,8 +23,7 @@ MagicFish::MagicFish(QQuickPaintedItem *parent)
     m_animation->setStartValue(0);
     m_animation->setEndValue(54000);
     m_animation->setLoopCount(-1);
-    connect(m_animation, &QVariantAnimation::valueChanged, this, [this](const QVariant &value)
-    {
+    connect(m_animation, &QVariantAnimation::valueChanged, this, [this](const QVariant &value) {
         m_curValue = value.toInt();
         update();
     });
@@ -89,8 +88,7 @@ QPointF MagicFish::calcPoint(const QPointF &pos, qreal length, qreal angle)
 
 void MagicFish::paintMyPoint(QPainter *painter, const QPointF pos)
 {
-    if(m_paintPoint)
-    {
+    if (m_paintPoint) {
         painter->save();
         painter->setPen(QPen(Qt::black, 3));
         painter->setBrush(QBrush(Qt::black));

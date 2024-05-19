@@ -1,5 +1,5 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
 Rectangle
 {
@@ -21,8 +21,7 @@ Rectangle
                           "143", "144", "145", "146", "147", "148", "149", "150", "151", "152",
                           "153", "154", "155", "156", "157", "158", "159", "160", "161", "162",
                           "163", "164", "165", "166", "167", "168", "169", "170", "171", "172"];
-    GridView
-    {
+    GridView {
         id: grid
         anchors.centerIn: parent
         width: parent.width - 30
@@ -31,49 +30,40 @@ Rectangle
         cellHeight: 40
         model: faces
         delegate: delegate
-        ScrollBar.vertical: ScrollBar
-        {
+        ScrollBar.vertical: ScrollBar {
             width: 12
             policy: ScrollBar.AlwaysOn
         }
     }
 
-    Component
-    {
+    Component {
         id: delegate
 
-        Rectangle
-        {
+        Rectangle {
             id: back
             width: grid.cellWidth
             height: grid.cellHeight
             color: hovered ? "gray" : "#F3F3F3";
             property bool hovered: false
 
-            Image
-            {
+            Image {
                 width: 30
                 height: 30
                 anchors.centerIn: parent
                 source: "qrc:/image/FacesImage/" + modelData + ".png"
                 mipmap: true
 
-                MouseArea
-                {
+                MouseArea {
                     hoverEnabled: true
                     anchors.fill: parent
-                    onEntered:
-                    {
+                    onEntered: {
                         back.hovered = true;
                         var file = ":/image/FacesImage/" + modelData;
-                        if (Api.exists(file + ".gif"))
-                        {
+                        if (Api.exists(file + ".gif")) {
                             gifPreview.visible = true;
                             imagePreview.visible = false;
                             gifPreview.source = "qrc" + file + ".gif";
-                        }
-                        else
-                        {
+                        } else {
                             gifPreview.visible = false;
                             imagePreview.visible = true;
                             imagePreview.source = "qrc" + file + ".png";
@@ -82,13 +72,11 @@ Rectangle
                         previewRect.y = root.y + (back.y - grid.contentY) - 75;
                         previewRect.visible = true;
                     }
-                    onExited:
-                    {
+                    onExited: {
                         back.hovered = false;
                         previewRect.visible = false;
                     }
-                    onClicked:
-                    {
+                    onClicked: {
                         var file = ":/image/FacesImage/" + modelData;
                         if (Api.exists(file + ".gif"))
                             file = "qrc" + file + ".gif";

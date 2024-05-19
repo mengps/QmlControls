@@ -1,15 +1,13 @@
-import QtQuick 2.12
-import QtQuick.Window 2.2
+import QtQuick 2.115
+import QtQuick.Window 2.15
 
-Window
-{
+Window {
     visible: true
     width: 640
     height: 480
     title: qsTr("Glow Circular Image")
 
-    GlowRectangle
-    {
+    GlowRectangle {
         id: glowRect
         width: 100
         height: 50
@@ -22,8 +20,7 @@ Window
         glowRadius: 5
     }
 
-    CircularImage
-    {
+    CircularImage {
         id: image
         anchors.left: glowRect.right
         anchors.leftMargin: 50
@@ -34,8 +31,7 @@ Window
         source: "qrc:/test.png"
     }
 
-    GlowCircularImage
-    {
+    GlowCircularImage {
         id: blend
         anchors.left: image.right
         anchors.leftMargin: 50
@@ -49,8 +45,7 @@ Window
         fillMode: Image.PreserveAspectFit
         source: "qrc:/test.png"
 
-        ColorAnimation
-        {
+        ColorAnimation {
             target: blend
             property: "glowColor"
             from: "#FF88FF"
@@ -59,16 +54,12 @@ Window
             running: true
             easing.type: Easing.Linear
             property bool reverse: false
-            onStopped:
-            {
-                if (!reverse)
-                {
+            onStopped: {
+                if (!reverse) {
 
                     from = "#663366";
                     to = "#FF88FF";
-                }
-                else
-                {
+                } else {
                     from = "#FF88FF";
                     to = "#663366";
                 }

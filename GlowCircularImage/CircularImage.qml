@@ -1,8 +1,7 @@
-import QtQuick 2.7
-import QtGraphicalEffects 1.12
+import QtQuick 2.15
+import QtGraphicalEffects 1.15
 
-Item
-{
+Item {
     id: root
     width: 80
     height: 80
@@ -12,24 +11,21 @@ Item
     property alias mipmap: image.mipmap;
     property alias fillMode: image.fillMode;
 
-    Image
-    {
+    Image {
         id: image
         sourceSize: Qt.size(parent.width, parent.height)
         mipmap: true
         visible: false
     }
 
-    Rectangle
-    {
+    Rectangle {
         id: mask
         anchors.fill: parent
         radius: root.radius
         visible: false
     }
 
-    OpacityMask
-    {
+    OpacityMask {
         anchors.fill: parent
         source: image
         maskSource: mask
