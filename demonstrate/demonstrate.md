@@ -40,3 +40,7 @@
  - WaterfallFlow 瀑布流视图(并且可以自适应)，类似小红书
 
  <div align=center><img src="WaterfallFlow.gif" width="360" height="500" /></div>
+
+ - AsyncHasher 可对任意数据(url/text/object)生成加密哈希的异步散列器
+
+ <div align=center><img src="AsyncHasher.gif" width="480" height="400" /></div>
