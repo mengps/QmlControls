@@ -43,7 +43,7 @@ private:
     qreal m_finLen;
     int m_headAlpha;
     int m_bodyAlpha;
-    int M_finAlpha;
+    int m_finAlpha;
     qreal m_mainAngle;
     int m_curValue;
     qreal m_wave;

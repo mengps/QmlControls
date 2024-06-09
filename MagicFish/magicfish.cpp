@@ -5,18 +5,18 @@
 #include <QVariantAnimation>
 
 MagicFish::MagicFish(QQuickPaintedItem *parent)
-    : QQuickPaintedItem(parent),
-      m_fishRadius(30),
-      m_finLen(30 * 1.3),
-      m_bodyHeight(30 * 3.2),
-      m_headAlpha(200),
-      m_bodyAlpha(225),
-      M_finAlpha(120),
-      m_mainAngle(0.0),
-      m_curValue(0),
-      m_wave(1.0),
-      m_startFin(false),
-      m_paintPoint(false)
+    : QQuickPaintedItem(parent)
+    , m_bodyHeight(30 * 3.2)
+    , m_fishRadius(30)
+    , m_finLen(30 * 1.3)
+    , m_headAlpha(200)
+    , m_bodyAlpha(225)
+    , m_finAlpha(120)
+    , m_mainAngle(0.0)
+    , m_curValue(0)
+    , m_wave(1.0)
+    , m_startFin(false)
+    , m_paintPoint(false)
 {
     m_animation = new QVariantAnimation(this);
     m_animation->setDuration(180 * 1000);
@@ -113,7 +113,7 @@ void MagicFish::paintMyFishFins(QPainter *painter, const QPointF &pos, bool is_l
     path.lineTo(pos);
 
     painter->save();
-    painter->setBrush(QBrush(QColor(244, 92, 71, M_finAlpha)));
+    painter->setBrush(QBrush(QColor(244, 92, 71, m_finAlpha)));
     painter->drawPath(path);
     painter->restore();
 }
