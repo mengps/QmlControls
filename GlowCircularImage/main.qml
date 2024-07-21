@@ -1,4 +1,4 @@
-import QtQuick 2.115
+import QtQuick 2.15
 import QtQuick.Window 2.15
 
 Window {
@@ -56,7 +56,6 @@ Window {
             property bool reverse: false
             onStopped: {
                 if (!reverse) {
-
                     from = "#663366";
                     to = "#FF88FF";
                 } else {
