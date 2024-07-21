@@ -107,6 +107,7 @@ void AsyncHasher::setAlgorithm(QCryptographicHash::Algorithm algorithm)
     if (d->m_algorithm != algorithm) {
         d->m_algorithm = algorithm;
         emit algorithmChanged();
+        emit hashLengthChanged();
     }
 }
 

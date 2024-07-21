@@ -72,8 +72,6 @@ private slots:
 private:
     Q_DECLARE_PRIVATE(AsyncHasher);
     QScopedPointer<AsyncHasherPrivate> d_ptr;
-
-    friend class AsyncRunnable;
 };
 
 #endif // ASYNCHASHER_H
