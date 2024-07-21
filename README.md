@@ -33,6 +33,7 @@
  ColorPicker / ColorPickerPopup | 仿 `Windows10 画图3D` 的颜色选择器, 但更加强大 | <div align=center><img src="./demonstrate/ColorPicker.png" width="160" height="150" /></div>
  WaterfallFlow | 瀑布流视图(并且可以自适应)，类似小红书 | <div align=center><img src="./demonstrate/WaterfallFlow.png" width="150" height="180" /></div>
  AsyncHasher | 可对任意数据(url/text/object)生成加密哈希的异步散列器 |  <div align=center><img src="./demonstrate/AsyncHasher.png" width="150" height="180" /></div>
+ Notification | 悬浮出现在(全局/局部)页面上的通知提醒消息 |  <div align=center><img src="./demonstrate/Notification.gif" width="240" height="180" /></div>
 
 ------
 

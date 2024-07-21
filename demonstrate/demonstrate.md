@@ -44,3 +44,7 @@
  - AsyncHasher 可对任意数据(url/text/object)生成加密哈希的异步散列器
 
  <div align=center><img src="AsyncHasher.gif" width="480" height="400" /></div>
+
+ - Notification 悬浮出现在(全局/局部)页面上的通知提醒消息
+
+ <div align=center><img src="Notification.gif" width="480" height="400" /></div>
