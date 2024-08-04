@@ -48,3 +48,7 @@
  - Notification 悬浮出现在(全局/局部)页面上的通知提醒消息
 
  <div align=center><img src="Notification.gif" width="480" height="400" /></div>
+ 
+ - Timeline 可视化地呈现时间流信息的组件
+
+ <div align=center><img src="Timeline.gif" width="440" height="500" /></div>
