@@ -14,11 +14,11 @@
 
 ### 所有控件&工具预览
 
-[预览图均为GIF，较大](https://github.com/mengps/QmlControls/blob/master/demonstrate/demonstrate.md)
+[预览图均为GIF，较大](./demonstrate/demonstrate.md)
 
 ------
 
-### 控件&工具列表
+### 控件&工具列表 (部分动态预览图被替换为静态)
 
 名称 | 说明 | 示例 
 ---------|----------|---------
