@@ -10,8 +10,8 @@ Item {
     property bool reverse: true
 
     /*! 默认节点样式 */
-    property real defaultNodeRadius: 16
-    property string defaultNodeColor: "#e4e7ed"
+    property real defaultNodeBackgroundRadius: 16
+    property string defaultNodeBackgroundColor: "#e4e7ed"
     property string defaultNodeBorderColor: "#3bc3ff"
     property int defaultNodeBorderWidth: 0
 
@@ -35,30 +35,35 @@ Item {
 
     property Component nodeDelegate: Component {
         Item {
-            width: __nodeRadius
+            width: nodeOptions.backgroundRadius
             height: width
 
             Rectangle {
-                visible: __nodeIcon === ""
+                visible: nodeOptions.icon === ""
                 width: parent.width
                 height: parent.height
                 radius: width >> 1
-                color: __nodeColor
-                border.color: __nodeBorderColor
-                border.width: __nodeBorderWidth
+                color: nodeOptions.backgroundColor
+                border.color: nodeOptions.borderColor
+                border.width: nodeOptions.borderWidth
             }
 
             Text {
-                visible: __nodeIcon !== ""
+                visible: nodeOptions.icon !== ""
                 font.pixelSize: parent.width
                 font.family: fontAwesome.name
-                text: __nodeIcon
+                text: nodeOptions.icon
             }
         }
     }
     property Component lineDelegate: Component {
-        Rectangle {
-            color: __lineColor
+        Item {
+            Rectangle {
+                width: lineOptions.width
+                height: parent.height
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: lineOptions.color
+            }
         }
     }
     property Component contentDelegate: Component {
@@ -68,27 +73,27 @@ Item {
 
             Text {
                 id: __timeText
-                text: __timestamp.toLocaleString(Qt.locale(), __timeFormat)
-                font: __timeFont
-                color: __timeFontColor
+                text: timestamp.toLocaleString(Qt.locale(), timeOptions.format)
+                font: Qt.font(timeOptions.font)
+                color: timeOptions.fontColor
             }
 
             Rectangle {
                 width: parent.width
                 height: __contentText.height + 10
-                color: __contentBackgroundColor
-                border.color: __contentBorderColor
-                border.width: __contentBorderWidth
-                radius: __contentBackgroundRadius
+                color: contentOptions.backgroundColor
+                border.color: contentOptions.borderColor
+                border.width: contentOptions.borderWidth
+                radius: contentOptions.backgroundRadius
 
                 Text {
                     id: __contentText
                     width: parent.width - 12
                     anchors.centerIn: parent
-                    text: __content
-                    font: __contentFont
-                    color: __contentFontColor
-                    textFormat: __contentFormat
+                    text: content
+                    font: Qt.font(contentOptions.font)
+                    color: contentOptions.fontColor
+                    textFormat: contentOptions.format
                     wrapMode: Text.WrapAnywhere
                 }
             }
@@ -102,24 +107,38 @@ Item {
         }
     }
 
-    function initOption(object) {
-        object.nodeIcon = object.nodeIcon || "";
-        object.nodeRadius = object.nodeRadius || root.defaultNodeRadius;
-        object.nodeColor = object.nodeColor || root.defaultNodeColor;
-        object.nodeBorderColor = object.nodeBorderColor || root.defaultNodeBorderColor;
-        object.nodeBorderWidth = object.nodeBorderWidth || root.defaultNodeBorderWidth;
-        object.lineColor = object.lineColor || root.defaultLineColor;
-        object.lineWidth = object.lineWidth || root.defaultLineWidth;
-        object.timeFont = object.timeFont || root.defaultTimeFont;
-        object.timeFontColor = object.timeFontColor || root.defaultTimeFontColor;
-        object.timeFormat = object.timeFormat || root.defaultTimeFormat;
-        object.contentFormat = object.contentFormat || root.defaultContentFormat;
-        object.contentFont = object.contentFont || root.defaultContentFont;
-        object.contentFontColor = object.contentFontColor || root.defaultContentFontColor;
-        object.contentBackgroundRadius = object.contentBackgroundRadius || root.defaultContentBackgroundRadius;
-        object.contentBackgroundColor = object.contentBackgroundColor || root.defaultContentBackgroundColor;
-        object.contentBorderColor = object.contentBorderColor || root.defaultContentBorderColor;
-        object.contentBorderWdith = object.contentBorderWdith || root.defaultContentBorderWdith;
+
+    function __initOption(object) {
+        object.__nodeOptions = {
+            icon: object.nodeOptions && object.nodeOptions.icon || "",
+            backgroundColor: object.nodeOptions && object.nodeOptions.backgroundColor || root.defaultNodeBackgroundColor,
+            backgroundRadius: object.nodeOptions && object.nodeOptions.backgroundRadius || root.defaultNodeBackgroundRadius,
+            borderColor: object.nodeOptions && object.nodeOptions.borderColor || root.defaultNodeBorderColor,
+            borderWidth: object.nodeOptions && object.nodeOptions.borderWidth || root.defaultNodeBorderWidth
+        }
+
+        object.__lineOptions = {
+            color: object.lineOptions && object.lineOptions.color || root.defaultLineColor,
+            width: object.lineOptions && object.lineOptions.width || root.defaultLineWidth,
+        }
+
+        object.__timestamp = object.timestamp;
+        object.__timeOptions = {
+            format: object.timeOptions && object.timeOptions.format || root.defaultTimeFormat,
+            font: object.timeOptions && object.timeOptions.font || root.defaultTimeFont,
+            fontColor: object.timeOptions && object.timeOptions.fontColor || root.defaultTimeFontColor,
+        }
+
+        object.__content = object.content || "";
+        object.__contentOptions = {
+            format: object.contentOptions && object.contentOptions.format || root.defaultContentFormat,
+            font: object.contentOptions && object.contentOptions.font || root.defaultContentFont,
+            fontColor: object.contentOptions && object.contentOptions.fontColor || root.defaultContentFontColor,
+            backgroundColor: object.contentOptions && object.contentOptions.backgroundColor || root.defaultContentBackgroundColor,
+            backgroundRadius: object.contentOptions && object.contentOptions.backgroundRadius || root.defaultContentBackgroundRadius,
+            borderColor: object.contentOptions && object.contentOptions.borderColor || root.defaultContentBorderColor,
+            borderWidth: object.contentOptions && object.contentOptions.borderWidth || root.defaultContentBorderWdith,
+        };
     }
 
     function append(object) {
@@ -136,7 +155,7 @@ Item {
                 } else break;
             }
         }
-        initOption(object);
+        __initOption(object);
         listModel.insert(index, object);
     }
 
@@ -196,22 +215,17 @@ Item {
             Loader {
                 id: lineLoader
                 active: index !== (listModel.count - 1)
-                width: lineWidth
+                width: nodeLoader.width
                 height: parent.height - nodeLoader.height
                 anchors.top: nodeLoader.bottom
-                anchors.horizontalCenter: nodeLoader.horizontalCenter
                 sourceComponent: lineDelegate
-                property string __lineColor: lineColor
+                property var lineOptions: __lineOptions
             }
 
             Loader {
                 id: nodeLoader
                 sourceComponent: nodeDelegate
-                property string __nodeIcon: nodeIcon
-                property real __nodeRadius: nodeRadius
-                property string __nodeColor: nodeColor
-                property string __nodeBorderColor: nodeBorderColor
-                property real __nodeBorderWidth: nodeBorderWidth
+                property var nodeOptions: __nodeOptions
             }
 
             Loader {
@@ -220,19 +234,10 @@ Item {
                 anchors.leftMargin: 10
                 anchors.right: parent.right
                 sourceComponent: contentDelegate
-                property var __timestamp: timestamp
-                property font __timeFont: Qt.font(timeFont)
-                property string __timeFontColor: timeFontColor
-                property string __timeFormat: timeFormat
-
-                property string __content: content
-                property int __contentFormat: contentFormat
-                property font __contentFont: Qt.font(contentFont)
-                property string __contentFontColor: contentFontColor
-                property string __contentBackgroundColor: contentBackgroundColor
-                property real __contentBackgroundRadius: contentBackgroundRadius
-                property string __contentBorderColor: contentBorderColor
-                property real __contentBorderWidth: contentBorderWdith
+                property var content: __content
+                property var contentOptions: __contentOptions
+                property var timestamp: __timestamp
+                property var timeOptions: __timeOptions
             }
         }
     }

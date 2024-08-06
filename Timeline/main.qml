@@ -29,9 +29,9 @@ Window {
             onClicked: {
                 timeline.append({
                                     timestamp: new Date(),
-                                    contentFormat: Text.RichText,
                                     content: "<h2 style=\"color:red;\">可以使用HTML</h2><p>_(:3 」∠)_ -･･*'``*:.｡. .｡.:*･゜ﾟ･*☆</p>",
-                                    nodeIcon: "\uf008"
+                                    contentOptions: { format: Text.RichText },
+                                    nodeOptions: { icon: "\uf008" }
                                 });
             }
         }
@@ -40,9 +40,9 @@ Window {
             onClicked: {
                 timeline.append({
                                     timestamp: new Date(),
-                                    contentFormat: Text.MarkdownText,
                                     content: "## 可以使用Markdown\n - `(ˉ﹃ˉ)`\n - (* >ω<)\n - ლ(´ڡ`ლ)",
-                                    nodeIcon: "\uf008"
+                                    contentOptions: { format: Text.MarkdownText },
+                                    nodeOptions: { icon: "\uf008" }
                                 });
             }
         }
@@ -62,29 +62,59 @@ Window {
         anchors.topMargin: 10
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        defaultNodeColor: "transparent"
+        defaultNodeBackgroundColor: "transparent"
         defaultNodeBorderWidth: 1
         defaultTimeFormat: "yyyy-MM-dd hh:mm:ss"
         initModel: [
-            { timestamp: new Date(2024, 7, 1, 1), content: "更新 Github 模板 1", nodeIcon: "\uf27b" },
-            { timestamp: new Date(2024, 7, 7, 11), content: "更新 Github 模板 2", nodeColor: "blue", lineColor: "red" },
-            { timestamp: new Date(2024, 7, 7, 16), content: "更新 Github 模板 2", lineWidth: 5 },
-            { timestamp: new Date(2024, 7, 9, 5, 30), content: "更新 Github 模板 3" },
+            {
+                timestamp: new Date(2024, 7, 1, 1),
+                content: "更新 Github 模板 1",
+                nodeOptions: { icon: "\uf27b" }
+            },
+            {
+                timestamp: new Date(2024, 7, 7, 11),
+                content: "更新 Github 模板 2",
+                nodeOptions: { backgoundColor: "blue" },
+                lineOptions: {
+                    lineColor: "red"
+                }
+            },
+            {
+                timestamp: new Date(2024, 7, 7, 16),
+                content: "更新 Github 模板 2",
+                lineOptions: {
+                    lineWidth: 5
+                }
+            },
+            {
+                timestamp: new Date(2024, 7, 9, 5, 30),
+                content: "更新 Github 模板 3"
+            },
             {
                 timestamp: new Date(2024, 7, 12, 9),
+                timeOptions: {
+                    font: { family: "华文彩云", pointSize: 12 },
+                    fontColor: "green",
+                    format: "yyyy-MM-dd hh:mm:ss:zzz"
+                },
                 content: "更新 Github 模板 4",
-                timeFont: { family: "华文彩云", pointSize: 12 },
-                timeFontColor: "green",
-                timeFormat: "yyyy-MM-dd hh:mm:ss:zzz"
             },
             {
                 timestamp: new Date(2024, 7, 12, 18, 30),
                 content: "更新 Github 模板 5",
-                contentFont: { family: "微软雅黑", pointSize: 14 },
-                contentFontColor: "red",
-                contentBackgroundColor: "#ddd",
+                contentOptions: {
+                    font: { family: "微软雅黑", pointSize: 14 },
+                    fontColor: "red",
+                    backgroundColor: "#ddd"
+                }
             },
-            { timestamp: new Date(2024, 7, 17, 5, 35), content: "更新 Github 模板 6 ===================================", contentBorderColor: "#ddd"}
+            {
+                timestamp: new Date(2024, 7, 17, 5, 35),
+                content: "更新 Github 模板 6 ===================================",
+                contentOptions: {
+                    contentBorderColor: "#ddd"
+                }
+            }
         ]
     }
 }
