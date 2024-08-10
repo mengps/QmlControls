@@ -53,6 +53,23 @@ Window {
                 timeline.removeAtTimestamp(new Date(2024, 7, 1, 1));
             }
         }
+
+        Button {
+            text: qsTr("更新")
+            onClicked: {
+                timeline.setAtIndex(0, {
+                                        nodeOptions: { iconColor: "orange" },
+                                        timestamp: timeline.getAtIndex(0).timestamp,
+                                        timeOptions: {
+                                            font: { family: "微软雅黑", pointSize: 12 },
+                                            fontColor: "darkBlue",
+                                            format: "yyyy-MM-dd hh:mm:ss:zzz"
+                                        },
+                                        content: " ## " + timeline.getAtIndex(0).content,
+                                        contentOptions: { format: Text.MarkdownText }
+                                    });
+            }
+        }
     }
 
     Timeline {
@@ -74,17 +91,13 @@ Window {
             {
                 timestamp: new Date(2024, 7, 7, 11),
                 content: "更新 Github 模板 2",
-                nodeOptions: { backgoundColor: "blue" },
-                lineOptions: {
-                    lineColor: "red"
-                }
+                nodeOptions: { backgroundColor: "blue" },
+                lineOptions: { color: "red" }
             },
             {
                 timestamp: new Date(2024, 7, 7, 16),
                 content: "更新 Github 模板 2",
-                lineOptions: {
-                    lineWidth: 5
-                }
+                lineOptions: { width: 5 }
             },
             {
                 timestamp: new Date(2024, 7, 9, 5, 30),
@@ -112,7 +125,7 @@ Window {
                 timestamp: new Date(2024, 7, 17, 5, 35),
                 content: "更新 Github 模板 6 ===================================",
                 contentOptions: {
-                    contentBorderColor: "#ddd"
+                    borderColor: "#ddd"
                 }
             }
         ]

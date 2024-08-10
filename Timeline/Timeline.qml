@@ -8,8 +8,10 @@ Item {
 
     property var initModel: []
     property bool reverse: true
+    property alias count: listModel.count
 
     /*! 默认节点样式 */
+    property string defaultNodeIconColor: "black"
     property real defaultNodeBackgroundRadius: 16
     property string defaultNodeBackgroundColor: "#e4e7ed"
     property string defaultNodeBorderColor: "#3bc3ff"
@@ -53,6 +55,7 @@ Item {
                 font.pixelSize: parent.width
                 font.family: fontAwesome.name
                 text: nodeOptions.icon
+                color: nodeOptions.iconColor
             }
         }
     }
@@ -90,10 +93,10 @@ Item {
                     id: __contentText
                     width: parent.width - 12
                     anchors.centerIn: parent
-                    text: content
                     font: Qt.font(contentOptions.font)
                     color: contentOptions.fontColor
                     textFormat: contentOptions.format
+                    text: content
                     wrapMode: Text.WrapAnywhere
                 }
             }
@@ -107,55 +110,81 @@ Item {
         }
     }
 
+    function __initOptions(object, clone = undefined) {
+        /*! clone 不为 undefined 且 object 不存在选项时拷贝到 object 中 */
+        object.__nodeOptions = object.nodeOptions || {};
+        object.__nodeOptions.icon = object.nodeOptions && object.nodeOptions.icon ||
+                clone && clone.__nodeOptions && clone.__nodeOptions.icon || "";
+        object.__nodeOptions.iconColor = object.nodeOptions && object.nodeOptions.iconColor ||
+                clone && clone.__nodeOptions && clone.__nodeOptions.iconColor || root.defaultNodeIconColor;
+        object.__nodeOptions.backgroundColor = object.nodeOptions && object.nodeOptions.backgroundColor ||
+                clone && clone.__nodeOptions && clone.__nodeOptions.backgroundColor || root.defaultNodeBackgroundColor;
+        object.__nodeOptions.backgroundRadius = object.nodeOptions && object.nodeOptions.backgroundRadius ||
+                clone && clone.__nodeOptions && clone.__nodeOptions.backgroundRadius || root.defaultNodeBackgroundRadius;
+        object.__nodeOptions.borderColor = object.nodeOptions && object.nodeOptions.borderColor ||
+                clone && clone.__nodeOptions && clone.__nodeOptions.borderColor || root.defaultNodeBorderColor;
+        object.__nodeOptions.borderWidth = object.nodeOptions && object.nodeOptions.borderWidth ||
+                clone && clone.__nodeOptions && clone.__nodeOptions.borderWidth || root.defaultNodeBorderWidth;
+        delete object.nodeOptions;
 
-    function __initOption(object) {
-        object.__nodeOptions = {
-            icon: object.nodeOptions && object.nodeOptions.icon || "",
-            backgroundColor: object.nodeOptions && object.nodeOptions.backgroundColor || root.defaultNodeBackgroundColor,
-            backgroundRadius: object.nodeOptions && object.nodeOptions.backgroundRadius || root.defaultNodeBackgroundRadius,
-            borderColor: object.nodeOptions && object.nodeOptions.borderColor || root.defaultNodeBorderColor,
-            borderWidth: object.nodeOptions && object.nodeOptions.borderWidth || root.defaultNodeBorderWidth
-        }
+        object.__lineOptions = object.lineOptions || {};
+        object.__lineOptions.color = object.lineOptions && object.lineOptions.color ||
+                clone && clone.__lineOptions && clone.__lineOptions.color || root.defaultLineColor;
+        object.__lineOptions.width = object.lineOptions && object.lineOptions.width ||
+                clone && clone.__lineOptions && clone.__lineOptions.width || root.defaultLineWidth;
+        delete object.lineOptions;
 
-        object.__lineOptions = {
-            color: object.lineOptions && object.lineOptions.color || root.defaultLineColor,
-            width: object.lineOptions && object.lineOptions.width || root.defaultLineWidth,
-        }
+        object.__timeOptions = object.timeOptions || {};
+        object.__timeOptions.format = object.timeOptions && object.timeOptions.format ||
+                clone && clone.__timeOptions && clone.__timeOptions.format || root.defaultTimeFormat;
+        object.__timeOptions.font = object.timeOptions && object.timeOptions.font ||
+                clone && clone.__timeOptions && clone.__timeOptions.font || root.defaultTimeFont;
+        object.__timeOptions.fontColor = object.timeOptions && object.timeOptions.fontColor ||
+                clone && clone.__timeOptions && clone.__timeOptions.fontColor || root.defaultTimeFontColor;
+        delete object.timeOptions;
 
-        object.__timestamp = object.timestamp;
-        object.__timeOptions = {
-            format: object.timeOptions && object.timeOptions.format || root.defaultTimeFormat,
-            font: object.timeOptions && object.timeOptions.font || root.defaultTimeFont,
-            fontColor: object.timeOptions && object.timeOptions.fontColor || root.defaultTimeFontColor,
-        }
+        /*! 先变更 format 再改变 timestamp, 可以触发动态更新 */
+        object.__timestamp = object.timestamp|| clone && clone.__timestamp;
+        delete object.timestamp;
 
-        object.__content = object.content || "";
-        object.__contentOptions = {
-            format: object.contentOptions && object.contentOptions.format || root.defaultContentFormat,
-            font: object.contentOptions && object.contentOptions.font || root.defaultContentFont,
-            fontColor: object.contentOptions && object.contentOptions.fontColor || root.defaultContentFontColor,
-            backgroundColor: object.contentOptions && object.contentOptions.backgroundColor || root.defaultContentBackgroundColor,
-            backgroundRadius: object.contentOptions && object.contentOptions.backgroundRadius || root.defaultContentBackgroundRadius,
-            borderColor: object.contentOptions && object.contentOptions.borderColor || root.defaultContentBorderColor,
-            borderWidth: object.contentOptions && object.contentOptions.borderWidth || root.defaultContentBorderWdith,
-        };
+        object.__contentOptions = object.contentOptions || {};
+        object.__contentOptions.format = object.contentOptions && object.contentOptions.format ||
+                clone && clone.__contentOptions && clone.__contentOptions.format || root.defaultContentFormat;
+        object.__contentOptions.font = object.contentOptions && object.contentOptions.font ||
+                clone && clone.__contentOptions && clone.__contentOptions.font || root.defaultContentFont;
+        object.__contentOptions.fontColor = object.contentOptions && object.contentOptions.fontColor ||
+                clone && clone.__contentOptions && clone.__contentOptions.fontColor || root.defaultContentFontColor;
+        object.__contentOptions.backgroundColor = object.contentOptions && object.contentOptions.backgroundColor ||
+                clone && clone.__contentOptions && clone.__contentOptions.backgroundColor || root.defaultContentBackgroundColor;
+        object.__contentOptions.backgroundRadius = object.contentOptions && object.contentOptions.backgroundRadius ||
+                clone && clone.__contentOptions && clone.__contentOptions.backgroundRadius || root.defaultContentBackgroundRadius;
+        object.__contentOptions.borderColor = object.contentOptions && object.contentOptions.borderColor ||
+                clone && clone.__contentOptions && clone.__contentOptions.borderColor ||root.defaultContentBorderColor;
+        object.__contentOptions.borderWidth = object.contentOptions && object.contentOptions.borderWidth ||
+                clone && clone.__contentOptions && clone.__contentOptions.borderWidth || root.defaultContentBorderWdith
+        delete object.contentOptions;
+
+        /*! 先变更 format 再改变 content, 可以触发动态更新 */
+        object.__content = object.content || clone && clone.__content || "";
+        delete object.content;
     }
 
     function append(object) {
+        __initOptions(object);
+
         let index = 0;
         let rowCount = listModel.count;
         for (let i = 0; i < rowCount; i++) {
             if (root.reverse) {
-                if (listModel.get(i).timestamp < object.timestamp) {
+                if (listModel.get(i).__timestamp < object.__timestamp) {
                     index = i + 1;
                 } else break;
             } else {
-                if (listModel.get(i).timestamp > object.timestamp) {
+                if (listModel.get(i).__timestamp > object.__timestamp) {
                     index = i + 1;
                 } else break;
             }
         }
-        __initOption(object);
         listModel.insert(index, object);
     }
 
@@ -164,16 +193,31 @@ Item {
         for (let i = 0; i < rowCount; i++) {
             for (let j = 0; i + j < rowCount - 1; j++) {
                 if (root.reverse) {
-                    if (listModel.get(j).timestamp > listModel.get(j + 1).timestamp) {
+                    if (listModel.get(j).__timestamp > listModel.get(j + 1).__timestamp) {
                         listModel.move(j, j + 1, 1);
                     }
                 } else {
-                    if (listModel.get(j).timestamp < listModel.get(j + 1).timestamp) {
+                    if (listModel.get(j).__timestamp < listModel.get(j + 1).__timestamp) {
                         listModel.move(j, j + 1, 1);
                     }
                 }
             }
         }
+    }
+
+    function getAtIndex(index) {
+        let result = {};
+        let object = listModel.get(index);
+        for (let key in object) {
+            result[key.slice(2)] = object[key];
+        }
+        return result;
+    }
+
+    function setAtIndex(index, object) {
+        __initOptions(object, listModel.get(index));
+        listModel.set(index, object);
+        sort();
     }
 
     function removeAtIndex(index) {
@@ -183,7 +227,7 @@ Item {
     function removeAtTimestamp(timestamp) {
         let rowCount = listModel.count;
         for (let i = 0; i < rowCount; i++) {
-            if (timestamp.getTime() === listModel.get(i).timestamp.getTime()) {
+            if (timestamp.getTime() === listModel.get(i).__timestamp.getTime()) {
                 listModel.remove(i);
                 break;
             }
