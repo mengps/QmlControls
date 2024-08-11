@@ -20,6 +20,7 @@ class AsyncHasher : public QObject
     Q_PROPERTY(int hashLength READ hashLength NOTIFY hashLengthChanged)
     Q_PROPERTY(QUrl source READ source WRITE setSource NOTIFY sourceChanged)
     Q_PROPERTY(QString sourceText READ sourceText WRITE setSourceText NOTIFY sourceTextChanged)
+    Q_PROPERTY(QByteArray sourceData READ sourceData WRITE setSourceData NOTIFY sourceDataChanged)
     Q_PROPERTY(QObject* sourceObject READ sourceObject WRITE setSourceObject NOTIFY sourceObjectChanged)
 
 public:
@@ -46,6 +47,9 @@ public:
     QString sourceText() const;
     void setSourceText(const QString &sourceText);
 
+    QByteArray sourceData() const;
+    void setSourceData(const QByteArray &sourceData);
+
     QObject *sourceObject() const;
     void setSourceObject(QObject *sourceObject);
 
@@ -61,6 +65,7 @@ signals:
     void hashLengthChanged();
     void sourceChanged();
     void sourceTextChanged();
+    void sourceDataChanged();
     void sourceObjectChanged();
     void hashProgress(qint64 processed, qint64 total);
     void started();

@@ -73,6 +73,7 @@ public:
     QString m_hashValue;
     QUrl m_source;
     QString m_sourceText;
+    QByteArray m_sourceData;
     QObject *m_sourceObject = nullptr;
     QNetworkReply *m_reply = nullptr;
     QNetworkAccessManager m_manager;
@@ -236,6 +237,40 @@ void AsyncHasher::setSourceText(const QString &sourceText)
         } else {
             QCryptographicHash hash(d->m_algorithm);
             hash.addData(sourceText.toUtf8());
+            setHashValue(hash.result().toHex().toUpper());
+        }
+    }
+}
+
+QByteArray AsyncHasher::sourceData() const
+{
+    Q_D(const AsyncHasher);
+
+    return d->m_sourceData;
+}
+
+void AsyncHasher::setSourceData(const QByteArray &sourceData)
+{
+    Q_D(AsyncHasher);
+
+    if (d->m_sourceData != sourceData) {
+        d->m_sourceData = sourceData;
+        emit sourceDataChanged();
+
+        d->cleanupRunnable();
+
+        emit started();
+        if (d->m_asynchronous) {
+            QBuffer *buffer = new QBuffer;
+            buffer->setData(sourceData);
+            buffer->open(QIODevice::ReadOnly);
+            d->m_runnable = new AsyncRunnable(buffer, d->m_algorithm);
+            connect(d->m_runnable, &AsyncRunnable::finished, this, &AsyncHasher::setHashValue, Qt::QueuedConnection);
+            connect(d->m_runnable, &AsyncRunnable::progress, this, &AsyncHasher::hashProgress, Qt::QueuedConnection);
+            QThreadPool::globalInstance()->start(d->m_runnable);
+        } else {
+            QCryptographicHash hash(d->m_algorithm);
+            hash.addData(sourceData);
             setHashValue(hash.result().toHex().toUpper());
         }
     }
