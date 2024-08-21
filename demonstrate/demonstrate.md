@@ -52,3 +52,7 @@
  - Timeline 可视化地呈现时间流信息的组件
 
  <div align=center><img src="Timeline.gif" width="440" height="500" /></div>
+
+ - MoveMouseArea / ResizeMouseArea 给任意目标添加[移动/调整大小操作]的鼠标区域
+
+ <div align=center><img src="ResizeMouseArea.gif" width="480" height="370" /></div>
