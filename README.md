@@ -35,8 +35,9 @@
  AsyncHasher | 可对任意数据(url/text/object)生成加密哈希的异步散列器 | <div align=center><img src="./demonstrate/AsyncHasher.png" width="150" height="180" /></div>
  Notification | 悬浮出现在(全局/局部)页面上的通知提醒消息 | <div align=center><img src="./demonstrate/Notification.gif" width="240" height="180" /></div>
  Timeline | 可视化地呈现时间流信息的组件 |  <div align=center><img src="./demonstrate/Timeline.png" width="200" height="240" /></div>
- MoveMouseArea / ResizeMouseArea | 给任意目标添加[移动/调整大小操作]的鼠标区域 | <div align=center><img src="./demonstrate/ResizeMouseArea.gif" width="260" height="160" /></div>
- WaveProgress | 动态的水波进度条 | <div align=center><img src="./demonstrate/WaveProgress.gif" width="240" height="170" /></div>
+ MoveMouseArea / ResizeMouseArea | 给任意目标添加[移动/调整大小操作]的鼠标区域 | <div align=center><img src="./demonstrate/ResizeMouseArea.gif" width="260" height="190" /></div>
+ WaveProgress | 动态的水波进度条 | <div align=center><img src="./demonstrate/WaveProgress.gif" width="240" height="200" /></div>
+ Rate | 对某个事物进行评级 | <div align=center><img src="./demonstrate/Rate.gif" width="240" height="200" /></div>
 
 
 ------
