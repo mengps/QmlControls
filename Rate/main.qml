@@ -42,29 +42,29 @@ Window {
             fillDelegate: Rectangle {
                 width: customRate.iconSize
                 height: customRate.iconSize
-                color: customRate.iconColor
+                color: hovered ? Qt.lighter(customRate.iconColor) : customRate.iconColor
             }
             emptyDelegate: Rectangle {
                 width: customRate.iconSize
                 height: customRate.iconSize
                 color: "transparent"
                 border.width: 2
-                border.color: customRate.iconColor
+                border.color: hovered ? Qt.lighter(customRate.iconColor) : customRate.iconColor
             }
             halfDelegate: Row {
                 Rectangle {
                     width: customRate.iconSize * 0.5
                     height: customRate.iconSize
-                    color: customRate.iconColor
+                    color: hovered ? Qt.lighter(customRate.iconColor) : customRate.iconColor
                     border.width: 2
-                    border.color: customRate.iconColor
+                    border.color: hovered ? Qt.lighter(customRate.iconColor) : customRate.iconColor
                 }
                 Rectangle {
                     width: customRate.iconSize * 0.5
                     height: customRate.iconSize
                     color: "transparent"
                     border.width: 2
-                    border.color: customRate.iconColor
+                    border.color: hovered ? Qt.lighter(customRate.iconColor) : customRate.iconColor
                 }
             }
         }

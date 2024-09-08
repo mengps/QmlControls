@@ -75,9 +75,12 @@ Item {
                 id: repeater
                 model: root.count
                 delegate: MouseArea {
+                    id: rootItem
                     width: root.iconSize
                     height: root.iconSize
                     hoverEnabled: true
+                    onEntered: hovered = true;
+                    onExited: hovered = false;
                     onClicked: {
                         root.isDone = !root.isDone;
                         if (root.isDone) {
@@ -97,20 +100,24 @@ Item {
                             root.value = index + 1;
                         }
                     }
+                    property bool hovered: false
 
                     Loader {
                         active: index < repeater.fillCount
                         sourceComponent: fillDelegate
+                        property bool hovered: rootItem.hovered
                     }
 
                     Loader {
                         active: repeater.hasHalf && index === (repeater.emptyStartIndex - 1)
                         sourceComponent: halfDelegate
+                        property bool hovered: rootItem.hovered
                     }
 
                     Loader {
                         active: index >= repeater.emptyStartIndex
                         sourceComponent: emptyDelegate
+                        property bool hovered: rootItem.hovered
                     }
                 }
 
