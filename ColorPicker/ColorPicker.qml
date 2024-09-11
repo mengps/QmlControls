@@ -5,8 +5,8 @@ import QtGraphicalEffects 1.15
 
 Item {
     id: root
-    width: 460
-    height: 500
+    width: 500
+    height: 530
     scale: 0
     opacity: 0
     enabled: false
@@ -120,8 +120,8 @@ Item {
 
         Item {
             id: pickerRect
-            width: 330
-            height: 290
+            width: 350
+            height: 310
             anchors.top: contentText.bottom
             anchors.left: contentText.left
             anchors.leftMargin: -cursorWidth * 0.5
@@ -283,7 +283,7 @@ Item {
         component ColorEditor: ColumnLayout {
             id: __layout
             width: previewItem.width
-            height: 50
+            height: 55
 
             property alias label: label.text
             property alias text: input.text
@@ -315,6 +315,7 @@ Item {
                     selectionColor: "#398ed4"
                     selectByMouse: true
                     anchors.fill: parent
+                    font.family: "微软雅黑"
                     horizontalAlignment: TextInput.AlignRight
                     verticalAlignment: TextInput.AlignVCenter
                     onTextEdited: __layout.textEdited();
