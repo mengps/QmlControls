@@ -64,3 +64,7 @@
  - Rate 对某个事物进行评级
 
  <div align=center><img src="Rate.gif" width="480" height="390" /></div>
+
+ - SystemThemeHelper (Qt5/Qt6) 系统主题助手 `[Dark/Light]主题检测 & 感知`
+
+ <div align=center><img src="SystemThemeHelper.gif" width="640" height="300" /></div>

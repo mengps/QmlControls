@@ -38,6 +38,7 @@
  MoveMouseArea / ResizeMouseArea | 给任意目标添加[移动/调整大小操作]的鼠标区域 | <div align=center><img src="./demonstrate/ResizeMouseArea.gif" width="260" height="190" /></div>
  WaveProgress | 动态的水波进度条 | <div align=center><img src="./demonstrate/WaveProgress.gif" width="240" height="200" /></div>
  Rate | 对某个事物进行评级 | <div align=center><img src="./demonstrate/Rate.gif" width="240" height="200" /></div>
+ SystemThemeHelper | (Qt5/Qt6) 系统主题助手 `[Dark/Light]主题检测 & 感知` | <div align=center><img src="./demonstrate/SystemThemeHelper.png" width="240" height="110" /></div>
 
 
 ------
