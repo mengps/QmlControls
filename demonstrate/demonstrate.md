@@ -8,7 +8,7 @@
 
 <div align=center><img src="MagicFish.gif" width="400" height="320" /></div>
 
- - ImageHelper 支持动图的编辑器
+ - ImageHelper 文本编辑器的图像助手(支持动图) 
 
 <div align=center><img src="ImageHelper.gif" width="320" height="400" /></div>
 
@@ -23,7 +23,6 @@
  - HistoryEditor 历史编辑器(支持历史搜索 & 关键字匹配)
 
 <div align=center><img src="HistoryEditor.gif" width="520" height="416" /></div>
-
 
  - VideoOutput Qml中支持原始视频图像格式(YUV / RGB)
 

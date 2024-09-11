@@ -24,7 +24,7 @@
 ---------|----------|---------
  GlowCircularImage | 圆形图像/发光图像 | <div align=center><img src="./demonstrate/GlowCircularImage.png" width="200" height="150" /></div>
  MagicFish | 灵动的小鱼 | <div align=center><img src="./demonstrate/MagicFish.gif" width="200" height="150" /></div>
- ImageHelper | 支持动图的编辑器 | <div align=center><img src="./demonstrate/ImageHelper.png" width="110" height="150" /></div>
+ ImageHelper | 文本编辑器的图像助手(支持动图) | <div align=center><img src="./demonstrate/ImageHelper.png" width="110" height="150" /></div>
  FramelessWindow | 无边框窗口 | <div align=center><img src="./demonstrate/FramelessWindow.png" width="200" height="150" /></div> 
  PolygonWindow | 多边形窗口 | <div align=center><img src="./demonstrate/PolygonWindow.png" width="200" height="150" /></div>
  HistoryEditor | 历史编辑器 ( 支持历史搜索 & 关键字匹配 ) | <div align=center><img src="./demonstrate/HistoryEditor.gif" width="150" height="150" /></div>
