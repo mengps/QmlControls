@@ -8,9 +8,9 @@
 
 <div align=center><img src="MagicFish.gif" width="400" height="320" /></div>
 
- - ImageHelper 文本编辑器的图像助手(支持动图) 
+ - EditorImageHelper 编辑器图像助手(支持动图) 
 
-<div align=center><img src="ImageHelper.gif" width="320" height="400" /></div>
+<div align=center><img src="EditorImageHelper.gif" width="600" height="300" /></div>
 
  - FramelessWindow 无边框窗口
 
