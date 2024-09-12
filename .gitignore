@@ -4,6 +4,7 @@ release/
 *.Debug
 *.Release
 Makefile
+Makefile.*
 *.stash
 *.rc
 *.exe
