@@ -1,14 +1,24 @@
 # QmlControls
 
-提供一些有用Qml控件 & 实用工具
+提供一些有用 Qml 控件 & 实用工具
 
 一些是 `Qt C++实现`, 也有 `纯Qml实现`
 
 ------
 
+### 未来路线
+
+将整合本仓库实现较好的组件来实现全新的框架
+
+统一主题 & 风格 & 样式
+
+------
+
 ### 如何使用
 
-所有示例与控件同目录, 可直接构建
+`Run.pro` 可构建所有示例
+
+如需单独构建，直接进入目录构建 `*.pro` 
 
 ------
 
@@ -24,7 +34,7 @@
 ---------|----------|---------
  GlowCircularImage | 圆形图像/发光图像 | <div align=center><img src="./demonstrate/GlowCircularImage.png" width="200" height="150" /></div>
  MagicFish | 灵动的小鱼 | <div align=center><img src="./demonstrate/MagicFish.gif" width="200" height="150" /></div>
- ImageHelper | 文本编辑器的图像助手(支持动图) | <div align=center><img src="./demonstrate/ImageHelper.png" width="110" height="150" /></div>
+ EditorImageHelper | 编辑器图像助手(支持动图)  | <div align=center><img src="./demonstrate/EditorImageHelper.png" width="200" height="100" /></div>
  FramelessWindow | 无边框窗口 | <div align=center><img src="./demonstrate/FramelessWindow.png" width="200" height="150" /></div> 
  PolygonWindow | 多边形窗口 | <div align=center><img src="./demonstrate/PolygonWindow.png" width="200" height="150" /></div>
  HistoryEditor | 历史编辑器 ( 支持历史搜索 & 关键字匹配 ) | <div align=center><img src="./demonstrate/HistoryEditor.gif" width="150" height="150" /></div>
