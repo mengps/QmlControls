@@ -42,12 +42,12 @@ public:
      * @brief colorScheme 获取当前主题颜色{可用于绑定}
      * @return QColor
      */
-    QColor themeColor() const;
+    QColor themeColor();
     /**
      * @brief colorScheme 获取当前颜色方案{可用于绑定}
      * @return {@link SystemThemeHelper::ColorScheme}
      */
-    SystemThemeHelper::ColorScheme colorScheme() const;
+    SystemThemeHelper::ColorScheme colorScheme();
 
     Q_INVOKABLE static bool setWindowTitleBarMode(QWindow *window, bool isDark);
 

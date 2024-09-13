@@ -41,11 +41,36 @@ static inline bool initializeFunctionPointers() {
 class SystemThemeHelperPrivate
 {
 public:
+    SystemThemeHelperPrivate(SystemThemeHelper *q) : q_ptr(q) { }
+
+    Q_DECLARE_PUBLIC(SystemThemeHelper);
+
+    void _updateThemeColor() {
+        Q_Q(SystemThemeHelper);
+
+        auto nowThemeColor = q->getThemeColor();
+        if (nowThemeColor != m_themeColor) {
+            m_themeColor = nowThemeColor;
+            emit q->themeColorChanged();
+        }
+    }
+
+    void _updateColorScheme() {
+        Q_Q(SystemThemeHelper);
+
+        auto nowColorScheme = q->getColorScheme() ;
+        if (nowColorScheme != m_colorScheme) {
+            m_colorScheme = nowColorScheme;
+            emit q->colorSchemeChanged();
+        }
+    }
+
+    SystemThemeHelper *q_ptr;
     QColor m_themeColor;
     SystemThemeHelper::ColorScheme m_colorScheme = SystemThemeHelper::ColorScheme::None;
 
-#ifdef Q_OS_WIN
     QBasicTimer m_timer;
+#ifdef Q_OS_WIN
     QSettings m_themeColorSettings { QSettings::UserScope, "Microsoft", "Windows\\DWM" };
     QSettings m_colorSchemeSettings { QSettings::UserScope, "Microsoft", "Windows\\CurrentVersion\\Themes\\Personalize" };
 #endif
@@ -53,16 +78,16 @@ public:
 
 SystemThemeHelper::SystemThemeHelper(QObject *parent)
     : QObject{ parent }
-    , d_ptr(new SystemThemeHelperPrivate)
+    , d_ptr(new SystemThemeHelperPrivate(this))
 {
     Q_D(SystemThemeHelper);
 
     d->m_themeColor = getThemeColor();
     d->m_colorScheme = getColorScheme();
 
-#ifdef Q_OS_WIN
     d->m_timer.start(200, this);
 
+#ifdef Q_OS_WIN
     initializeFunctionPointers();
 #endif
 }
@@ -100,16 +125,20 @@ SystemThemeHelper::ColorScheme SystemThemeHelper::getColorScheme() const
 #endif // QT_VERSION
 }
 
-QColor SystemThemeHelper::themeColor() const
+QColor SystemThemeHelper::themeColor()
 {
-    Q_D(const SystemThemeHelper);
+    Q_D(SystemThemeHelper);
+
+    d->_updateThemeColor();
 
     return d->m_themeColor;
 }
 
-SystemThemeHelper::ColorScheme SystemThemeHelper::colorScheme() const
+SystemThemeHelper::ColorScheme SystemThemeHelper::colorScheme()
 {
-    Q_D(const SystemThemeHelper);
+    Q_D(SystemThemeHelper);
+
+    d->_updateColorScheme();
 
     return d->m_colorScheme;
 }
@@ -127,15 +156,5 @@ void SystemThemeHelper::timerEvent(QTimerEvent *)
 {
     Q_D(SystemThemeHelper);
 
-    auto nowThemeColor = getThemeColor();
-    if (nowThemeColor != d->m_themeColor) {
-        d->m_themeColor = nowThemeColor;
-        emit themeColorChanged();
-    }
-
-    auto nowColorScheme = getColorScheme() ;
-    if (nowColorScheme != d->m_colorScheme) {
-        d->m_colorScheme = nowColorScheme;
-        emit colorSchemeChanged();
-    }
+    d->_updateThemeColor();
 }
