@@ -5,6 +5,7 @@
 #include <QObject>
 
 QT_FORWARD_DECLARE_CLASS(QWindow);
+QT_FORWARD_DECLARE_CLASS(QWidget);
 
 QT_FORWARD_DECLARE_CLASS(SystemThemeHelperPrivate);
 
@@ -50,6 +51,10 @@ public:
     SystemThemeHelper::ColorScheme colorScheme();
 
     Q_INVOKABLE static bool setWindowTitleBarMode(QWindow *window, bool isDark);
+
+#ifdef QT_WIDGETS_LIB
+    Q_INVOKABLE static bool setWindowTitleBarMode(QWidget *window, bool isDark);
+#endif
 
 signals:
     void themeColorChanged();

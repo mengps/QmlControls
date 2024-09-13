@@ -4,6 +4,10 @@
 #include <QWindow>
 #include <QSettings>
 
+#ifdef QT_WIDGETS_LIB
+#include <QWidget>
+#endif //QT_WIDGETS_LIB
+
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
 #include <QGuiApplication>
 #include <QStyleHints>
@@ -151,6 +155,17 @@ bool SystemThemeHelper::setWindowTitleBarMode(QWindow *window, bool isDark)
     return false;
 #endif //Q_OS_WIN
 }
+
+#ifdef QT_WIDGETS_LIB
+bool SystemThemeHelper::setWindowTitleBarMode(QWidget *window, bool isDark)
+{
+#ifdef Q_OS_WIN
+    return bool(pDwmSetWindowAttribute ? !pDwmSetWindowAttribute(HWND(window->winId()), 20, &isDark, sizeof(BOOL)) : false);
+#else
+    return false;
+#endif //Q_OS_WIN
+}
+#endif //QT_WIDGETS_LIB
 
 void SystemThemeHelper::timerEvent(QTimerEvent *)
 {
