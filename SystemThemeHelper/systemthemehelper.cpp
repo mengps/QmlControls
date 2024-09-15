@@ -172,4 +172,5 @@ void SystemThemeHelper::timerEvent(QTimerEvent *)
     Q_D(SystemThemeHelper);
 
     d->_updateThemeColor();
+    d->_updateColorScheme();
 }
