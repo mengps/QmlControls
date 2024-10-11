@@ -176,8 +176,8 @@ Item {
 
     MoveMouseArea {
         id: area5
-        x: 8
-        y: 8
+        x: areaMarginSize
+        y: areaMarginSize
         width: root.target.width - areaMarginSize * 2
         height: root.target.height - areaMarginSize * 2
         enabled: false
