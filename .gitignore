@@ -11,3 +11,4 @@ Makefile.*
 *.qmlc
 *qmlcache.qrc
 .qtc_clangd/
+build/
