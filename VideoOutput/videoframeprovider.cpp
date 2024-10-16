@@ -36,7 +36,7 @@ VideoFrameProvider::VideoFrameProvider(QObject *parent)
     d->m_testTimer = new QTimer(this);
 
     //读入一张yuv图像
-    QFile file("./test.yuv");
+    QFile file(":/test.yuv");
     file.open(QIODevice::ReadOnly);
     QByteArray data = file.readAll();
     d->m_testData.resize(data.size());

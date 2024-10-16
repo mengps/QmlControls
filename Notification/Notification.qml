@@ -39,7 +39,7 @@ Item {
 
     FontLoader {
         id: fontAwesome
-        source: "file:./../common/FontAwesome.otf"
+        source: "qrc:/../common/FontAwesome.otf"
     }
 
     Column {

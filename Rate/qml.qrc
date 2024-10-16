@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>Rate.qml</file>
+        <file>../common/FontAwesome.otf</file>
     </qresource>
 </RCC>
