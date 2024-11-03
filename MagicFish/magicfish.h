@@ -3,25 +3,30 @@
 
 #include <QQuickPaintedItem>
 
-class QVariantAnimation;
+QT_FORWARD_DECLARE_CLASS(MagicFishPrivate);
+QT_FORWARD_DECLARE_CLASS(QVariantAnimation);
+
 class MagicFish : public QQuickPaintedItem
 {
     Q_OBJECT
 
 public:
     explicit MagicFish(QQuickPaintedItem *parent = nullptr);
+    ~MagicFish();
 
     void setFishR(int value);
+    qreal getFishR() const;
+
+    qreal getAngle();
     void setCurrentAngle(qreal angle);
+
     void setFinAnimation(bool start);
+
+    void setWave(qreal value);
 
     QPointF getHeadPos() const;
 
-    qreal getFishR() const;
-    qreal getAngle();
     QRectF geometry() const;
-
-    void setWave(qreal value);
 
 public slots:
     void resize();
@@ -38,20 +43,7 @@ private:
     void paintMyTail(QPainter *painter, const QPointF &pos, qreal length, qreal max_w, qreal angle);
 
 private:
-    qreal m_bodyHeight;
-    qreal m_fishRadius; // fish head r
-    qreal m_finLen;
-    int m_headAlpha;
-    int m_bodyAlpha;
-    int m_finAlpha;
-    qreal m_mainAngle;
-    int m_curValue;
-    qreal m_wave;
-
-    QVariantAnimation *m_animation;
-    bool m_startFin;
-    bool m_paintPoint;
-
-    QPointF m_headPos;
+    Q_DECLARE_PRIVATE(MagicFish);
+    QScopedPointer<MagicFishPrivate> d_ptr;
 };
 #endif // MAGICFISH_H

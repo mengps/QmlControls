@@ -1,9 +1,9 @@
 #ifndef MAGICPOOL_H
 #define MAGICPOOL_H
 
-#include "magicfish.h"
-#include <QPainterPath>
 #include <QQuickPaintedItem>
+
+QT_FORWARD_DECLARE_CLASS(MagicPoolPrivate);
 
 class MagicPool : public QQuickPaintedItem
 {
@@ -12,9 +12,10 @@ class MagicPool : public QQuickPaintedItem
     Q_PROPERTY(bool moving READ moving CONSTANT)
 
 public:
-    MagicPool(QQuickPaintedItem *parent = nullptr);
+    explicit MagicPool(QQuickPaintedItem *parent = nullptr);
+    ~MagicPool();
 
-    bool moving() const { return m_moving; }
+    bool moving() const;
 
 public slots:
     void updateValue();
@@ -30,18 +31,8 @@ private:
     qreal getLength(const QPointF &pos1, const QPointF &pos2);
 
 private:
-    bool m_moving;
-    bool m_startCircle;
-    QTimer *m_circleTimer;
-    QTimer *m_moveTimer;
-    int m_circleRadius;
-    int m_circleAlpha;
-    QPointF m_pos;
-
-    MagicFish *m_fish;
-
-    QPainterPath m_path;
-    qreal m_moveStep;
+    Q_DECLARE_PRIVATE(MagicPool);
+    QScopedPointer<MagicPoolPrivate> d_ptr;
 };
 
 #endif // MAGICPOOL_H

@@ -1,103 +1,139 @@
 #include "magicpool.h"
+#include "magicfish.h"
+
 #include <QtMath>
 #include <QTimer>
 #include <QPainter>
+#include <QPainterPath>
+
+class MagicPoolPrivate
+{
+public:
+    bool m_moving { false };
+    bool m_startCircle { false };
+    int m_circleRadius { 4 };
+    int m_circleAlpha { 150 };
+    QPointF m_pos;
+    QPainterPath m_path;
+    qreal m_moveStep { 0.0 };
+    MagicFish *m_fish;
+    QTimer *m_circleTimer;
+    QTimer *m_moveTimer;
+};
 
 MagicPool::MagicPool(QQuickPaintedItem *parent)
-    : QQuickPaintedItem(parent),
-      m_moving(false),
-      m_startCircle(false),
-      m_circleRadius(4),
-      m_circleAlpha(150),
-      m_moveStep(0.0)
+    : QQuickPaintedItem(parent)
+    , d_ptr(new MagicPoolPrivate)
 {
-    m_circleTimer = new QTimer(this);
-    m_circleTimer->setInterval(20);
-    connect(m_circleTimer, &QTimer::timeout, this, &MagicPool::updateValue);
+    Q_D(MagicPool);
 
-    m_moveTimer = new QTimer(this);
-    m_moveTimer->setInterval(20);
-    connect(m_moveTimer, &QTimer::timeout, this, &MagicPool::updateMove);
-    m_fish = new MagicFish(this);
-    m_fish->setSize(QSize(100, 100));
+    d->m_circleTimer = new QTimer(this);
+    d->m_circleTimer->setInterval(20);
+    connect(d->m_circleTimer, &QTimer::timeout, this, &MagicPool::updateValue);
+
+    d->m_moveTimer = new QTimer(this);
+    d->m_moveTimer->setInterval(20);
+    connect(d->m_moveTimer, &QTimer::timeout, this, &MagicPool::updateMove);
+    d->m_fish = new MagicFish(this);
+    d->m_fish->setSize(QSize(100, 100));
+}
+
+MagicPool::~MagicPool()
+{
+
+}
+
+bool MagicPool::moving() const
+{
+    Q_D(const MagicPool);
+
+    return d->m_moving;
 }
 
 void MagicPool::updateValue()
 {
-    m_circleRadius += 2;
-    m_circleAlpha -= 3;
+    Q_D(MagicPool);
 
-    if (m_circleAlpha <= 0) {
-        m_circleAlpha = 150;
-        m_circleRadius = 4;
-        m_startCircle = false;
-        m_circleTimer->stop();
+    d->m_circleRadius += 2;
+    d->m_circleAlpha -= 3;
+
+    if (d->m_circleAlpha <= 0) {
+        d->m_circleAlpha = 150;
+        d->m_circleRadius = 4;
+        d->m_startCircle = false;
+        d->m_circleTimer->stop();
     }
     update();
 }
 
 void MagicPool::updateMove()
 {
+    Q_D(MagicPool);
+
     qreal tmp = 0.00;
-    if (m_moveStep >= 0.85) {
-        tmp = qSin(qDegreesToRadians(m_moveStep * 180)) * 0.02;
-        m_fish->setFinAnimation(false);
-        m_fish->setWave(1.0);
+    if (d->m_moveStep >= 0.85) {
+        tmp = qSin(qDegreesToRadians(d->m_moveStep * 180)) * 0.02;
+        d->m_fish->setFinAnimation(false);
+        d->m_fish->setWave(1.0);
     } else {
-        tmp = 0.012 + qCos(qDegreesToRadians(m_moveStep * 90)) * 0.02;
-        //m_fish->setWave(1.0 / (m_moveStep + 0.1));
+        tmp = 0.012 + qCos(qDegreesToRadians(d->m_moveStep * 90)) * 0.02;
+        //d->m_fish->setWave(1.0 / (d->m_moveStep + 0.1));
     }
-    m_moveStep += tmp;
-    if (m_moveStep >= 1.0 || (1 - m_moveStep) <= 0.003) {
-        m_moving = false;
-        m_moveStep = 0.0;
-        m_path = QPainterPath();
-        m_moveTimer->stop();
+    d->m_moveStep += tmp;
+    if (d->m_moveStep >= 1.0 || (1 - d->m_moveStep) <= 0.003) {
+        d->m_moving = false;
+        d->m_moveStep = 0.0;
+        d->m_path = QPainterPath();
+        d->m_moveTimer->stop();
     } else {
-        QPointF p = m_path.pointAtPercent(m_moveStep);
-        m_fish->setCurrentAngle(m_path.angleAtPercent(m_moveStep));
-        m_fish->setPosition(QPointF(p.x(), p.y()));
+        QPointF p = d->m_path.pointAtPercent(d->m_moveStep);
+        d->m_fish->setCurrentAngle(d->m_path.angleAtPercent(d->m_moveStep));
+        d->m_fish->setPosition(QPointF(p.x(), p.y()));
         update();
     }
 }
 
 void MagicPool::moveFish(qreal x, qreal y, bool hasCircle)
 {
-    m_moving = true;
-    m_startCircle = hasCircle;
-    m_pos = QPointF(x, y);
-    m_circleRadius = 4;
-    m_circleAlpha = 150;
-    m_moveStep = 0.0;
+    Q_D(MagicPool);
 
-    QPointF m_fish_middle = m_fish->geometry().center();
-    QPointF m_fish_head = m_fish->geometry().topLeft() + m_fish->getHeadPos();
-    qreal angle = calcIncludedAngle(m_fish_middle, m_fish_head, m_pos);
-    qreal delta = calcIncludedAngle(m_fish_middle, m_fish_middle + QPointF(1, 0), m_fish_head);
-    QPointF c = calcPoint(m_fish_middle, 17 * m_fish->getFishR(), angle / 2 + delta);
-    QPointF p(m_fish->width() / 2, m_fish->height() / 2);
-    m_path = QPainterPath();
-    m_path.moveTo(m_fish->geometry().topLeft());
-    m_path.cubicTo(m_fish_head - p, c - p, m_pos - p);
+    d->m_moving = true;
+    d->m_startCircle = hasCircle;
+    d->m_pos = QPointF(x, y);
+    d->m_circleRadius = 4;
+    d->m_circleAlpha = 150;
+    d->m_moveStep = 0.0;
 
-    if (hasCircle) m_circleTimer->start();
-    m_moveTimer->start();
-    m_fish->setFinAnimation(true);
-    m_fish->setWave(2.5);
+    QPointF fish_middle = d->m_fish->geometry().center();
+    QPointF fish_head = d->m_fish->geometry().topLeft() + d->m_fish->getHeadPos();
+    qreal angle = calcIncludedAngle(fish_middle, fish_head, d->m_pos);
+    qreal delta = calcIncludedAngle(fish_middle, fish_middle + QPointF(1, 0), fish_head);
+    QPointF c = calcPoint(fish_middle, 17 * d->m_fish->getFishR(), angle / 2 + delta);
+    QPointF p(d->m_fish->width() / 2, d->m_fish->height() / 2);
+    d->m_path = QPainterPath();
+    d->m_path.moveTo(d->m_fish->geometry().topLeft());
+    d->m_path.cubicTo(fish_head - p, c - p, d->m_pos - p);
+
+    if (hasCircle) d->m_circleTimer->start();
+    d->m_moveTimer->start();
+    d->m_fish->setFinAnimation(true);
+    d->m_fish->setWave(2.5);
 }
 
 void MagicPool::paint(QPainter *painter)
 {
-    if (m_startCircle) {
+    Q_D(MagicPool);
+
+    if (d->m_startCircle) {
         painter->setRenderHint(QPainter::Antialiasing);
-        painter->setPen(QPen(QColor(20, 203, 232, m_circleAlpha), 3));
-        painter->drawEllipse(m_pos, m_circleRadius, m_circleRadius);
-        if (m_circleRadius >= 15) {
-            painter->drawEllipse(m_pos, m_circleRadius - 15, m_circleRadius - 15);
-            if (m_circleRadius >= 30) {
-                painter->drawEllipse(m_pos, m_circleRadius - 30, m_circleRadius - 30);
-                if (m_circleRadius >= 45)
-                    painter->drawEllipse(m_pos, m_circleRadius - 45, m_circleRadius - 45);
+        painter->setPen(QPen(QColor(20, 203, 232, d->m_circleAlpha), 3));
+        painter->drawEllipse(d->m_pos, d->m_circleRadius, d->m_circleRadius);
+        if (d->m_circleRadius >= 15) {
+            painter->drawEllipse(d->m_pos, d->m_circleRadius - 15, d->m_circleRadius - 15);
+            if (d->m_circleRadius >= 30) {
+                painter->drawEllipse(d->m_pos, d->m_circleRadius - 30, d->m_circleRadius - 30);
+                if (d->m_circleRadius >= 45)
+                    painter->drawEllipse(d->m_pos, d->m_circleRadius - 45, d->m_circleRadius - 45);
             }
         }
     }
@@ -139,4 +175,5 @@ qreal MagicPool::getLength(const QPointF &pos1, const QPointF &pos2)
     return qSqrt((pos1.x() - pos2.x()) * (pos1.x() - pos2.x())
                + (pos1.y() - pos2.y()) * (pos1.y() - pos2.y()));
 }
+
 
