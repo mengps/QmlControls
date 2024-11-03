@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<FpsItem>("an.item", 1, 0, "FpsItem");
+    qmlRegisterType<FpsItem>("DelegateUI.Controls", 1, 0, "FpsItem");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

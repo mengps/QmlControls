@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     app.setOrganizationName("mengps");
     app.setOrganizationDomain("mengps.utils");
 
-    qmlRegisterType<EditorImageHelper>("an.utils", 1, 0, "EditorImageHelper");
+    qmlRegisterType<EditorImageHelper>("DelegateUI.Utils", 1, 0, "EditorImageHelper");
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("Api", new Api);

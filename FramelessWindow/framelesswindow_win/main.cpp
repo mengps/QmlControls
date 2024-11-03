@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<FramelessWindow>("an.window", 1, 0, "FramelessWindow");
+    qmlRegisterType<FramelessWindow>("DelegateUI.Controls", 1, 0, "FramelessWindow");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

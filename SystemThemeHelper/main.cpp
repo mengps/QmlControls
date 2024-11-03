@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<SystemThemeHelper>("m.utils.theme", 1, 0, "SystemThemeHelper");
+    qmlRegisterType<SystemThemeHelper>("DelegateUI.Utils", 1, 0, "SystemThemeHelper");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

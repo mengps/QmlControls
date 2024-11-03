@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<MagicPool>("an.utility", 1, 0, "MagicPool");
+    qmlRegisterType<MagicPool>("DelegateUI.Controls", 1, 0, "MagicPool");
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())

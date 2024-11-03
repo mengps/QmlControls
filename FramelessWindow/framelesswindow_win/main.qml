@@ -1,5 +1,6 @@
-import QtQuick 2.12
-import an.window 1.0
+import QtQuick 2.15
+
+import DelegateUI.Controls 1.0
 
 FramelessWindow {
     id: root

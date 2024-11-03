@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Shapes 1.15
 
-import an.item 1.0
+import DelegateUI.Controls 1.0
 
 Window {
     width: 640

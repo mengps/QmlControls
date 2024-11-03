@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 
-import m.utils.theme 1.0
+import DelegateUI.Utils 1.0
 
 Window {
     id: window

@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 
-import an.hash 1.0
+import DelegateUI.Utils 1.0
 
 Window {
     id: window

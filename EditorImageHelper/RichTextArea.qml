@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 
-import an.utils 1.0
+import DelegateUI.Utils 1.0
 
 TextArea {
     id: editor

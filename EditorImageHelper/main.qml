@@ -3,8 +3,6 @@ import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 import QtQuick.Dialogs 1.3
 
-import an.utils 1.0
-
 Window {
     id: root
     width: 550

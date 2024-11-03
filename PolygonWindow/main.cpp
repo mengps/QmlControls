@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<PolygonWindow>("an.window", 1, 0, "PolygonWindow");
+    qmlRegisterType<PolygonWindow>("DelegateUI.Controls", 1, 0, "PolygonWindow");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<VideoFrameProvider>("an.video", 1, 0, "VideoFrameProvider");
+    qmlRegisterType<VideoFrameProvider>("DelegateUI.Controls", 1, 0, "VideoFrameProvider");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

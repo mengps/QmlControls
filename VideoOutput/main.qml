@@ -1,7 +1,8 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtMultimedia 5.8
-import an.video 1.0
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtMultimedia 5.15
+
+import DelegateUI.Controls 1.0
 
 Window {
     visible: true
