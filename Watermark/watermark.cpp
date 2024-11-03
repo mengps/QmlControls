@@ -21,7 +21,6 @@ public:
     QNetworkReply *m_imageReply = nullptr;
     QNetworkAccessManager *m_manager = nullptr;
     QImage m_cachedImage;
-    QSizeF m_textSize;
     bool m_isSetMarkSize { false };
     QSize m_markSize;
     QPointF m_gap { 100, 100 };
