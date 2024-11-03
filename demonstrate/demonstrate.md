@@ -67,3 +67,7 @@
  - SystemThemeHelper (Qt5/Qt6) 系统主题助手 `[Dark/Light]主题检测 & 感知`
 
  <div align=center><img src="SystemThemeHelper.gif" width="640" height="300" /></div>
+
+ - Watermark 给页面的任意项加上水印
+
+ <div align=center><img src="Watermark.gif" width="500" height="300" /></div>
