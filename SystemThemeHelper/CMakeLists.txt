@@ -8,10 +8,10 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Quick)
 
 set(SOURCES main.cpp systemthemehelper.h systemthemehelper.cpp)
 
-qt5_add_resources(SOURCES qml.qrc)
+qt_add_resources(SOURCES qml.qrc)
 
 add_executable(SystemThemeHelper ${SOURCES})
 
 target_link_libraries(SystemThemeHelper PRIVATE
-    Qt::Quick
+    Qt${QT_VERSION_MAJOR}::Quick
 )

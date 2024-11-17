@@ -71,3 +71,7 @@
  - Watermark 给页面的任意项加上水印
 
  <div align=center><img src="Watermark.gif" width="500" height="300" /></div>
+
+  - Tour 用于分步引导用户了解产品功能的气泡组件。
+
+ <div align=center><img src="Tour.gif" width="400" height="320" /></div>

@@ -58,6 +58,7 @@
  Rate | 对某个事物进行评级 | `Qt5` | <div align=center><img src="./demonstrate/Rate.gif" width="240" height="200" /></div>
  SystemThemeHelper | (Qt5/Qt6) 系统主题助手 `[Dark/Light]主题检测 & 感知` | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/SystemThemeHelper.png" width="240" height="110" /></div>
  Watermark | 可给页面的任意项加上水印 | `Qt5` | <div align=center><img src="./demonstrate/Watermark.png" width="250" height="140" /></div>
+ Tour(TourFocus/TourStep) | 用于分步引导用户了解产品功能的气泡组件。 | `Qt5` | <div align=center><img src="./demonstrate/Tour.png" width="250" height="180" /></div>
 
 ------
 
