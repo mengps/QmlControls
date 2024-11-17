@@ -105,7 +105,7 @@ Item {
 
     onReverseChanged: sort();
     Component.onCompleted: {
-        for (let item of initModel) {
+        for (const item of initModel) {
             append(item);
         }
     }
