@@ -1,6 +1,5 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import QtGraphicalEffects 1.15
 
 Popup {
     id: root
@@ -32,7 +31,6 @@ Popup {
         id: __arrowDelegate
         width: arrowWidth
         height: arrowHeight
-        contextType: "2d"
         onWidthChanged: requestPaint();
         onHeightChanged: requestPaint();
         onPaint: {
@@ -43,7 +41,7 @@ Popup {
             ctx.lineTo(width * 0.5, 0);
             ctx.lineTo(width, height);
             ctx.closePath();
-            ctx.fill()
+            ctx.fill();
         }
         property color fillStyle: root.stepCardColor
 
