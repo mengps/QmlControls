@@ -1,5 +1,5 @@
 <div align=center>
-<img width=64 src="common/delegateui_icon.svg">
+<img width=64 src="./common/delegateui_icon.svg">
 
 # 「 DelegateUI 」 基于 Qml 的现代 UI
 
