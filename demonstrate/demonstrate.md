@@ -75,3 +75,7 @@
   - Tour 用于分步引导用户了解产品功能的气泡组件。
 
  <div align=center><img src="Tour.gif" width="400" height="320" /></div>
+
+   - Button 按钮用于开始一个即时操作。
+
+ <div align=center><img src="Button.gif" width="400" height="320" /></div>

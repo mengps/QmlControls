@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>DelButton.qml</file>
+        <file>../common/FontAwesome.otf</file>
+        <file>DelIconButton.qml</file>
+    </qresource>
+</RCC>

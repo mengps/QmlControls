@@ -20,7 +20,8 @@ SUBDIRS += \
     Rate \
     SystemThemeHelper \
     Watermark \
-    Tour
+    Tour \
+    Button
 
 FramelessWindow_Win.file = FramelessWindow/framelesswindow_win/FramelessWindow.pro
 FramelessWindow_All.file = FramelessWindow/framelesswindow_all/FramelessWindow.pro
