@@ -1,20 +1,34 @@
-# QmlControls
+<div align=center>
+<img width=64 src="common/delegateui_icon.svg">
+
+# 「 DelegateUI 」 基于 Qml 的现代 UI
+
+Qt QML 的 Ant 设计组件库
+
+**此项目为「 DelegateUI 」Qt5 实现, 但只提供单一组件的实现**
+
+**新的 Qt6 实现是完整的库, 并提供更加强大和一致的主题系统 [DelegateUI for Qt6](https://github.com/mengps/DelegateUI)**
+
+</div>
+
+<div align=center>
+
+![win-badge] 
+
+[English](./README.md) | 中文
+
+</div>
+
+[win-badge]: https://img.shields.io/badge/Windows-passing-brightgreen?style=flat-square
+
+
+## 说明
 
 提供一些有用 Qml 控件 & 实用工具
 
 一些是 `Qt C++实现`, 也有 `纯Qml实现`
 
-------
-
-### 未来路线
-
-将整合本仓库实现较好的组件来实现全新的框架
-
-统一主题 & 风格 & 样式
-
-------
-
-### 如何使用
+## 如何使用
 
 - 使用 `cmake` 构建
 
@@ -28,15 +42,11 @@
 >
 > 如需单独构建，直接进入目录构建 `*.pro` 
 
-------
-
-### 所有控件&工具预览
+## 所有控件&工具预览
 
 [预览图均为GIF，较大](./demonstrate/demonstrate.md)
 
-------
-
-### 控件&工具列表 (部分动态预览图被替换为静态)
+## 控件&工具列表 (部分动态预览图被替换为静态)
 
 名称 | 说明 | 支持 | 示例 
 ---------|----------|---------|---------
@@ -58,23 +68,17 @@
  Rate | 对某个事物进行评级 | `Qt5` | <div align=center><img src="./demonstrate/Rate.gif" width="240" height="200" /></div>
  SystemThemeHelper | (Qt5/Qt6) 系统主题助手 `[Dark/Light]主题检测 & 感知` | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/SystemThemeHelper.png" width="240" height="110" /></div>
  Watermark | 可给页面的任意项加上水印 | `Qt5` | <div align=center><img src="./demonstrate/Watermark.png" width="250" height="140" /></div>
- Tour(TourFocus/TourStep) | 用于分步引导用户了解产品功能的气泡组件。 | `Qt5` | <div align=center><img src="./demonstrate/Tour.png" width="250" height="180" /></div>
+ Tour(TourFocus/TourStep) | 用于分步引导用户了解产品功能的气泡组件。 | `Qt5` | <div align=center><img src="./demonstrate/Tour.png" width="250" height="210" /></div>
+ Button(DelButton/DelIconButton) | 按钮用于开始一个即时操作。 | `Qt5` | <div align=center><img src="./demonstrate/Button.png" width="250" height="210" /></div>
 
-------
-
-### 许可证
+## 许可证
 
  使用 `MIT LICENSE`
 
-------
-
-### 开发环境
+## 开发环境
 
 windows 11，Qt 5.15.2 / Qt 6.7.3
 
-
-------
-
-### Star 历史
+## Star 历史
 
 [![Star History Chart](https://api.star-history.com/svg?repos=mengps/QmlControls&type=Date)](https://star-history.com/#mengps/QmlControls&Date)
