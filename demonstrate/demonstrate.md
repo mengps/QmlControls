@@ -79,3 +79,7 @@
    - Button 按钮用于开始一个即时操作。
 
  <div align=center><img src="Button.gif" width="400" height="320" /></div>
+
+   - Divider 用于区隔内容的分割线。
+
+ <div align=center><img src="Divider.png" width="400" height="320" /></div>

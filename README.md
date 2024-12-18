@@ -21,7 +21,6 @@ Qt QML 的 Ant 设计组件库
 
 [win-badge]: https://img.shields.io/badge/Windows-passing-brightgreen?style=flat-square
 
-
 ## 说明
 
 提供一些有用 Qml 控件 & 实用工具
@@ -70,6 +69,7 @@ Qt QML 的 Ant 设计组件库
  Watermark | 可给页面的任意项加上水印 | `Qt5` | <div align=center><img src="./demonstrate/Watermark.png" width="250" height="140" /></div>
  Tour(TourFocus/TourStep) | 用于分步引导用户了解产品功能的气泡组件。 | `Qt5` | <div align=center><img src="./demonstrate/Tour.png" width="250" height="210" /></div>
  Button(DelButton/DelIconButton) | 按钮用于开始一个即时操作。 | `Qt5` | <div align=center><img src="./demonstrate/Button.png" width="250" height="210" /></div>
+ Divider | 用于区隔内容的分割线。 | `Qt5` | <div align=center><img src="./demonstrate/Divider.png" width="250" height="210" /></div>
 
 ## 许可证
 
