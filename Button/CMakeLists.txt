@@ -10,7 +10,7 @@ set(SOURCES main.cpp)
 
 qt5_add_resources(SOURCES qml.qrc)
 
-add_executable(Button ${SOURCES})
+add_executable(Button ${SOURCES} delbuttontype.h)
 
 target_link_libraries(Button PRIVATE
     Qt::Quick

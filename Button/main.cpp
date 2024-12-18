@@ -1,24 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-namespace DelButtonType {
-    Q_NAMESPACE
-
-    enum class ButtonType {
-        Type_Default = 0,
-        Type_Primary = 1
-    };
-
-    enum class ButtonShape {
-        Shape_Default = 0,
-        Shape_Circle = 1
-    };
-
-    Q_ENUM_NS(ButtonType);
-    Q_ENUM_NS(ButtonShape);
-
-    QML_NAMED_ELEMENT(DelButtonType);
-}
+#include "delbuttontype.h"
 
 int main(int argc, char *argv[])
 {
@@ -26,7 +9,8 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
 
-    qmlRegisterNamespaceAndRevisions(&DelButtonType::staticMetaObject, "DelegateUI.Controls", 1);
+    qmlRegisterUncreatableMetaObject(DelButtonType::staticMetaObject, "DelegateUI.Controls", 1, 0
+                                     , "DelButtonType", "Access to enums & flags only");
 
     QGuiApplication app(argc, argv);
 
@@ -41,5 +25,3 @@ int main(int argc, char *argv[])
 
     return app.exec();
 }
-
-#include "main.moc"
