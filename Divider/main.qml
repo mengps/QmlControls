@@ -35,7 +35,7 @@ Window {
             DelDivider {
                 width: parent.width
                 height: 30
-                title: qsTr("水平分割线-居左")
+                title: qsTr("水平分割线-居中")
                 titleAlign: DelDividerType.Center
             }
 
