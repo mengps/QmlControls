@@ -83,3 +83,7 @@
    - Divider 用于区隔内容的分割线。
 
  <div align=center><img src="Divider.png" width="400" height="320" /></div>
+
+   - Switch 使用开关在两种状态之间切换。
+
+ <div align=center><img src="Switch.png" width="400" height="320" /></div>
