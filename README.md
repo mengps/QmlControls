@@ -71,6 +71,8 @@ Qt QML 的 Ant 设计组件库
  Button(DelButton/DelIconButton) | 按钮用于开始一个即时操作。 | `Qt5` | <div align=center><img src="./demonstrate/Button.png" width="250" height="210" /></div>
  Divider | 用于区隔内容的分割线。 | `Qt5` | <div align=center><img src="./demonstrate/Divider.png" width="250" height="210" /></div>
  Switch | 使用开关在两种状态之间切换。 | `Qt5` | <div align=center><img src="./demonstrate/Switch.png" width="250" height="210" /></div>
+ Acrylic | 亚克力/毛玻璃效果。 | `Qt5` | <div align=center><img src="./demonstrate/Acrylic.png" width="250" height="210" /></div>
+
 
 ## 许可证
 
