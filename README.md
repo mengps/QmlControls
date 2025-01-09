@@ -13,13 +13,15 @@ Qt QML 的 Ant 设计组件库
 
 <div align=center>
 
-![win-badge] 
+![win-badge] [![QQGroup][qqgroup-image]][qqgroup-url]
 
 [English](./README.md) | 中文
 
 </div>
 
 [win-badge]: https://img.shields.io/badge/Windows-passing-brightgreen?style=flat-square
+[qqgroup-image]: https://img.shields.io/badge/QQGroup-490328047-f74658?style=flat-square
+[qqgroup-url]: https://qm.qq.com/q/cMNHn2tWeY
 
 ## 说明
 
