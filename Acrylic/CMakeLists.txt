@@ -1,4 +1,4 @@
-project(Divider VERSION 1.0 LANGUAGES CXX)
+project(Acrylic VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
