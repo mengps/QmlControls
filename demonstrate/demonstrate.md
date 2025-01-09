@@ -86,9 +86,12 @@
 
    - Switch 使用开关在两种状态之间切换。
 
- <div align=center><img src="Switch.png" width="400" height="320" /></div>
-
+ <div align=center><img src="Switch.gif" width="400" height="320" /></div>
  
    - Acrylic 亚克力/毛玻璃效果
 
  <div align=center><img src="Acrylic.png" width="400" height="320" /></div>
+
+  - RoundRectangle 任意角都可以是圆角的矩形
+
+ <div align=center><img src="RoundRectangle.gif" width="400" height="320" /></div>

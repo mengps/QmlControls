@@ -24,7 +24,8 @@ SUBDIRS += \
     Button \
     Divider \
     Switch \
-    Acrylic
+    Acrylic \
+    RoundRectangle
 
 FramelessWindow_Win.file = FramelessWindow/framelesswindow_win/FramelessWindow.pro
 FramelessWindow_All.file = FramelessWindow/framelesswindow_all/FramelessWindow.pro
