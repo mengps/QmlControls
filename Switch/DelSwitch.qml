@@ -31,7 +31,7 @@ T.Switch {
     height: implicitIndicatorHeight + topPadding + bottomPadding
     font {
         family: "微软雅黑"
-        pixelSize: 16
+        pixelSize: 14
     }
     indicator: Item {
         implicitWidth: __bg.width

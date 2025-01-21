@@ -6,7 +6,7 @@ Button {
     id: control
 
     property bool animationEnabled: true
-        property bool effectEnabled: true
+    property bool effectEnabled: true
     property int type: DelButtonType.Type_Default
     property int shape: DelButtonType.Shape_Default
     property int radiusBg: 6
@@ -68,7 +68,7 @@ Button {
     bottomPadding: 8
     font {
         family: "微软雅黑"
-        pixelSize: 16
+        pixelSize: 14
     }
     contentItem: Text {
         text: control.text
