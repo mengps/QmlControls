@@ -254,6 +254,9 @@ void Watermark::paint(QPainter *painter)
 {
     Q_D(Watermark);
 
+    painter->save();
+    painter->setRenderHint(QPainter::Antialiasing);
+
     painter->setFont(d->m_font);
     painter->setPen(d->m_fontColor);
 
@@ -278,4 +281,5 @@ void Watermark::paint(QPainter *painter)
             painter->restore();
         }
     }
+    painter->restore();
 }
