@@ -95,3 +95,7 @@
   - RoundRectangle 任意角都可以是圆角的矩形
 
  <div align=center><img src="RoundRectangle.gif" width="400" height="320" /></div>
+ 
+   - TabView 通过选项卡标签切换内容的组件。
+
+ <div align=center><img src="TabView.gif" width="400" height="350" /></div>
