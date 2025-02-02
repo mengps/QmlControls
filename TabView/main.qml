@@ -6,12 +6,13 @@ import DelegateUI.Controls 1.0
 
 import "qrc:/../Button"
 import "qrc:/../Switch"
+import "qrc:/../common"
 
 Window {
     width: 1000
     height: 750
     visible: true
-    color: "#fafafa"
+    color: "#f0f0f0"
     title: qsTr("TabView Test")
 
     Column {
@@ -116,14 +117,14 @@ Window {
             initModel: [
                 {
                     key: "1",
-                    icon: 0xf2b5,
+                    icon: DelIcon.MessageOutlined,
                     title: "Tab 1",
                     content: "Content of Tab Content ",
                     contentColor: "#60ff0000"
                 },
                 {
                     key: "2",
-                    icon: 0xf2b5,
+                    icon: DelIcon.MessageOutlined,
                     title: "Tab 2",
                     content: "Content of Tab Content ",
                     contentColor: "#6000ff00"
@@ -262,7 +263,7 @@ Window {
             initModel: [
                 {
                     key: "1",
-                    icon: 0xf2b5,
+                    icon: DelIcon.MessageOutlined,
                     title: "Tab 1",
                     content: "Content of Card Tab Content ",
                     contentColor: "#60ff0000"
@@ -270,7 +271,7 @@ Window {
                 {
                     key: "2",
                     editable: false,
-                    icon: 0xf2b5,
+                    icon: DelIcon.MessageOutlined,
                     title: "Tab 2",
                     content: "Content of Card Tab Content ",
                     contentColor: "#6000ff00"

@@ -1,45 +1,67 @@
 import QtQuick 2.15
 
+import "qrc:/../common"
+
 Item {
-    id: root
+    id: control
 
     implicitWidth: mouseArea.width
     implicitHeight: mouseArea.height
 
     property int count: 5
     property real value: 0
-    property real spacing: row.spacing
+    property alias spacing: row.spacing
     property real iconSize: 24
-    property real iconFontSize: 24
     property color iconColor: "#fadb14"
     /* 允许半星 */
     property bool allowHalf: false
     property bool isDone: false
-    property string fillIcon: "\uf005"
-    property string emptyIcon: "\uf006"
-    property string halfIcon: "\uf123"
+    property int fillIcon: DelIcon.StarFilled
+    property int emptyIcon: DelIcon.StarOutlined
+    property int halfIcon: DelIcon.StarFilled
     property Component fillDelegate: Component {
         Text {
-            text: fillIcon
-            color: root.iconColor
-            font.family: fontAwesome.name
-            font.pixelSize: iconFontSize
+            text: String.fromCharCode(control.fillIcon)
+            color: control.iconColor
+            font.family: delegateuiFont.name
+            font.pixelSize: control.iconSize
         }
     }
     property Component emptyDelegate: Component {
         Text {
-            text: emptyIcon
-            color: root.iconColor
-            font.family: fontAwesome.name
-            font.pixelSize: iconFontSize
+            text: String.fromCharCode(control.emptyIcon)
+            color: control.iconColor
+            font.family: delegateuiFont.name
+            font.pixelSize: control.iconSize
         }
     }
     property Component halfDelegate: Component {
         Text {
-            text: halfIcon
-            color: root.iconColor
-            font.family: fontAwesome.name
-            font.pixelSize: iconFontSize
+            text: String.fromCharCode(control.emptyIcon)
+            color: control.iconColor
+            font.family: delegateuiFont.name
+            font.pixelSize: control.iconSize
+
+            Text {
+                text: String.fromCharCode(control.halfIcon)
+                color: control.iconColor
+                font.family: delegateuiFont.name
+                font.pixelSize: control.iconSize
+                layer.enabled: true
+                layer.effect: ShaderEffect {
+                    fragmentShader: "
+                        uniform sampler2D source;
+                        uniform float qt_Opacity;
+                        in vec2 qt_TexCoord0;
+                        void main() {
+                            vec4 tex = texture2D(source, qt_TexCoord0);
+                            if (qt_TexCoord0.x > 0.5)
+                                gl_FragColor = vec4(0);
+                            else
+                                gl_FragColor = tex * qt_Opacity;
+                        }"
+                }
+            }
         }
     }
 
@@ -52,18 +74,18 @@ Item {
     }
 
     FontLoader {
-        id: fontAwesome
-        source: "qrc:/../common/FontAwesome.otf"
+        id: delegateuiFont
+        source: "qrc:/../common/DelegateUI-Icons.ttf"
     }
 
     MouseArea {
         id: mouseArea
         width: row.width
-        height: root.iconSize
+        height: control.iconSize
         hoverEnabled: true
         onExited: {
-            if (root.isDone) {
-                root.value = __private.doneValue;
+            if (control.isDone) {
+                control.value = __private.doneValue;
             }
         }
 
@@ -73,31 +95,31 @@ Item {
 
             Repeater {
                 id: repeater
-                model: root.count
+                model: control.count
                 delegate: MouseArea {
-                    id: rootItem
-                    width: root.iconSize
-                    height: root.iconSize
+                    id: controlItem
+                    width: control.iconSize
+                    height: control.iconSize
                     hoverEnabled: true
                     onEntered: hovered = true;
                     onExited: hovered = false;
                     onClicked: {
-                        root.isDone = !root.isDone;
-                        if (root.isDone) {
-                            __private.doneValue = root.value;
-                            root.done(__private.doneValue);
+                        control.isDone = !control.isDone;
+                        if (control.isDone) {
+                            __private.doneValue = control.value;
+                            control.done(__private.doneValue);
                         }
                     }
                     onPositionChanged: function(mouse) {
-                        if (root.allowHalf) {
+                        if (control.allowHalf) {
                             if (mouse.x > (width * 0.5)) {
-                                root.value = index + 1;
+                                control.value = index + 1;
                             } else {
-                                root.value = index + 0.5;
+                                control.value = index + 0.5;
                             }
 
                         } else {
-                            root.value = index + 1;
+                            control.value = index + 1;
                         }
                     }
                     property bool hovered: false
@@ -105,25 +127,25 @@ Item {
                     Loader {
                         active: index < repeater.fillCount
                         sourceComponent: fillDelegate
-                        property bool hovered: rootItem.hovered
+                        property bool hovered: controlItem.hovered
                     }
 
                     Loader {
                         active: repeater.hasHalf && index === (repeater.emptyStartIndex - 1)
                         sourceComponent: halfDelegate
-                        property bool hovered: rootItem.hovered
+                        property bool hovered: controlItem.hovered
                     }
 
                     Loader {
                         active: index >= repeater.emptyStartIndex
                         sourceComponent: emptyDelegate
-                        property bool hovered: rootItem.hovered
+                        property bool hovered: controlItem.hovered
                     }
                 }
 
-                property int fillCount: Math.floor(root.value)
-                property int emptyStartIndex: Math.round(root.value)
-                property bool hasHalf: root.value - fillCount > 0
+                property int fillCount: Math.floor(control.value)
+                property int emptyStartIndex: Math.round(control.value)
+                property bool hasHalf: control.value - fillCount > 0
             }
         }
     }

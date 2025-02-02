@@ -25,7 +25,8 @@ SUBDIRS += \
     Divider \
     Switch \
     Acrylic \
-    RoundRectangle
+    RoundRectangle \
+    TabView
 
 FramelessWindow_Win.file = FramelessWindow/framelesswindow_win/FramelessWindow.pro
 FramelessWindow_All.file = FramelessWindow/framelesswindow_all/FramelessWindow.pro

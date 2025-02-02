@@ -39,7 +39,7 @@ DelButton {
                 id: __icon
                 anchors.verticalCenter: parent.verticalCenter
                 color: control.colorIcon
-                font.family: fontAwesome.name
+                font.family: delegateuiFont.name
                 text: String.fromCharCode(control.iconSource)
 
                 verticalAlignment: Text.AlignVCenter
@@ -61,7 +61,7 @@ DelButton {
     }
 
     FontLoader {
-        id: fontAwesome
-        source: "qrc:/../common/FontAwesome.otf"
+        id: delegateuiFont
+        source: "qrc:/../common/DelegateUI-Icons.ttf"
     }
 }

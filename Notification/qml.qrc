@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>Notification.qml</file>
-        <file>../common/FontAwesome.otf</file>
+        <file>../common/DelegateUI-Icons.ttf</file>
+        <file>../common/DelIcon.qml</file>
     </qresource>
 </RCC>

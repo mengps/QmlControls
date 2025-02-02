@@ -53,8 +53,8 @@ Item {
             Text {
                 visible: nodeOptions.icon !== ""
                 font.pixelSize: parent.width
-                font.family: fontAwesome.name
-                text: nodeOptions.icon
+                font.family: delegateuiFont.name
+                text: String.fromCharCode(nodeOptions.icon)
                 color: nodeOptions.iconColor
             }
         }
@@ -235,8 +235,8 @@ Item {
     }
 
     FontLoader {
-        id: fontAwesome
-        source: "qrc:/../common/FontAwesome.otf"
+        id: delegateuiFont
+        source: "qrc:/../common/DelegateUI-Icons.ttf"
     }
 
     ListView {

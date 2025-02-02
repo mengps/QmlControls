@@ -14,11 +14,10 @@ Text {
 
     FontLoader {
         id: __loader
-        source: "qrc:/../common/FontAwesome.otf"
+        source: "qrc:/../common/DelegateUI-Icons.ttf"
     }
 
     Accessible.role: Accessible.StaticText
     Accessible.name: control.text
     Accessible.description: control.contentDescription
-
 }

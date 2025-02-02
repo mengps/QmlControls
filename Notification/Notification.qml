@@ -1,5 +1,7 @@
 import QtQuick 2.15
 
+import "qrc:/../common"
+
 Item {
     id: root
 
@@ -38,8 +40,8 @@ Item {
     }
 
     FontLoader {
-        id: fontAwesome
-        source: "qrc:/../common/FontAwesome.otf"
+        id: delegateuiFont
+        source: "qrc:/../common/DelegateUI-Icons.ttf"
     }
 
     Column {
@@ -95,8 +97,9 @@ Item {
 
                         Text {
                             id: __icon
-                            font.family: fontAwesome.name
-                            font.pointSize: root.titleFont.pointSize
+                            anchors.verticalCenter: __title.verticalCenter
+                            font.family: delegateuiFont.name
+                            font.pointSize: root.titleFont.pointSize + 1
                             color: {
                                 switch (type) {
                                 case Notification.Success: return "green";
@@ -108,10 +111,10 @@ Item {
                             }
                             text: {
                                 switch (type) {
-                                case Notification.Success: return "\uf058";
-                                case Notification.Warning: return "\uf071";
-                                case Notification.Message: return "\uf05a";
-                                case Notification.Error: return "\uf057";
+                                case Notification.Success: return String.fromCharCode(DelIcon.CheckCircleFilled);
+                                case Notification.Warning: return String.fromCharCode(DelIcon.ExclamationCircleFilled);
+                                case Notification.Message: return String.fromCharCode(DelIcon.ExclamationCircleFilled);
+                                case Notification.Error: return String.fromCharCode(DelIcon.CloseCircleFilled);
                                 default: return "";
                                 }
                             }

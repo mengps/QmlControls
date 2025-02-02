@@ -24,7 +24,7 @@ Button {
             default: return "#4096ff";
             }
         } else {
-            return Qt.rgba(0,0,0,0.45);
+            return Qt.rgba(0,0,0,0.25);
         }
     }
     property color colorBg: {
@@ -43,7 +43,7 @@ Button {
             default: return "white";
             }
         } else {
-            return Qt.rgba(0,0,0,0.45);
+            return Qt.rgba(0,0,0,0.25);
         }
     }
     property color colorBorder: {

@@ -2,6 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 
+import "qrc:/../common"
+
 Window {
     width: 640
     height: 700
@@ -31,7 +33,7 @@ Window {
                                     timestamp: new Date(),
                                     content: "<h2 style=\"color:red;\">可以使用HTML</h2><p>_(:3 」∠)_ -･･*'``*:.｡. .｡.:*･゜ﾟ･*☆</p>",
                                     contentOptions: { format: Text.RichText },
-                                    nodeOptions: { icon: "\uf008" }
+                                    nodeOptions: { icon: DelIcon.MessageOutlined }
                                 });
             }
         }
@@ -42,7 +44,7 @@ Window {
                                     timestamp: new Date(),
                                     content: "## 可以使用Markdown\n - `(ˉ﹃ˉ)`\n - (* >ω<)\n - ლ(´ڡ`ლ)",
                                     contentOptions: { format: Text.MarkdownText },
-                                    nodeOptions: { icon: "\uf008" }
+                                    nodeOptions: { icon: DelIcon.VideoCameraOutlined }
                                 });
             }
         }
@@ -86,7 +88,7 @@ Window {
             {
                 timestamp: new Date(2024, 7, 1, 1),
                 content: "更新 Github 模板 1",
-                nodeOptions: { icon: "\uf27b" }
+                nodeOptions: { icon: DelIcon.MessageOutlined }
             },
             {
                 timestamp: new Date(2024, 7, 7, 11),

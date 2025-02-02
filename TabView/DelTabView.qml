@@ -4,7 +4,8 @@ import QtQuick.Layouts 1.15
 import QtQuick.Templates 2.15 as T
 import DelegateUI.Controls 1.0
 
-import "qrc:/../Button/"
+import "qrc:/../common"
+import "qrc:/../Button"
 
 Item {
     id: control
@@ -29,9 +30,9 @@ Item {
             append({ title: `New Tab ${__tabView.count + 1}` });
             positionViewAtEnd();
         }
-    property Component addButtonDelegate: DelButton {
+    property Component addButtonDelegate: DelIconButton {
         id: __addButton
-        text: "+"
+        iconSource: DelIcon.PlusOutlined
         topPadding: 4
         bottomPadding: 4
         leftPadding: 8
@@ -244,6 +245,8 @@ Item {
             }
             onClicked: __tabView.currentIndex = index;
 
+            Behavior on width { enabled: control.animationEnabled; NumberAnimation { duration: 100 } }
+
             required property int index
             required property var model
             property alias modelData: __tabItem.model
@@ -321,6 +324,7 @@ Item {
                 property bool down: false
                 property bool hovered: false
 
+                Behavior on width { enabled: control.animationEnabled; NumberAnimation { duration: 100 } }
                 Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: 200 } }
 
                 MouseArea {
@@ -408,6 +412,7 @@ Item {
 
                 DelIconButton {
                     id: __close
+                    type: DelButtonType.Type_Text
                     visible: __tabContainer.tabEditable
                     enabled: visible
                     effectEnabled: false
@@ -420,8 +425,10 @@ Item {
                     anchors.rightMargin: 5
                     anchors.verticalCenter: parent.verticalCenter
                     iconSize: tabIconSize
-                    iconSource: 0xf00d
+                    iconSource: DelIcon.CloseOutlined
                     colorIcon: hovered ? Qt.rgba(0,0,0,1) : Qt.rgba(0,0,0,0.4)
+                    colorBg: __close.down ? Qt.rgba(0,0,0,0.15) :
+                                            __close.hovered ? Qt.rgba(0,0,0,0.06) : Qt.rgba(0,0,0,0)
                     onClicked: {
                         control.removeAt(index);
                     }

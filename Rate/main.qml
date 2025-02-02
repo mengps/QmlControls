@@ -1,6 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 
+import "qrc:/../common"
+
 Window {
     width: 640
     height: 480
@@ -26,11 +28,10 @@ Window {
             allowHalf: true
             value: 3.5
             count: 10
-            iconFontSize: 20
             iconColor: "#00a8f3"
-            fillIcon: "\uf240"
-            emptyIcon: "\uf244"
-            halfIcon: "\uf242"
+            fillIcon: DelIcon.HeartFilled
+            emptyIcon: DelIcon.HeartOutlined
+            halfIcon: DelIcon.HeartFilled
         }
 
         Rate {
@@ -42,29 +43,29 @@ Window {
             fillDelegate: Rectangle {
                 width: customRate.iconSize
                 height: customRate.iconSize
-                color: hovered ? Qt.lighter(customRate.iconColor) : customRate.iconColor
+                color: customRate.iconColor
             }
             emptyDelegate: Rectangle {
                 width: customRate.iconSize
                 height: customRate.iconSize
                 color: "transparent"
                 border.width: 2
-                border.color: hovered ? Qt.lighter(customRate.iconColor) : customRate.iconColor
+                border.color: customRate.iconColor
             }
             halfDelegate: Row {
                 Rectangle {
                     width: customRate.iconSize * 0.5
                     height: customRate.iconSize
-                    color: hovered ? Qt.lighter(customRate.iconColor) : customRate.iconColor
+                    color: customRate.iconColor
                     border.width: 2
-                    border.color: hovered ? Qt.lighter(customRate.iconColor) : customRate.iconColor
+                    border.color: customRate.iconColor
                 }
                 Rectangle {
                     width: customRate.iconSize * 0.5
                     height: customRate.iconSize
                     color: "transparent"
                     border.width: 2
-                    border.color: hovered ? Qt.lighter(customRate.iconColor) : customRate.iconColor
+                    border.color:  customRate.iconColor
                 }
             }
         }
