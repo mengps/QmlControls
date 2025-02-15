@@ -13,20 +13,20 @@ Window {
         anchors.centerIn: parent
         spacing: 20
 
-        Rate {
-            value: 3
+        DelRate {
+            initValue: 3
             iconColor: "red"
         }
 
-        Rate {
+        DelRate {
             allowHalf: true
-            value: 3.5
+            initValue: 3.5
             count: 10
         }
 
-        Rate {
+        DelRate {
             allowHalf: true
-            value: 3.5
+            initValue: 3.5
             count: 10
             iconColor: "#00a8f3"
             fillIcon: DelIcon.HeartFilled
@@ -34,10 +34,16 @@ Window {
             halfIcon: DelIcon.HeartFilled
         }
 
-        Rate {
+        DelRate {
+            initValue: 3
+            toolTipVisible: true
+            toolTipTexts: ['terrible', 'bad', 'normal', 'good', 'wonderful']
+        }
+
+        DelRate {
             id: customRate
             allowHalf: true
-            value: 3.5
+            initValue: 3.5
             count: 10
             iconColor: "#0ed145"
             fillDelegate: Rectangle {

@@ -61,11 +61,16 @@ Qt QML 的 Ant 设计组件库
  FpsItem | Qml中显示帧率的组件 | `Qt5` | <div align=center><img src="./demonstrate/FpsItem.gif" width="160" height="150" /></div>
  ColorPicker / ColorPickerPopup | 仿 `Windows10 画图3D` 的颜色选择器, 但更加强大 | `Qt5` | <div align=center><img src="./demonstrate/ColorPicker.png" width="160" height="150" /></div>
  WaterfallFlow | 瀑布流视图(并且可以自适应)，类似小红书 | `Qt5` | <div align=center><img src="./demonstrate/WaterfallFlow.png" width="150" height="180" /></div>
- AsyncHasher | 可对任意数据(url/text/object)生成加密哈希的异步散列器 | `Qt5` | <div align=center><img src="./demonstrate/AsyncHasher.png" width="150" height="180" /></div>
  Notification | 悬浮出现在(全局/局部)页面上的通知提醒消息 | `Qt5` | <div align=center><img src="./demonstrate/Notification.gif" width="240" height="180" /></div>
  Timeline | 可视化地呈现时间流信息的组件 |  `Qt5` | <div align=center><img src="./demonstrate/Timeline.png" width="200" height="240" /></div>
  MoveMouseArea / ResizeMouseArea | 给任意目标添加[移动/调整大小操作]的鼠标区域 | `Qt5` | <div align=center><img src="./demonstrate/ResizeMouseArea.gif" width="260" height="190" /></div>
  WaveProgress | 动态的水波进度条 | `Qt5` | <div align=center><img src="./demonstrate/WaveProgress.gif" width="240" height="200" /></div>
+
+#### 以下控件来自 [DelegateUI](https://github.com/mengps/DelegateUI)
+
+ 名称 | 说明 | 支持 | 示例
+ ---------|----------|---------|---------
+ AsyncHasher | 可对任意数据(url/text/object)生成加密哈希的异步散列器 | `Qt5` | <div align=center><img src="./demonstrate/AsyncHasher.png" width="150" height="180" /></div>
  Rate | 对某个事物进行评级 | `Qt5` | <div align=center><img src="./demonstrate/Rate.gif" width="240" height="200" /></div>
  SystemThemeHelper | (Qt5/Qt6) 系统主题助手 `[Dark/Light]主题检测 & 感知` | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/SystemThemeHelper.png" width="240" height="110" /></div>
  Watermark | 可给页面的任意项加上水印 | `Qt5` | <div align=center><img src="./demonstrate/Watermark.png" width="250" height="140" /></div>
@@ -76,6 +81,7 @@ Qt QML 的 Ant 设计组件库
  Acrylic | 亚克力/毛玻璃效果。 | `Qt5` | <div align=center><img src="./demonstrate/Acrylic.png" width="250" height="210" /></div>
  RoundRectangle | 任意角都可以是圆角的矩形。 | `Qt5` | <div align=center><img src="./demonstrate/RoundRectangle.png" width="250" height="210" /></div>
  TabView | 通过选项卡标签切换内容的组件。 | `Qt5` | <div align=center><img src="./demonstrate/TabView.png" width="250" height="210" /></div>
+ Radio | 用于在多个备选项中选中单个状态。 | `Qt5` | <div align=center><img src="./demonstrate/Radio.gif" width="250" height="200" /></div>
 
 ## 许可证
 

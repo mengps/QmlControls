@@ -99,3 +99,8 @@
    - TabView 通过选项卡标签切换内容的组件。
 
  <div align=center><img src="TabView.gif" width="400" height="350" /></div>
+
+
+    - Radio 用于在多个备选项中选中单个状态。
+
+ <div align=center><img src="Radio.gif" width="400" height="320" /></div>
