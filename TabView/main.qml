@@ -2,8 +2,6 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 
-import DelegateUI.Controls 1.0
-
 import "qrc:/../Button"
 import "qrc:/../Switch"
 import "qrc:/../common"
@@ -25,23 +23,23 @@ Window {
 
             DelButton {
                 text: qsTr("上")
-                type: DelButtonType.Type_Outlined
-                onClicked: defaultTabView.tabPosition = DelTabViewType.Top;
+                type: DelButton.Type_Outlined
+                onClicked: defaultTabView.tabPosition = DelTabView.Position_Top;
             }
             DelButton {
                 text: qsTr("下")
-                type: DelButtonType.Type_Outlined
-                onClicked: defaultTabView.tabPosition = DelTabViewType.Bottom;
+                type: DelButton.Type_Outlined
+                onClicked: defaultTabView.tabPosition = DelTabView.Position_Bottom;
             }
             DelButton {
                 text: qsTr("左")
-                type: DelButtonType.Type_Outlined
-                onClicked: defaultTabView.tabPosition = DelTabViewType.Left;
+                type: DelButton.Type_Outlined
+                onClicked: defaultTabView.tabPosition = DelTabView.Position_Left;
             }
             DelButton {
                 text: qsTr("右")
-                type: DelButtonType.Type_Outlined
-                onClicked: defaultTabView.tabPosition = DelTabViewType.Right;
+                type: DelButton.Type_Outlined
+                onClicked: defaultTabView.tabPosition = DelTabView.Position_Right;
             }
         }
 
@@ -89,8 +87,8 @@ Window {
             id: defaultTabView
             width: parent.width
             height: 200
-            defaultTabWidth: 40
-            tabSize: sizeSwitch.checked ? DelTabViewType.Fixed : DelTabViewType.Auto
+            defaultTabWidth: 50
+            tabSize: sizeSwitch.checked ? DelTabView.Size_Fixed : DelTabView.Size_Auto
             tabCentered: isCenterSwitch.checked
             addTabCallback:
                 () => {
@@ -150,23 +148,23 @@ Window {
 
             DelButton {
                 text: qsTr("上")
-                type: DelButtonType.Type_Outlined
-                onClicked: cardTabView.tabPosition = DelTabViewType.Top;
+                type: DelButton.Type_Outlined
+                onClicked: cardTabView.tabPosition = DelTabView.Position_Top;
             }
             DelButton {
                 text: qsTr("下")
-                type: DelButtonType.Type_Outlined
-                onClicked: cardTabView.tabPosition = DelTabViewType.Bottom;
+                type: DelButton.Type_Outlined
+                onClicked: cardTabView.tabPosition = DelTabView.Position_Bottom;
             }
             DelButton {
                 text: qsTr("左")
-                type: DelButtonType.Type_Outlined
-                onClicked: cardTabView.tabPosition = DelTabViewType.Left;
+                type: DelButton.Type_Outlined
+                onClicked: cardTabView.tabPosition = DelTabView.Position_Left;
             }
             DelButton {
                 text: qsTr("右")
-                type: DelButtonType.Type_Outlined
-                onClicked: cardTabView.tabPosition = DelTabViewType.Right;
+                type: DelButton.Type_Outlined
+                onClicked: cardTabView.tabPosition = DelTabView.Position_Right;
             }
         }
 
@@ -235,8 +233,8 @@ Window {
             width: parent.width
             height: 200
             defaultTabWidth: 50
-            tabSize: sizeSwitch2.checked ? DelTabViewType.Fixed : DelTabViewType.Auto
-            tabType: typeSwitch.checked ? DelTabViewType.CardEditable :  DelTabViewType.Card
+            tabSize: sizeSwitch2.checked ? DelTabView.Size_Fixed : DelTabView.Size_Auto
+            tabType: typeSwitch.checked ? DelTabView.Type_CardEditable :  DelTabView.Type_Card
             tabCentered: isCenterSwitch2.checked
             addTabCallback:
                 () => {

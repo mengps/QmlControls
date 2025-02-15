@@ -10,7 +10,7 @@ set(SOURCES main.cpp)
 
 qt5_add_resources(SOURCES qml.qrc)
 
-add_executable(Divider ${SOURCES} deldividertype.h)
+add_executable(Divider ${SOURCES} )
 
 target_link_libraries(Divider PRIVATE
     Qt::Quick

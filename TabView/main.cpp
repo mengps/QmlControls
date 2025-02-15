@@ -2,7 +2,6 @@
 #include <QQmlApplicationEngine>
 
 #include "delrectangle.h"
-#include "deltabviewtype.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,12 +11,6 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<DelPen>("DelegateUI.Controls", 1, 0, "DelPen");
     qmlRegisterType<DelRectangle>("DelegateUI.Controls", 1, 0, "DelRectangle");
-
-    qmlRegisterUncreatableMetaObject(DelButtonType::staticMetaObject, "DelegateUI.Controls", 1, 0
-                                     , "DelButtonType", "Access to enums & flags only");
-
-    qmlRegisterUncreatableMetaObject(DelTabViewType::staticMetaObject, "DelegateUI.Controls", 1, 0
-                                     , "DelTabViewType", "Access to enums & flags only");
 
     QGuiApplication app(argc, argv);
 

@@ -1,6 +1,5 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
-import DelegateUI.Controls 1.0
 
 Window {
     width: 640
@@ -22,7 +21,7 @@ Window {
                 width: parent.width
                 height: 30
                 title: qsTr("水平分割线-居左")
-                titleAlign: DelDividerType.Left
+                titleAlign: DelDivider.Align_Left
             }
 
             Text {
@@ -36,14 +35,14 @@ Window {
                 width: parent.width
                 height: 30
                 title: qsTr("水平分割线-居中")
-                titleAlign: DelDividerType.Center
+                titleAlign: DelDivider.Align_Center
             }
 
             DelDivider {
                 width: parent.width
                 height: 30
                 title: qsTr("水平分割线-居右")
-                titleAlign: DelDividerType.Right
+                titleAlign: DelDivider.Align_Right
             }
 
             DelDivider {
@@ -51,7 +50,7 @@ Window {
                 height: 200
                 anchors.horizontalCenter: parent.horizontalCenter
                 title: qsTr("垂\n直\n分\n割\n线\n居\n中")
-                titleAlign: DelDividerType.Center
+                titleAlign: DelDivider.Align_Center
                 orientation: Qt.Vertical
             }
         }

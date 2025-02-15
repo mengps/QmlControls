@@ -66,7 +66,7 @@ Qt QML 的 Ant 设计组件库
  MoveMouseArea / ResizeMouseArea | 给任意目标添加[移动/调整大小操作]的鼠标区域 | `Qt5` | <div align=center><img src="./demonstrate/ResizeMouseArea.gif" width="260" height="190" /></div>
  WaveProgress | 动态的水波进度条 | `Qt5` | <div align=center><img src="./demonstrate/WaveProgress.gif" width="240" height="200" /></div>
 
-#### 以下控件来自 [DelegateUI](https://github.com/mengps/DelegateUI)
+### 以下控件来自 [DelegateUI](https://github.com/mengps/DelegateUI)
 
  名称 | 说明 | 支持 | 示例
  ---------|----------|---------|---------

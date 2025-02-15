@@ -11,13 +11,34 @@ Item {
     id: control
     clip: true
 
+    enum TabPosition
+    {
+        Position_Top = 0,
+        Position_Bottom = 1,
+        Position_Left = 2,
+        Position_Right = 3
+    }
+
+    enum TabType
+    {
+        Type_Default = 0,
+        Type_Card = 1,
+        Type_CardEditable = 2
+    }
+
+    enum TabSize
+    {
+        Size_Auto = 0,
+        Size_Fixed = 1
+    }
+
     property bool animationEnabled: true
     property var initModel: []
     property alias count: __tabModel.count
     property alias currentIndex: __tabView.currentIndex
-    property int tabType: DelTabViewType.Default
-    property int tabSize: DelTabViewType.Auto
-    property int tabPosition: DelTabViewType.Top
+    property int tabType: DelTabView.Type_Default
+    property int tabSize: DelTabView.Size_Auto
+    property int tabPosition: DelTabView.Position_Top
     property bool tabCentered: false
     property bool tabCardMovable: true
     property int defaultTabWidth: 80
@@ -45,7 +66,7 @@ Item {
         }
         onClicked: addTabCallback();
     }
-    property Component tabDelegate: tabType == DelTabViewType.Default ? __defaultTabDelegate : __cardTabDelegate
+    property Component tabDelegate: tabType == DelTabView.Type_Default ? __defaultTabDelegate : __cardTabDelegate
     property Component contentDelegate: Item { }
     property Component highlightDelegate: Item {
         Loader {
@@ -53,8 +74,8 @@ Item {
             width: __private.isHorizontal ? defaultHighlightWidth : 2
             height: __private.isHorizontal ? 2 : defaultHighlightWidth
             anchors {
-                bottom: control.tabPosition == DelTabViewType.Top ? parent.bottom : undefined
-                right: control.tabPosition == DelTabViewType.Left ? parent.right : undefined
+                bottom: control.tabPosition == DelTabView.Position_Top ? parent.bottom : undefined
+                right: control.tabPosition == DelTabView.Position_Left ? parent.right : undefined
             }
             state: __content.state
             states: [
@@ -107,7 +128,7 @@ Item {
                     }
                 }
             ]
-            active: control.tabType == DelTabViewType.Default
+            active: control.tabType == DelTabView.Type_Default
             sourceComponent: Rectangle {
                 color: "#1677FF"
             }
@@ -183,7 +204,7 @@ Item {
 
         DelIconButton {
             id: __tabItem
-            width: (!__private.isHorizontal && control.tabSize == DelTabViewType.Auto) ? Math.max(__private.tabMaxWidth, tabWidth) : tabWidth
+            width: (!__private.isHorizontal && control.tabSize == DelTabView.Size_Auto) ? Math.max(__private.tabMaxWidth, tabWidth) : tabWidth
             height: tabHeight
             leftPadding: 5
             rightPadding: 5
@@ -205,7 +226,7 @@ Item {
                 pixelSize: 14
             }
             contentItem: Item {
-                implicitWidth: control.tabSize == DelTabViewType.Auto ? (__text.width + calcIconWidth) : __tabItem.tabFixedWidth
+                implicitWidth: control.tabSize == DelTabView.Size_Auto ? (__text.width + calcIconWidth) : __tabItem.tabFixedWidth
                 implicitHeight: Math.max(__icon.implicitHeight, __text.implicitHeight)
 
                 property int calcIconWidth: iconSource == 0 ? 0 : (__icon.implicitWidth + __tabItem.tabIconSpacing)
@@ -225,7 +246,7 @@ Item {
 
                 Text {
                     id: __text
-                    width: control.tabSize == DelTabViewType.Auto ? implicitWidth :
+                    width: control.tabSize == DelTabView.Size_Auto ? implicitWidth :
                                                                     Math.max(0, __tabItem.tabFixedWidth - 5 - parent.calcIconWidth)
                     anchors.left: __icon.right
                     anchors.leftMargin: __icon.iconSource == 0 ? 0 : __tabItem.tabIconSpacing
@@ -257,8 +278,8 @@ Item {
             property int tabIconSpacing: modelData.iconSpacing || 5
             property string tabTitle: modelData.title || ""
             property int tabFixedWidth: modelData.tabWidth || defaultTabWidth
-            property int tabWidth: control.tabSize == DelTabViewType.Auto ? (implicitContentWidth + leftPadding + rightPadding) :
-                                                                            implicitContentWidth
+            property int tabWidth: control.tabSize == DelTabView.Size_Auto ? (implicitContentWidth + leftPadding + rightPadding) :
+                                                                            tabFixedWidth
             property int tabHeight: modelData.tabHeight || defaultTabHeight
         }
     }
@@ -285,7 +306,7 @@ Item {
             property int tabWidth: __tabItem.calcWidth
             property int tabHeight: modelData.tabHeight || defaultTabHeight
 
-            property bool tabEditable: modelData.editable && control.tabType == DelTabViewType.CardEditable
+            property bool tabEditable: modelData.editable && control.tabType == DelTabView.Type_CardEditable
 
             onTabWidthChanged: {
                 if (__private.needResetTabMaxWidth) {
@@ -297,22 +318,22 @@ Item {
 
             DelRectangle {
                 id: __tabItem
-                width: (!__private.isHorizontal && control.tabSize == DelTabViewType.Auto) ? Math.max(__private.tabMaxWidth, tabWidth) : tabWidth
+                width: (!__private.isHorizontal && control.tabSize == DelTabView.Size_Auto) ? Math.max(__private.tabMaxWidth, tabWidth) : tabWidth
                 height: tabHeight
                 z: __dragHandler.drag.active ? 1 : 0
                 color: {
                     return isCurrent ? "white" : Qt.darker("white", 1.15);
                 }
                 border.color: Qt.rgba(1,1,1,0.2)
-                topLeftRadius: control.tabPosition == DelTabViewType.Top || control.tabPosition == DelTabViewType.Left ? defaultTabBgRadius : 0
-                topRightRadius: control.tabPosition == DelTabViewType.Top || control.tabPosition == DelTabViewType.Right ? defaultTabBgRadius : 0
-                bottomLeftRadius: control.tabPosition == DelTabViewType.Bottom || control.tabPosition == DelTabViewType.Left ? defaultTabBgRadius : 0
-                bottomRightRadius: control.tabPosition == DelTabViewType.Bottom || control.tabPosition == DelTabViewType.Right ? defaultTabBgRadius : 0
+                topLeftRadius: control.tabPosition == DelTabView.Position_Top || control.tabPosition == DelTabView.Position_Left ? defaultTabBgRadius : 0
+                topRightRadius: control.tabPosition == DelTabView.Position_Top || control.tabPosition == DelTabView.Position_Right ? defaultTabBgRadius : 0
+                bottomLeftRadius: control.tabPosition == DelTabView.Position_Bottom || control.tabPosition == DelTabView.Position_Left ? defaultTabBgRadius : 0
+                bottomRightRadius: control.tabPosition == DelTabView.Position_Bottom || control.tabPosition == DelTabView.Position_Right ? defaultTabBgRadius : 0
 
                 property int calcIconWidth: __icon.iconSource == 0 ? 0 : (__icon.implicitWidth + __tabContainer.tabIconSpacing)
                 property int calcCloseWidth: __close.visible ? (__close.implicitWidth + 5) : 0
-                property real calcWidth: control.tabSize == DelTabViewType.Auto ? (__text.width + calcIconWidth + calcCloseWidth + 10)
-                                                                                : __tabContainer.tabFixedWidth
+                property real calcWidth: control.tabSize == DelTabView.Size_Auto ? (__text.width + calcIconWidth + calcCloseWidth + 10)
+                                                                                 : __tabContainer.tabFixedWidth
                 property real calcHeight: Math.max(__icon.implicitHeight, __text.implicitHeight, __close.height)
                 property color colorText: {
                     if (isCurrent) {
@@ -394,8 +415,8 @@ Item {
 
                 Text {
                     id: __text
-                    width: control.tabSize == DelTabViewType.Auto ? implicitWidth :
-                                                                    Math.max(0, __tabContainer.tabFixedWidth - 5 - __tabItem.calcIconWidth - __tabItem.calcCloseWidth)
+                    width: control.tabSize == DelTabView.Size_Auto ? implicitWidth :
+                                                                     Math.max(0, __tabContainer.tabFixedWidth - 5 - __tabItem.calcIconWidth - __tabItem.calcCloseWidth)
                     anchors.left: __icon.right
                     anchors.leftMargin: __icon.iconSource == 0 ? 0 : __tabContainer.tabIconSpacing
                     anchors.verticalCenter: parent.verticalCenter
@@ -412,7 +433,7 @@ Item {
 
                 DelIconButton {
                     id: __close
-                    type: DelButtonType.Type_Text
+                    type: DelButton.Type_Text
                     visible: __tabContainer.tabEditable
                     enabled: visible
                     effectEnabled: false
@@ -449,7 +470,7 @@ Item {
 
     QtObject {
         id: __private
-        property bool isHorizontal: control.tabPosition == DelTabViewType.Top || control.tabPosition === DelTabViewType.Bottom
+        property bool isHorizontal: control.tabPosition == DelTabView.Position_Top || control.tabPosition === DelTabView.Position_Bottom
         property int tabMaxWidth: 0
         property bool needResetTabMaxWidth: false
     }
@@ -459,9 +480,9 @@ Item {
         onWheel:
             (wheel) => {
                 if (__private.isHorizontal)
-                    __tabView.flick(wheel.angleDelta.y * 6.5, 0);
+                __tabView.flick(wheel.angleDelta.y * 6.5, 0);
                 else
-                    __tabView.flick(0, wheel.angleDelta.y * 6.5);
+                __tabView.flick(0, wheel.angleDelta.y * 6.5);
             }
     }
 
@@ -602,23 +623,23 @@ Item {
         id: __addButtonLoader
         x: {
             switch (tabPosition) {
-            case DelTabViewType.Top:
-            case DelTabViewType.Bottom:
+            case DelTabView.Position_Top:
+            case DelTabView.Position_Bottom:
                 return Math.min(__tabView.x + __tabView.contentWidth + 5, control.width - width);
-            case DelTabViewType.Left:
+            case DelTabView.Position_Left:
                 return Math.max(0, __tabView.width - width);
-            case DelTabViewType.Right:
+            case DelTabView.Position_Right:
                 return Math.max(0, __tabView.x);
             }
         }
         y: {
             switch (tabPosition) {
-            case DelTabViewType.Top:
+            case DelTabView.Position_Top:
                 return Math.max(0, __tabView.y + __tabView.height - height);
-            case DelTabViewType.Bottom:
+            case DelTabView.Position_Bottom:
                 return __tabView.y;
-            case DelTabViewType.Left:
-            case DelTabViewType.Right:
+            case DelTabView.Position_Left:
+            case DelTabView.Position_Right:
                 return Math.min(__tabView.y + __tabView.contentHeight + 5, control.height - height);
             }
         }
@@ -630,10 +651,10 @@ Item {
         id: __content
         state: {
             switch (tabPosition) {
-            case DelTabViewType.Top: return "top";
-            case DelTabViewType.Bottom: return "bottom";
-            case DelTabViewType.Left: return "left";
-            case DelTabViewType.Right: return "right";
+            case DelTabView.Position_Top: return "top";
+            case DelTabView.Position_Bottom: return "bottom";
+            case DelTabView.Position_Left: return "left";
+            case DelTabView.Position_Right: return "right";
             }
         }
         states: [

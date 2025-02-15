@@ -1,16 +1,11 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-#include "delbuttontype.h"
-
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
-
-    qmlRegisterUncreatableMetaObject(DelButtonType::staticMetaObject, "DelegateUI.Controls", 1, 0
-                                     , "DelButtonType", "Access to enums & flags only");
 
     QGuiApplication app(argc, argv);
 

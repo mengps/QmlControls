@@ -1,7 +1,5 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
-import DelegateUI.Controls 1.0
-
 import "qrc:/../common"
 
 Window {
@@ -31,13 +29,13 @@ Window {
             spacing: 15
 
             DelButton {
-                type: DelButtonType.Type_Outlined
+                type: DelButton.Type_Outlined
                 text: qsTr("线框按钮")
             }
 
             DelButton {
                 enabled: false
-                type: DelButtonType.Type_Outlined
+                type: DelButton.Type_Outlined
                 text: qsTr("线框按钮禁用")
             }
         }
@@ -46,13 +44,13 @@ Window {
             spacing: 15
 
             DelButton {
-                type: DelButtonType.Type_Primary
+                type: DelButton.Type_Primary
                 text: qsTr("主要按钮")
             }
 
             DelButton {
                 enabled: false
-                type: DelButtonType.Type_Primary
+                type: DelButton.Type_Primary
                 text: qsTr("主要按钮禁用")
             }
         }
@@ -61,13 +59,13 @@ Window {
             spacing: 15
 
             DelButton {
-                type: DelButtonType.Type_Filled
+                type: DelButton.Type_Filled
                 text: qsTr("填充按钮")
             }
 
             DelButton {
                 enabled: false
-                type: DelButtonType.Type_Filled
+                type: DelButton.Type_Filled
                 text: qsTr("填充按钮禁用")
             }
         }
@@ -76,13 +74,13 @@ Window {
             spacing: 15
 
             DelButton {
-                type: DelButtonType.Type_Text
+                type: DelButton.Type_Text
                 text: qsTr("文本按钮")
             }
 
             DelButton {
                 enabled: false
-                type: DelButtonType.Type_Text
+                type: DelButton.Type_Text
                 text: qsTr("文本按钮禁用")
             }
         }
@@ -91,20 +89,20 @@ Window {
             spacing: 15
 
             DelButton {
-                shape: DelButtonType.Shape_Circle
+                shape: DelButton.Shape_Circle
                 text: qsTr("❤️")
             }
 
             DelButton {
-                type: DelButtonType.Type_Primary
-                shape: DelButtonType.Shape_Circle
+                type: DelButton.Type_Primary
+                shape: DelButton.Shape_Circle
                 text: qsTr("❤️")
                 colorText: "red"
             }
 
             DelButton {
                 enabled: false
-                shape: DelButtonType.Shape_Circle
+                shape: DelButton.Shape_Circle
                 text: qsTr("❤")
             }
         }
@@ -117,38 +115,38 @@ Window {
             }
 
             DelIconButton {
-                type: DelButtonType.Type_Outlined
+                type: DelButton.Type_Outlined
                 iconSource: DelIcon.GiftOutlined
             }
 
             DelIconButton {
-                type: DelButtonType.Type_Primary
-                iconSource: DelIcon.GiftOutlined
-                text: qsTr("礼物")
-            }
-
-            DelIconButton {
-                type: DelButtonType.Type_Filled
+                type: DelButton.Type_Primary
                 iconSource: DelIcon.GiftOutlined
                 text: qsTr("礼物")
             }
 
             DelIconButton {
-                type: DelButtonType.Type_Text
-                iconPosition: DelButtonType.Position_End
+                type: DelButton.Type_Filled
                 iconSource: DelIcon.GiftOutlined
                 text: qsTr("礼物")
             }
 
             DelIconButton {
-                type: DelButtonType.Type_Primary
-                shape: DelButtonType.Shape_Circle
+                type: DelButton.Type_Text
+                iconPosition: DelButton.Position_End
+                iconSource: DelIcon.GiftOutlined
+                text: qsTr("礼物")
+            }
+
+            DelIconButton {
+                type: DelButton.Type_Primary
+                shape: DelButton.Shape_Circle
                 iconSource: DelIcon.GiftOutlined
             }
 
             DelIconButton {
                 enabled: false
-                shape: DelButtonType.Shape_Circle
+                shape: DelButton.Shape_Circle
                 iconSource: DelIcon.GiftOutlined
             }
         }
