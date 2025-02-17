@@ -18,9 +18,10 @@ T.RadioButton {
     }
 
     implicitWidth: implicitContentWidth + leftPadding + rightPadding
-    implicitHeight: implicitContentHeight + topPadding + bottomPadding
+    implicitHeight: Math.max(implicitContentHeight, implicitIndicatorHeight) + topPadding + bottomPadding
     spacing: 8
     indicator: Item {
+        x: control.leftPadding
         implicitWidth: __bg.width
         implicitHeight: __bg.height
         anchors.verticalCenter: parent.verticalCenter
