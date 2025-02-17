@@ -4,9 +4,10 @@
         <file>DelTabView.qml</file>
         <file>DelIconText.qml</file>
         <file>../common/DelegateUI-Icons.ttf</file>
+        <file>../common/DelIcon.qml</file>
         <file>../Switch/DelSwitch.qml</file>
         <file>../Button/DelButton.qml</file>
         <file>../Button/DelIconButton.qml</file>
-        <file>../common/DelIcon.qml</file>
+        <file>../RadioBlock/DelRadioBlock.qml</file>
     </qresource>
 </RCC>

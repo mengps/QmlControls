@@ -2,9 +2,10 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 
+import "qrc:/../common"
 import "qrc:/../Button"
 import "qrc:/../Switch"
-import "qrc:/../common"
+import "qrc:/../RadioBlock"
 
 Window {
     width: 1000
@@ -21,25 +22,15 @@ Window {
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: 2
 
-            DelButton {
-                text: qsTr("上")
-                type: DelButton.Type_Outlined
-                onClicked: defaultTabView.tabPosition = DelTabView.Position_Top;
-            }
-            DelButton {
-                text: qsTr("下")
-                type: DelButton.Type_Outlined
-                onClicked: defaultTabView.tabPosition = DelTabView.Position_Bottom;
-            }
-            DelButton {
-                text: qsTr("左")
-                type: DelButton.Type_Outlined
-                onClicked: defaultTabView.tabPosition = DelTabView.Position_Left;
-            }
-            DelButton {
-                text: qsTr("右")
-                type: DelButton.Type_Outlined
-                onClicked: defaultTabView.tabPosition = DelTabView.Position_Right;
+            DelRadioBlock {
+                id: positionRadio1
+                initCheckedIndex: 0
+                model: [
+                    { label: qsTr("上"), value: DelTabView.Position_Top },
+                    { label: qsTr("下"), value: DelTabView.Position_Bottom },
+                    { label: qsTr("左"), value: DelTabView.Position_Left },
+                    { label: qsTr("右"), value: DelTabView.Position_Right }
+                ]
             }
         }
 
@@ -88,6 +79,7 @@ Window {
             width: parent.width
             height: 200
             defaultTabWidth: 50
+            tabPosition: positionRadio1.currentCheckedValue
             tabSize: sizeSwitch.checked ? DelTabView.Size_Fixed : DelTabView.Size_Auto
             tabCentered: isCenterSwitch.checked
             addTabCallback:
@@ -146,25 +138,15 @@ Window {
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: 2
 
-            DelButton {
-                text: qsTr("上")
-                type: DelButton.Type_Outlined
-                onClicked: cardTabView.tabPosition = DelTabView.Position_Top;
-            }
-            DelButton {
-                text: qsTr("下")
-                type: DelButton.Type_Outlined
-                onClicked: cardTabView.tabPosition = DelTabView.Position_Bottom;
-            }
-            DelButton {
-                text: qsTr("左")
-                type: DelButton.Type_Outlined
-                onClicked: cardTabView.tabPosition = DelTabView.Position_Left;
-            }
-            DelButton {
-                text: qsTr("右")
-                type: DelButton.Type_Outlined
-                onClicked: cardTabView.tabPosition = DelTabView.Position_Right;
+            DelRadioBlock {
+                id: positionRadio2
+                initCheckedIndex: 0
+                model: [
+                    { label: qsTr("上"), value: DelTabView.Position_Top },
+                    { label: qsTr("下"), value: DelTabView.Position_Bottom },
+                    { label: qsTr("左"), value: DelTabView.Position_Left },
+                    { label: qsTr("右"), value: DelTabView.Position_Right }
+                ]
             }
         }
 
@@ -233,6 +215,7 @@ Window {
             width: parent.width
             height: 200
             defaultTabWidth: 50
+            tabPosition: positionRadio2.currentCheckedValue
             tabSize: sizeSwitch2.checked ? DelTabView.Size_Fixed : DelTabView.Size_Auto
             tabType: typeSwitch.checked ? DelTabView.Type_CardEditable :  DelTabView.Type_Card
             tabCentered: isCenterSwitch2.checked
