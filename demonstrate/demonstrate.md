@@ -104,3 +104,7 @@
     - Radio 用于在多个备选项中选中单个状态。
 
  <div align=center><img src="Radio.gif" width="400" height="320" /></div>
+
+     - RadioBlock(Radio变体) 用于在多个备选项中选中单个状态。
+
+ <div align=center><img src="RadioBlock.gif" width="400" height="320" /></div>

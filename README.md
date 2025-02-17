@@ -3,7 +3,7 @@
 
 # 「 DelegateUI 」 基于 Qml 的现代 UI
 
-Qt QML 的 Ant 设计组件库
+Qt Qml 的 Ant 设计组件库
 
 **此项目为「 DelegateUI 」Qt5 实现, 但只提供单一组件的实现**
 
@@ -82,6 +82,7 @@ Qt QML 的 Ant 设计组件库
  RoundRectangle | 任意角都可以是圆角的矩形。 | `Qt5` | <div align=center><img src="./demonstrate/RoundRectangle.png" width="250" height="210" /></div>
  TabView | 通过选项卡标签切换内容的组件。 | `Qt5` | <div align=center><img src="./demonstrate/TabView.png" width="250" height="210" /></div>
  Radio | 用于在多个备选项中选中单个状态。 | `Qt5` | <div align=center><img src="./demonstrate/Radio.gif" width="250" height="200" /></div>
+ RadioBlock | Radio 变体，用于在多个备选项中选中单个状态。 | `Qt5` | <div align=center><img src="./demonstrate/RadioBlock.gif" width="250" height="200" /></div>
 
 ## 许可证
 
