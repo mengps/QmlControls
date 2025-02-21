@@ -12,23 +12,27 @@ SUBDIRS += \
     FpsItem \
     ColorPicker \
     WaterfallFlow \
-    AsyncHasher \
     Notification \
     Timeline \
     ResizeMouseArea \
     WaveProgress \
-    Rate \
-    SystemThemeHelper \
-    Watermark \
-    Tour \
-    Button \
-    Divider \
-    Switch \
-    Acrylic \
-    RoundRectangle \
-    TabView \
-    Radio \
-    RadioBlock
+    DelAsyncHasher \
+    DelRate \
+    DelSystemThemeHelper \
+    DelWatermark \
+    DelTour \
+    DelButton \
+    DelDivider \
+    DelSwitch \
+    DelAcrylic \
+    DelRoundRectangle \
+    DelTabView \
+    DelRadio \
+    DelRadioBlock \
+    DelCheckBox \
+    DelInput \
+    DelOTPInput \
+    DelSlider
 
 FramelessWindow_Win.file = FramelessWindow/framelesswindow_win/FramelessWindow.pro
 FramelessWindow_All.file = FramelessWindow/framelesswindow_all/FramelessWindow.pro
