@@ -67,22 +67,27 @@ Qt Qml 的 Ant 设计组件库
  WaveProgress | 动态的水波进度条 | `Qt5` | <div align=center><img src="./demonstrate/WaveProgress.gif" width="240" height="200" /></div>
 
 ### 以下控件来自 [DelegateUI](https://github.com/mengps/DelegateUI)
+### 需要该部分控件文档请构建 [DelegateUI Gallery](https://github.com/mengps/DelegateUI)
 
  名称 | 说明 | 支持 | 示例
- ---------|----------|---------|---------
- AsyncHasher | 可对任意数据(url/text/object)生成加密哈希的异步散列器 | `Qt5` | <div align=center><img src="./demonstrate/AsyncHasher.png" width="150" height="180" /></div>
- Rate | 对某个事物进行评级 | `Qt5` | <div align=center><img src="./demonstrate/Rate.gif" width="240" height="200" /></div>
- SystemThemeHelper | (Qt5/Qt6) 系统主题助手 `[Dark/Light]主题检测 & 感知` | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/SystemThemeHelper.png" width="240" height="110" /></div>
- Watermark | 可给页面的任意项加上水印 | `Qt5` | <div align=center><img src="./demonstrate/Watermark.png" width="250" height="140" /></div>
- Tour(TourFocus/TourStep) | 用于分步引导用户了解产品功能的气泡组件。 | `Qt5` | <div align=center><img src="./demonstrate/Tour.png" width="250" height="210" /></div>
- Button(DelButton/DelIconButton) | 按钮用于开始一个即时操作。 | `Qt5` | <div align=center><img src="./demonstrate/Button.png" width="250" height="210" /></div>
- Divider | 用于区隔内容的分割线。 | `Qt5` | <div align=center><img src="./demonstrate/Divider.png" width="250" height="210" /></div>
- Switch | 使用开关在两种状态之间切换。 | `Qt5` | <div align=center><img src="./demonstrate/Switch.png" width="250" height="210" /></div>
- Acrylic | 亚克力/毛玻璃效果。 | `Qt5` | <div align=center><img src="./demonstrate/Acrylic.png" width="250" height="210" /></div>
- RoundRectangle | 任意角都可以是圆角的矩形。 | `Qt5` | <div align=center><img src="./demonstrate/RoundRectangle.png" width="250" height="210" /></div>
- TabView | 通过选项卡标签切换内容的组件。 | `Qt5` | <div align=center><img src="./demonstrate/TabView.png" width="250" height="210" /></div>
- Radio | 用于在多个备选项中选中单个状态。 | `Qt5` | <div align=center><img src="./demonstrate/Radio.gif" width="250" height="200" /></div>
- RadioBlock | Radio 变体，用于在多个备选项中选中单个状态。 | `Qt5` | <div align=center><img src="./demonstrate/RadioBlock.gif" width="250" height="200" /></div>
+ ---------|----------|---------|--------- 
+ DelAsyncHasher | 可对任意数据(url/text/object)生成加密哈希的异步散列器 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelAsyncHasher.png" width="150" height="180" /></div>
+ DelRate | 对某个事物进行评级 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelRate.png" width="240" height="200" /></div>
+ DelSystemThemeHelper | (Qt5/Qt6) 系统主题助手 `[Dark/Light]主题检测 & 感知` | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelSystemThemeHelper.png" width="240" height="110" /></div>
+ DelWatermark | 可给页面的任意项加上水印 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelWatermark.png" width="250" height="140" /></div>
+ DelTour(DelTourFocus/DelTourStep) | 用于分步引导用户了解产品功能的气泡组件。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTour.png" width="250" height="210" /></div>
+ DelButton(DelButton/DelIconButton) | 按钮用于开始一个即时操作。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelButton.png" width="250" height="210" /></div>
+ DelDivider | 用于区隔内容的分割线。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelDivider.png" width="250" height="210" /></div>
+ DelSwitch | 使用开关在两种状态之间切换。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelSwitch.png" width="250" height="210" /></div>
+ DelAcrylic | 亚克力/毛玻璃效果。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelAcrylic.png" width="250" height="210" /></div>
+ DelRoundRectangle | 任意角都可以是圆角的矩形。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelRoundRectangle.gif" width="250" height="210" /></div>
+ DelTabView | 通过选项卡标签切换内容的组件。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTabView.png" width="250" height="210" /></div>
+ DelRadio | 用于在多个备选项中选中单个状态。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelRadio.png" width="250" height="200" /></div>
+ DelRadioBlock | DelRadio 变体，用于在多个备选项中选中单个状态。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelRadioBlock.png" width="250" height="200" /></div>
+ DelCheckBox | 收集用户的多项选择。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelCheckBox.png" width="250" height="200" /></div>
+ DelInput | 通过鼠标或键盘输入内容，是最基础的表单域的包装(即传统输入框)。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelInput.png" width="250" height="200" /></div>
+ DelOTPInput | 用于接收和验证一次性口令的输入框组合，通常用于验证码或密码。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelOTPInput.gif" width="250" height="200" /></div>
+ DelSlider | 滑动型输入器，展示当前值和可选范围。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelSlider.png" width="250" height="200" /></div>
 
 ## 许可证
 
