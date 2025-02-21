@@ -36,7 +36,6 @@ Popup {
     onAboutToHide: colorPicker.hide();
     background: ColorPicker {
         id: colorPicker
-        width: 480
         onAccepted: {
             colorPopup.accepted();
             colorPopup.close();
