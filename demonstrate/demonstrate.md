@@ -40,10 +40,6 @@
 
  <div align=center><img src="WaterfallFlow.gif" width="360" height="500" /></div>
 
- - AsyncHasher 可对任意数据(url/text/object)生成加密哈希的异步散列器
-
- <div align=center><img src="AsyncHasher.gif" width="480" height="400" /></div>
-
  - Notification 悬浮出现在(全局/局部)页面上的通知提醒消息
 
  <div align=center><img src="Notification.gif" width="480" height="400" /></div>
@@ -59,52 +55,71 @@
  - WaveProgress 动态的水波进度条
 
  <div align=center><img src="WaveProgress.gif" width="480" height="390" /></div>
+
+ - DelAsyncHasher 可对任意数据(url/text/object)生成加密哈希的异步散列器
+
+ <div align=center><img src="DelAsyncHasher.gif" width="480" height="400" /></div>
  
- - Rate 对某个事物进行评级
+ - DelRate 对某个事物进行评级
 
- <div align=center><img src="Rate.gif" width="480" height="390" /></div>
+ <div align=center><img src="DelRate.gif" width="480" height="390" /></div>
 
- - SystemThemeHelper (Qt5/Qt6) 系统主题助手 `[Dark/Light]主题检测 & 感知`
+ - DelSystemThemeHelper (Qt5/Qt6) 系统主题助手 `[Dark/Light]主题检测 & 感知`
 
- <div align=center><img src="SystemThemeHelper.gif" width="640" height="300" /></div>
+ <div align=center><img src="DelSystemThemeHelper.gif" width="640" height="300" /></div>
 
- - Watermark 给页面的任意项加上水印
+ - DelWatermark 给页面的任意项加上水印
 
- <div align=center><img src="Watermark.gif" width="500" height="300" /></div>
+ <div align=center><img src="DelWatermark.gif" width="500" height="300" /></div>
 
-  - Tour 用于分步引导用户了解产品功能的气泡组件。
+  - DelTour 用于分步引导用户了解产品功能的气泡组件。
 
- <div align=center><img src="Tour.gif" width="400" height="320" /></div>
+ <div align=center><img src="DelTour.gif" width="400" height="320" /></div>
 
-   - Button 按钮用于开始一个即时操作。
+   - DelButton 按钮用于开始一个即时操作。
 
- <div align=center><img src="Button.gif" width="400" height="320" /></div>
+ <div align=center><img src="DelButton.gif" width="400" height="320" /></div>
 
-   - Divider 用于区隔内容的分割线。
+   - DelDivider 用于区隔内容的分割线。
 
- <div align=center><img src="Divider.png" width="400" height="320" /></div>
+ <div align=center><img src="DelDivider.png" width="400" height="320" /></div>
 
-   - Switch 使用开关在两种状态之间切换。
+   - DelSwitch 使用开关在两种状态之间切换。
 
- <div align=center><img src="Switch.gif" width="400" height="320" /></div>
+ <div align=center><img src="DelSwitch.gif" width="400" height="320" /></div>
  
-   - Acrylic 亚克力/毛玻璃效果
+   - DelAcrylic 亚克力/毛玻璃效果
 
- <div align=center><img src="Acrylic.png" width="400" height="320" /></div>
+ <div align=center><img src="DelAcrylic.png" width="400" height="320" /></div>
 
-  - RoundRectangle 任意角都可以是圆角的矩形
+  - DelRoundRectangle 任意角都可以是圆角的矩形
 
- <div align=center><img src="RoundRectangle.gif" width="400" height="320" /></div>
+ <div align=center><img src="DelRoundRectangle.gif" width="400" height="320" /></div>
  
-   - TabView 通过选项卡标签切换内容的组件。
+   - DelTabView 通过选项卡标签切换内容的组件。
 
- <div align=center><img src="TabView.gif" width="400" height="350" /></div>
+ <div align=center><img src="DelTabView.gif" width="400" height="350" /></div>
 
+   - DelRadio 用于在多个备选项中选中单个状态。
 
-    - Radio 用于在多个备选项中选中单个状态。
+ <div align=center><img src="DelRadio.gif" width="400" height="320" /></div>
 
- <div align=center><img src="Radio.gif" width="400" height="320" /></div>
+   - DelRadioBlock(DelRadio 变体) 用于在多个备选项中选中单个状态。
 
-     - RadioBlock(Radio变体) 用于在多个备选项中选中单个状态。
+ <div align=center><img src="DelRadioBlock.gif" width="400" height="320" /></div>
 
- <div align=center><img src="RadioBlock.gif" width="400" height="320" /></div>
+   - DelCheckBox 收集用户的多项选择。
+
+ <div align=center><img src="DelCheckBox.gif" width="400" height="320" /></div>
+
+   - DelInput 通过鼠标或键盘输入内容，是最基础的表单域的包装(即传统输入框)。
+
+ <div align=center><img src="DelInput.gif" width="400" height="320" /></div>
+
+   - DelOTPInput 用于接收和验证一次性口令的输入框组合，通常用于验证码或密码。
+
+ <div align=center><img src="DelOTPInput.gif" width="400" height="320" /></div>
+
+   - DelSlider 滑动型输入器，展示当前值和可选范围。
+
+ <div align=center><img src="DelSlider.gif" width="400" height="320" /></div>
