@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>TourFocus.qml</file>
-        <file>TourStep.qml</file>
-    </qresource>
-</RCC>

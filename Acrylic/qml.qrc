@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>DelAcrylic.qml</file>
-        <file>img.jpg</file>
-    </qresource>
-</RCC>

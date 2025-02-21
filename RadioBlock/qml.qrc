@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>DelRadioBlock.qml</file>
-        <file>../Button/DelButton.qml</file>
-    </qresource>
-</RCC>
