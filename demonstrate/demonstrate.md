@@ -123,3 +123,11 @@
    - DelSlider 滑动型输入器，展示当前值和可选范围。
 
  <div align=center><img src="DelSlider.gif" width="400" height="320" /></div>
+
+   - DelScrollBar 滚动条是一个交互式栏，用于滚动某个区域或视图到特定位置。
+
+ <div align=center><img src="DelScrollBar.gif" width="400" height="320" /></div>
+
+   - DelTimePicker 输入或选择时间的控件。
+
+ <div align=center><img src="DelTimePicker.gif" width="400" height="400" /></div>
