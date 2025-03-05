@@ -77,15 +77,15 @@ jobs:
         shell: pwsh
         run: |
           #删除 vc_redist.x64.exe
-          Remove-Item -Path "dist\vc_redist.x64.exe" -ErrorAction SilentlyContinue
+          Remove-Item -Path "package\vc_redist.x64.exe" -ErrorAction SilentlyContinue
           # 拷贝vcRedist dll
           $redistDll="{0}{1}\*.CRT\*.dll" -f $env:vcToolsRedistDir.Trim(),$env:msvcArch
-          Copy-Item $redistDll dist\
+          Copy-Item $redistDll package\
           # 拷贝WinSDK dll
           $sdkDll="{0}Redist\{1}ucrt\DLLs\{2}\*.dll" -f $env:winSdkDir.Trim(),$env:winSdkVer.Trim(),$env:msvcArch
-          Copy-Item $sdkDll dist\
+          Copy-Item $sdkDll package\
           # 打包zip
-          Compress-Archive -Path dist\* -DestinationPath "${env:archiveName}.zip"
+          Compress-Archive -Path package\* -DestinationPath "${env:archiveName}.zip"
           # 记录 packageName 给后续 step
           $name = ${env:archiveName}
           echo "packageName=$name" >> $env:GITHUB_OUTPUT
@@ -94,7 +94,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.package.outputs.packageName }}
-          path: dist
+          path: package
 
       - name: Upload Release
         if: startsWith(github.event.ref, 'refs/tags/')
