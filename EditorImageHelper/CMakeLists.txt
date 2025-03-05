@@ -12,7 +12,7 @@ set(SOURCES main.cpp editorimagehelper.h editorimagehelper.cpp)
 
 qt5_add_resources(SOURCES qml.qrc)
 
-add_executable(${PROJECT_NAME} ${SOURCES} ../common/QmlControls_Resource.rc)
+add_executable(${PROJECT_NAME} ${SOURCES} ${CMAKE_SOURCE_DIR}/common/QmlControls_Resource.rc)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     WIN32_EXECUTABLE TRUE
