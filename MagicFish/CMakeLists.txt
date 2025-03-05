@@ -12,8 +12,13 @@ set(SOURCES main.cpp magicpool.h magicpool.cpp magicfish.h magicfish.cpp)
 
 qt5_add_resources(SOURCES qml.qrc)
 
-add_executable(MagicFish ${SOURCES})
+add_executable(${PROJECT_NAME} ${SOURCES} ../common/QmlControls_Resource.rc)
 
-target_link_libraries(MagicFish PRIVATE
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    WIN32_EXECUTABLE TRUE
+    RUNTIME_OUTPUT_DIRECTORY $<IF:$<BOOL:${BUILD_OUTPUT_DIRECTORY}>,${BUILD_OUTPUT_DIRECTORY},${CMAKE_RUNTIME_OUTPUT_DIRECTORY}>
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt::Quick
 )
