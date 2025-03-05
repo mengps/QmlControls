@@ -8,7 +8,6 @@ package/
 Makefile
 Makefile.*
 *.stash
-*.rc
 *.exe
 *.qmlc
 *qmlcache.qrc

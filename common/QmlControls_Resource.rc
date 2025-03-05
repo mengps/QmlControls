@@ -1,0 +1,39 @@
+#include <windows.h>
+
+IDI_ICON1    ICON    "./delegateui_icon.ico"
+
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     1.0.0.0
+PRODUCTVERSION  1.0.0.0
+FILEFLAGSMASK   0x3fL
+#ifdef _DEBUG
+FILEFLAGS       VS_FF_DEBUG
+#else
+FILEFLAGS       0x0L
+#endif
+FILEOS          VOS_NT_WINDOWS32
+FILETYPE        VFT_APP
+FILESUBTYPE     VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "Comments",         "DelegateUI"
+            VALUE "CompanyName",      "DelegateUI"
+            VALUE "FileDescription",  "https://github.com/mengps/QmlControls"
+            VALUE "FileVersion",      "1.0.0.0"
+            VALUE "InternalName",     "DelegateUI"
+            VALUE "LegalCopyright",   "Copyright (C) 2025 mengps. All rights reserved."
+            VALUE "LegalTrademarks",  ""
+            VALUE "OriginalFilename", ""
+            VALUE "ProductName",      ""
+            VALUE "ProductVersion",   "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
