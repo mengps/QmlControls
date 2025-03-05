@@ -1,5 +1,7 @@
 debug/
 release/
+bin/
+package/
 *.user
 *.Debug
 *.Release
