@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 
 project(QmlControls)
 
+set(BUILD_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+
 #Others
 add_subdirectory(GlowCircularImage)
 add_subdirectory(MagicFish)
@@ -41,3 +43,93 @@ add_subdirectory(DelOTPInput)
 add_subdirectory(DelSlider)
 add_subdirectory(DelScrollBar)
 add_subdirectory(DelTimePicker)
+
+# Deploy Script
+if(CMAKE_BUILD_TYPE MATCHES "Release")
+    if(APPLE)
+        find_program(QT_DEPLOY_QT NAMES macdeployqt)
+        add_custom_target(Script-DeployRelease
+                COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_SOURCE_DIR}/package
+                COMMAND ${CMAKE_COMMAND} -E copy_directory ${BUILD_OUTPUT_DIRECTORY} ${CMAKE_SOURCE_DIR}/package
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/GlowCircularImage.app -qmldir=GlowCircularImage
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/MagicFish.app -qmldir=MagicFish
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/EditorImageHelper.app -qmldir=EditorImageHelper
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/framelesswindow_all.app -qmldir=FramelessWindow/framelesswindow_all
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/PolygonWindow.app -qmldir=PolygonWindow
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/HistoryEditor.app -qmldir=HistoryEditor
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/VideoOutput.app -qmldir=VideoOutput
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/FpsItem.app -qmldir=FpsItem
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/ColorPicker.app -qmldir=ColorPicker
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/WaterfallFlow.app -qmldir=WaterfallFlow
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/Notification.app -qmldir=Notification
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/Timeline.app -qmldir=Timeline
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/ResizeMouseArea.app -qmldir=ResizeMouseArea
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/WaveProgress.app -qmldir=WaveProgress
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelAsyncHasher.app -qmldir=DelAsyncHasher
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelRate.app -qmldir=DelRate
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelSystemThemeHelper.app -qmldir=DelSystemThemeHelper
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelWatermark.app -qmldir=DelWatermark
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelTour.app -qmldir=DelTour
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelButton.app -qmldir=DelButton
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelDivider.app -qmldir=DelDivider
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelSwitch.app -qmldir=DelSwitch
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelAcrylic.app -qmldir=DelAcrylic
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelRoundRectangle.app -qmldir=DelRoundRectangle
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelTabView.app -qmldir=DelTabView
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelRadio.app -qmldir=DelRadio
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelRadioBlock.app -qmldir=DelRadioBlock
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelCheckBox.app -qmldir=DelCheckBox
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelInput.app -qmldir=DelInput
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelOTPInput.app -qmldir=DelOTPInput
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelSlider.app -qmldir=DelSlider
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelScrollBar.app -qmldir=DelScrollBar
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelTimePicker.app -qmldir=DelTimePicker
+                COMMENT "MacOs Deploying Qt Dependencies After Build........."
+                SOURCES ${CMAKE_SOURCE_DIR}/CMakeLists.txt
+                WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        )
+    endif()
+    if(WIN32)
+        find_program(QT_DEPLOY_QT NAMES windeployqt)
+        add_custom_target(Script-DeployRelease
+                COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_SOURCE_DIR}/package
+                COMMAND ${CMAKE_COMMAND} -E copy_directory ${BUILD_OUTPUT_DIRECTORY} ${CMAKE_SOURCE_DIR}/package
+                COMMAND ${QT_DEPLOY_QT} --qmldir=GlowCircularImage --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/GlowCircularImage.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=MagicFish --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/MagicFish.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=EditorImageHelper --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/EditorImageHelper.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=FramelessWindow/framelesswindow_all --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/framelesswindow_all.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=PolygonWindow --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/PolygonWindow.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=HistoryEditor --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/HistoryEditor.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=VideoOutput --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/VideoOutput.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=FpsItem --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/FpsItem.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=ColorPicker --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/ColorPicker.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=WaterfallFlow --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/WaterfallFlow.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=Notification --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/Notification.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=Timeline --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/Timeline.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=ResizeMouseArea --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/ResizeMouseArea.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=WaveProgress --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/WaveProgress.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelAsyncHasher --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelAsyncHasher.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelRate --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelRate.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelSystemThemeHelper --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelSystemThemeHelper.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelWatermark --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelWatermark.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelTour --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelTour.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelButton --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelButton.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelDivider --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelDivider.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelSwitch --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelSwitch.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelAcrylic --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelAcrylic.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelRoundRectangle --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelRoundRectangle.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelTabView --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelTabView.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelRadio --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelRadio.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelRadioBlock --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelRadioBlock.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelCheckBox --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelCheckBox.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelInput --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelInput.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelOTPInput --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelOTPInput.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelSlider --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelSlider.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelScrollBar --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelScrollBar.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelTimePicker --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelTimePicker.exe
+                COMMENT "Windows Deploying Qt Dependencies After Build........."
+                SOURCES ${CMAKE_SOURCE_DIR}/CMakeLists.txt
+                WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        )
+    endif()
+endif()
