@@ -81,8 +81,8 @@ Button {
     implicitWidth: implicitContentWidth + leftPadding + rightPadding
     implicitHeight: implicitContentHeight + topPadding + bottomPadding
     padding: 10
-    topPadding: 8
-    bottomPadding: 8
+    topPadding: 5
+    bottomPadding: 5
     font {
         family: "微软雅黑"
         pixelSize: 14
