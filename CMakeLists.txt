@@ -43,6 +43,8 @@ add_subdirectory(DelOTPInput)
 add_subdirectory(DelSlider)
 add_subdirectory(DelScrollBar)
 add_subdirectory(DelTimePicker)
+add_subdirectory(DelDrawer)
+add_subdirectory(DelCollapse)
 
 # Deploy Script
 if(CMAKE_BUILD_TYPE MATCHES "Release")
@@ -84,6 +86,8 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelSlider.app -qmldir=DelSlider
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelScrollBar.app -qmldir=DelScrollBar
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelTimePicker.app -qmldir=DelTimePicker
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelDrawer.app -qmldir=DelDrawer
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelCollapse.app -qmldir=DelCollapse
                 COMMENT "MacOs Deploying Qt Dependencies After Build........."
                 SOURCES ${CMAKE_SOURCE_DIR}/CMakeLists.txt
                 WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
@@ -127,6 +131,8 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelSlider --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelSlider.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelScrollBar --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelScrollBar.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelTimePicker --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelTimePicker.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelDrawer --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelDrawer.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelCollapse --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelCollapse.exe
                 COMMENT "Windows Deploying Qt Dependencies After Build........."
                 SOURCES ${CMAKE_SOURCE_DIR}/CMakeLists.txt
                 WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
