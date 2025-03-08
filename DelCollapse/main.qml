@@ -9,7 +9,7 @@ Window {
     width: 800
     height: 600
     visible: true
-    title: qsTr("DelegateUI-DelDivider")
+    title: qsTr("DelegateUI-DelCollapse")
 
     Flickable {
         anchors.fill: parent
