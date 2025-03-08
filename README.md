@@ -90,6 +90,8 @@ Qt Qml 的 Ant 设计组件库
  DelSlider | 滑动型输入器，展示当前值和可选范围。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelSlider.png" width="250" height="200" /></div>
  DelScrollBar | 滚动条是一个交互式栏，用于滚动某个区域或视图到特定位置。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelScrollBar.png" width="250" height="200" /></div>
  DelTimePicker | 输入或选择时间的控件。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTimePicker.png" width="250" height="250" /></div>
+ DelDrawer | 屏幕边缘滑出的浮层面板。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelDrawer.png" width="250" height="250" /></div>
+ DelCollapse | 可以折叠/展开的内容区域。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelCollapse.png" width="250" height="250" /></div>
 
 ## 许可证
 

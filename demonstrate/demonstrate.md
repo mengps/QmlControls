@@ -131,3 +131,11 @@
    - DelTimePicker 输入或选择时间的控件。
 
  <div align=center><img src="DelTimePicker.gif" width="400" height="400" /></div>
+
+   - DelDrawer 屏幕边缘滑出的浮层面板。
+
+ <div align=center><img src="DelDrawer.gif" width="400" height="320" /></div>
+
+   - DelCollapse 可以折叠/展开的内容区域。
+
+ <div align=center><img src="DelCollapse.gif" width="400" height="320" /></div>
