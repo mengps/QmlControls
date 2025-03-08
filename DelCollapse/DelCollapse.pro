@@ -1,4 +1,4 @@
-QT += quick
+QT += quick quick-private
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -7,7 +7,7 @@ QT += quick
 HEADERS += delrectangle.h
 
 SOURCES += \
-        main.cpp
+        main.cpp \
         delrectangle.cpp
 
 RESOURCES += qml.qrc
