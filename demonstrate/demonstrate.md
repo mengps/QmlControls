@@ -139,3 +139,11 @@
    - DelCollapse 可以折叠/展开的内容区域。
 
  <div align=center><img src="DelCollapse.gif" width="400" height="320" /></div>
+
+   - DelAvatar 用来代表用户或事物，支持图片、图标或字符展示。
+
+ <div align=center><img src="DelAvatar.png" width="400" height="320" /></div>
+
+   - DelCard 基础的卡片容器，可承载文字、列表、图片、段落，常用于后台概览页面。
+
+ <div align=center><img src="DelCard.png" width="400" height="320" /></div>

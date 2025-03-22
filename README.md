@@ -92,6 +92,9 @@ Qt Qml 的 Ant 设计组件库
  DelTimePicker | 输入或选择时间的控件。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTimePicker.png" width="250" height="250" /></div>
  DelDrawer | 屏幕边缘滑出的浮层面板。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelDrawer.png" width="250" height="200" /></div>
  DelCollapse | 可以折叠/展开的内容区域。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelCollapse.png" width="250" height="200" /></div>
+ DelAvatar | 用来代表用户或事物，支持图片、图标或字符展示。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelAvatar.png" width="250" height="200" /></div>
+ DelCard | 基础的卡片容器，可承载文字、列表、图片、段落，常用于后台概览页面。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelCard.png" width="250" height="200" /></div>
+
 
 ## 许可证
 

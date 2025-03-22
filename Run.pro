@@ -36,7 +36,9 @@ SUBDIRS += \
     DelScrollBar \
     DelTimePicker \
     DelDrawer \
-    DelCollapse
+    DelCollapse \
+    DelAvatar \
+    DelCard
 
 FramelessWindow_Win.file = FramelessWindow/framelesswindow_win/FramelessWindow.pro
 FramelessWindow_All.file = FramelessWindow/framelesswindow_all/FramelessWindow.pro
