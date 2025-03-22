@@ -9,7 +9,8 @@ Button {
         Type_Outlined = 1,
         Type_Primary = 2,
         Type_Filled = 3,
-        Type_Text = 4
+        Type_Text = 4,
+        Type_Link = 5
     }
 
     enum Shape {
@@ -24,6 +25,7 @@ Button {
 
     property bool animationEnabled: true
     property bool effectEnabled: true
+    property int hoverCursorShape: Qt.PointingHandCursor
     property int type: DelButton.Type_Default
     property int shape: DelButton.Shape_Default
     property int radiusBg: 6
@@ -37,7 +39,9 @@ Button {
                 return control.down ? "#1677ff" : control.hovered ? "#4096ff" : "#1677ff";
             case DelButton.Type_Primary: return "white";
             case DelButton.Type_Filled: return "#1677ff";
-            case DelButton.Type_Text: return "#4096ff";
+            case DelButton.Type_Text:
+            case DelButton.Type_Link:
+                return control.down ? "#1677ff" : control.hovered ? "#4096ff" : "#1677ff";
             default: return "#4096ff";
             }
         } else {
@@ -64,6 +68,7 @@ Button {
         }
     }
     property color colorBorder: {
+        if (type == DelButton.Type_Link) return "transparent";
         if (enabled) {
             switch(control.type)
             {
@@ -104,6 +109,7 @@ Button {
             height: __bg.height
             radius: __bg.radius
             anchors.centerIn: parent
+            visible: control.effectEnabled && control.type != DelButton.Type_Link
             color: "transparent"
             border.width: 0
             border.color: control.enabled ? "#69b1ff" : "transparent"
@@ -155,6 +161,11 @@ Button {
             Behavior on border.color { enabled: control.animationEnabled; ColorAnimation { duration: 200 } }
         }
     }
+
+    HoverHandler {
+        cursorShape: control.hoverCursorShape
+    }
+
     Accessible.role: Accessible.Button
     Accessible.name: control.text
     Accessible.description: contentDescription
