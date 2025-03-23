@@ -71,8 +71,8 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/WaterfallFlow.app -qmldir=WaterfallFlow
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/Notification.app -qmldir=Notification
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/Timeline.app -qmldir=Timeline
-                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/ResizeMouseArea.app -qmldir=ResizeMouseArea
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/WaveProgress.app -qmldir=WaveProgress
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelResizeMouseArea.app -qmldir=DelResizeMouseArea
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelAsyncHasher.app -qmldir=DelAsyncHasher
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelRate.app -qmldir=DelRate
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelSystemThemeHelper.app -qmldir=DelSystemThemeHelper
@@ -122,8 +122,8 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${QT_DEPLOY_QT} --qmldir=WaterfallFlow --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/WaterfallFlow.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=Notification --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/Notification.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=Timeline --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/Timeline.exe
-                COMMAND ${QT_DEPLOY_QT} --qmldir=ResizeMouseArea --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/ResizeMouseArea.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=WaveProgress --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/WaveProgress.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelResizeMouseArea --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelResizeMouseArea.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelAsyncHasher --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelAsyncHasher.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelRate --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelRate.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelSystemThemeHelper --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelSystemThemeHelper.exe
