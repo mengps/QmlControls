@@ -6,7 +6,7 @@ Window {
     width: 800
     height: 600
     visible: true
-    title: qsTr("ResizeMouseArea Test")
+    title: qsTr("DelegateUI-DelResizeMouseArea")
 
     Rectangle {
         width: 100
@@ -19,7 +19,7 @@ Window {
             font.pointSize: 11
         }
 
-        MoveMouseArea {
+        DelMoveMouseArea {
             target: parent
             anchors.fill: parent
             minimumX: 0
@@ -42,7 +42,7 @@ Window {
             font.pointSize: 11
         }
 
-        ResizeMouseArea {
+        DelResizeMouseArea {
             target: parent
             anchors.fill: parent
             movable: true
