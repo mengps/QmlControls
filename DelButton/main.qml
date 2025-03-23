@@ -1,16 +1,24 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
+
 import "qrc:/../common"
+import "qrc:/../DelDivider"
 
 Window {
-    width: 640
-    height: 480
+    width: 800
+    height: 600
     visible: true
     title: qsTr("DelegateUI-DelButton")
 
     Column {
         anchors.centerIn: parent
-        spacing: 15
+        spacing: 20
+
+        DelDivider {
+            width: parent.width
+            height: 20
+            title: qsTr("基础按钮")
+        }
 
         Row {
             spacing: 15
@@ -89,6 +97,21 @@ Window {
             spacing: 15
 
             DelButton {
+                type: DelButton.Type_Link
+                text: qsTr("链接按钮")
+            }
+
+            DelButton {
+                enabled: false
+                type: DelButton.Type_Link
+                text: qsTr("链接按钮禁用")
+            }
+        }
+
+        Row {
+            spacing: 15
+
+            DelButton {
                 shape: DelButton.Shape_Circle
                 text: qsTr("❤️")
             }
@@ -105,6 +128,12 @@ Window {
                 shape: DelButton.Shape_Circle
                 text: qsTr("❤")
             }
+        }
+
+        DelDivider {
+            width: parent.width
+            height: 20
+            title: qsTr("图标按钮")
         }
 
         Row {
@@ -148,6 +177,31 @@ Window {
                 enabled: false
                 shape: DelButton.Shape_Circle
                 iconSource: DelIcon.GiftOutlined
+            }
+        }
+
+        DelDivider {
+            width: parent.width
+            height: 20
+            title: qsTr("标题按钮")
+        }
+
+        Row {
+            spacing: 15
+
+            DelCaptionButton {
+                iconSource: DelIcon.CloseOutlined
+            }
+
+            DelCaptionButton {
+                isError: true
+                iconSource: DelIcon.CloseOutlined
+            }
+
+            DelCaptionButton {
+                text: qsTr("关闭")
+                colorText: colorIcon
+                iconSource: DelIcon.CloseOutlined
             }
         }
     }

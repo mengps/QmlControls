@@ -20,10 +20,10 @@ add_subdirectory(ColorPicker)
 add_subdirectory(WaterfallFlow)
 add_subdirectory(Notification)
 add_subdirectory(Timeline)
-add_subdirectory(ResizeMouseArea)
 add_subdirectory(WaveProgress)
 
 #DelegateUI Qt5
+add_subdirectory(DelResizeMouseArea)
 add_subdirectory(DelAsyncHasher)
 add_subdirectory(DelRate)
 add_subdirectory(DelSystemThemeHelper)
@@ -47,6 +47,10 @@ add_subdirectory(DelDrawer)
 add_subdirectory(DelCollapse)
 add_subdirectory(DelAvatar)
 add_subdirectory(DelCard)
+add_subdirectory(DelToolTip)
+add_subdirectory(DelPopup)
+add_subdirectory(DelSelect)
+add_subdirectory(DelPagination)
 
 # Deploy Script
 if(CMAKE_BUILD_TYPE MATCHES "Release")
@@ -92,6 +96,10 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelCollapse.app -qmldir=DelCollapse
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelAvatar.app -qmldir=DelAvatar
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelCard.app -qmldir=DelCard
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelToolTip.app -qmldir=DelToolTip
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelPopup.app -qmldir=DelPopup
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelSelect.app -qmldir=DelSelect
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelPagination.app -qmldir=DelPagination
                 COMMENT "MacOs Deploying Qt Dependencies After Build........."
                 SOURCES ${CMAKE_SOURCE_DIR}/CMakeLists.txt
                 WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
@@ -139,6 +147,10 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelCollapse --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelCollapse.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelAvatar --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelAvatar.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelCard --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelCard.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelToolTip --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelToolTip.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelPopup --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelPopup.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelSelect --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelSelect.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelPagination --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelPagination.exe
                 COMMENT "Windows Deploying Qt Dependencies After Build........."
                 SOURCES ${CMAKE_SOURCE_DIR}/CMakeLists.txt
                 WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}

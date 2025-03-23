@@ -48,13 +48,13 @@
 
  <div align=center><img src="Timeline.gif" width="440" height="500" /></div>
 
- - MoveMouseArea / ResizeMouseArea 给任意目标添加[移动/调整大小操作]的鼠标区域
-
- <div align=center><img src="ResizeMouseArea.gif" width="480" height="370" /></div>
-
  - WaveProgress 动态的水波进度条
 
  <div align=center><img src="WaveProgress.gif" width="480" height="390" /></div>
+
+ - DelMoveMouseArea / DelResizeMouseArea 给任意目标添加[移动/调整大小操作]的鼠标区域
+
+ <div align=center><img src="DelResizeMouseArea.gif" width="480" height="370" /></div>
 
  - DelAsyncHasher 可对任意数据(url/text/object)生成加密哈希的异步散列器
 
@@ -147,3 +147,19 @@
    - DelCard 基础的卡片容器，可承载文字、列表、图片、段落，常用于后台概览页面。
 
  <div align=center><img src="DelCard.png" width="400" height="320" /></div>
+
+   - DelToolTip 简单的文字提示气泡框(替代基础ToolTip)。
+
+ <div align=center><img src="DelToolTip.gif" width="400" height="320" /></div>
+
+   - DelPopup 自带跟随主题切换的背景和阴影(替代基础Popup)。
+
+ <div align=center><img src="DelPopup.gif" width="400" height="320" /></div>
+
+   - DelSelect 下拉选择器(替代基础ComboBox)。
+
+ <div align=center><img src="DelSelect.gif" width="400" height="320" /></div>
+
+   - DelPagination 分页器，用于分隔长列表，每次只加载一个页面。
+
+ <div align=center><img src="DelPagination.gif" width="400" height="320" /></div>

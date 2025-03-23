@@ -63,7 +63,6 @@ Qt Qml 的 Ant 设计组件库
  WaterfallFlow | 瀑布流视图(并且可以自适应)，类似小红书 | `Qt5` | <div align=center><img src="./demonstrate/WaterfallFlow.png" width="150" height="180" /></div>
  Notification | 悬浮出现在(全局/局部)页面上的通知提醒消息 | `Qt5` | <div align=center><img src="./demonstrate/Notification.gif" width="240" height="180" /></div>
  Timeline | 可视化地呈现时间流信息的组件 |  `Qt5` | <div align=center><img src="./demonstrate/Timeline.png" width="200" height="240" /></div>
- MoveMouseArea / ResizeMouseArea | 给任意目标添加[移动/调整大小操作]的鼠标区域 | `Qt5` | <div align=center><img src="./demonstrate/ResizeMouseArea.gif" width="260" height="190" /></div>
  WaveProgress | 动态的水波进度条 | `Qt5` | <div align=center><img src="./demonstrate/WaveProgress.gif" width="240" height="200" /></div>
 
 ### 以下控件来自 [DelegateUI](https://github.com/mengps/DelegateUI)
@@ -71,6 +70,7 @@ Qt Qml 的 Ant 设计组件库
 
  名称 | 说明 | 支持 | 示例
  ---------|----------|---------|--------- 
+ DelMoveMouseArea / DelResizeMouseArea | 给任意目标添加[移动/调整大小操作]的鼠标区域 | `Qt5` | <div align=center><img src="./demonstrate/DelResizeMouseArea.gif" width="260" height="190" /></div>
  DelAsyncHasher | 可对任意数据(url/text/object)生成加密哈希的异步散列器 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelAsyncHasher.png" width="150" height="180" /></div>
  DelRate | 对某个事物进行评级 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelRate.png" width="240" height="200" /></div>
  DelSystemThemeHelper | (Qt5/Qt6) 系统主题助手 `[Dark/Light]主题检测 & 感知` | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelSystemThemeHelper.png" width="240" height="110" /></div>
@@ -94,6 +94,13 @@ Qt Qml 的 Ant 设计组件库
  DelCollapse | 可以折叠/展开的内容区域。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelCollapse.png" width="250" height="200" /></div>
  DelAvatar | 用来代表用户或事物，支持图片、图标或字符展示。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelAvatar.png" width="250" height="200" /></div>
  DelCard | 基础的卡片容器，可承载文字、列表、图片、段落，常用于后台概览页面。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelCard.png" width="250" height="200" /></div>
+ DelToolTip | 简单的文字提示气泡框(替代基础ToolTip)。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelToolTip.png" width="250" height="200" /></div>
+ DelPopup | 自带跟随主题切换的背景和阴影(替代基础Popup)。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelPopup.png" width="250" height="200" /></div>
+ DelSelect | 下拉选择器(替代基础ComboBox)。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelSelect.png" width="250" height="200" /></div>
+ DelPagination | 分页器，用于分隔长列表，每次只加载一个页面。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelPagination.png" width="250" height="200" /></div>
+
+
+ 
 
 
 ## 许可证

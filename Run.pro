@@ -14,8 +14,8 @@ SUBDIRS += \
     WaterfallFlow \
     Notification \
     Timeline \
-    ResizeMouseArea \
     WaveProgress \
+    DelResizeMouseArea \
     DelAsyncHasher \
     DelRate \
     DelSystemThemeHelper \
@@ -38,7 +38,11 @@ SUBDIRS += \
     DelDrawer \
     DelCollapse \
     DelAvatar \
-    DelCard
+    DelCard \
+    DelToolTip \
+    DelPopup \
+    DelSelect \
+    DelPagination
 
 FramelessWindow_Win.file = FramelessWindow/framelesswindow_win/FramelessWindow.pro
 FramelessWindow_All.file = FramelessWindow/framelesswindow_all/FramelessWindow.pro
