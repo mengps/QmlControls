@@ -49,6 +49,7 @@ Button {
         }
     }
     property color colorBg: {
+        if (type == DelButton.Type_Link) return "transparent";
         if (enabled) {
             switch(control.type)
             {

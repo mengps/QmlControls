@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>DelToolTip.qml</file>
+        <file>../DelButton/DelButton.qml</file>
+    </qresource>
+</RCC>
