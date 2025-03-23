@@ -42,6 +42,7 @@ T.Drawer {
                 radiusBg: 4
                 anchors.verticalCenter: parent.verticalCenter
                 iconSource: DelIcon.CloseOutlined
+                hoverCursorShape: Qt.PointingHandCursor
                 colorIcon: hovered ? Qt.rgba(0,0,0,1) : Qt.rgba(0,0,0,0.4)
                 colorBg: __close.down ? Qt.rgba(0,0,0,0.15) :
                                         __close.hovered ? Qt.rgba(0,0,0,0.06) : Qt.rgba(0,0,0,0)
