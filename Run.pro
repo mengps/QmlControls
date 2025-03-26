@@ -13,7 +13,6 @@ SUBDIRS += \
     ColorPicker \
     WaterfallFlow \
     Notification \
-    Timeline \
     WaveProgress \
     DelResizeMouseArea \
     DelAsyncHasher \
@@ -42,7 +41,8 @@ SUBDIRS += \
     DelToolTip \
     DelPopup \
     DelSelect \
-    DelPagination
+    DelPagination \
+    DelTimeline
 
 FramelessWindow_Win.file = FramelessWindow/framelesswindow_win/FramelessWindow.pro
 FramelessWindow_All.file = FramelessWindow/framelesswindow_all/FramelessWindow.pro

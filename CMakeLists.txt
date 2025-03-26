@@ -19,7 +19,6 @@ add_subdirectory(FpsItem)
 add_subdirectory(ColorPicker)
 add_subdirectory(WaterfallFlow)
 add_subdirectory(Notification)
-add_subdirectory(Timeline)
 add_subdirectory(WaveProgress)
 
 #DelegateUI Qt5
@@ -51,6 +50,7 @@ add_subdirectory(DelToolTip)
 add_subdirectory(DelPopup)
 add_subdirectory(DelSelect)
 add_subdirectory(DelPagination)
+add_subdirectory(DelTimeline)
 
 # Deploy Script
 if(CMAKE_BUILD_TYPE MATCHES "Release")
@@ -70,7 +70,6 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/ColorPicker.app -qmldir=ColorPicker
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/WaterfallFlow.app -qmldir=WaterfallFlow
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/Notification.app -qmldir=Notification
-                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/Timeline.app -qmldir=Timeline
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/WaveProgress.app -qmldir=WaveProgress
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelResizeMouseArea.app -qmldir=DelResizeMouseArea
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelAsyncHasher.app -qmldir=DelAsyncHasher
@@ -100,6 +99,7 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelPopup.app -qmldir=DelPopup
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelSelect.app -qmldir=DelSelect
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelPagination.app -qmldir=DelPagination
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelTimeline.app -qmldir=DelTimeline
                 COMMENT "MacOs Deploying Qt Dependencies After Build........."
                 SOURCES ${CMAKE_SOURCE_DIR}/CMakeLists.txt
                 WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
@@ -121,7 +121,6 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${QT_DEPLOY_QT} --qmldir=ColorPicker --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/ColorPicker.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=WaterfallFlow --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/WaterfallFlow.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=Notification --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/Notification.exe
-                COMMAND ${QT_DEPLOY_QT} --qmldir=Timeline --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/Timeline.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=WaveProgress --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/WaveProgress.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelResizeMouseArea --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelResizeMouseArea.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelAsyncHasher --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelAsyncHasher.exe
@@ -151,6 +150,7 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelPopup --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelPopup.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelSelect --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelSelect.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelPagination --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelPagination.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelTimeline --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelTimeline.exe
                 COMMENT "Windows Deploying Qt Dependencies After Build........."
                 SOURCES ${CMAKE_SOURCE_DIR}/CMakeLists.txt
                 WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}

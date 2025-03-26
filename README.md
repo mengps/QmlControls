@@ -62,7 +62,6 @@ Qt Qml 的 Ant 设计组件库
  ColorPicker / ColorPickerPopup | 仿 `Windows10 画图3D` 的颜色选择器, 但更加强大 | `Qt5` | <div align=center><img src="./demonstrate/ColorPicker.png" width="160" height="150" /></div>
  WaterfallFlow | 瀑布流视图(并且可以自适应)，类似小红书 | `Qt5` | <div align=center><img src="./demonstrate/WaterfallFlow.png" width="150" height="180" /></div>
  Notification | 悬浮出现在(全局/局部)页面上的通知提醒消息 | `Qt5` | <div align=center><img src="./demonstrate/Notification.gif" width="240" height="180" /></div>
- Timeline | 可视化地呈现时间流信息的组件 |  `Qt5` | <div align=center><img src="./demonstrate/Timeline.png" width="200" height="240" /></div>
  WaveProgress | 动态的水波进度条 | `Qt5` | <div align=center><img src="./demonstrate/WaveProgress.gif" width="240" height="200" /></div>
 
 ### 以下控件来自 [DelegateUI](https://github.com/mengps/DelegateUI)
@@ -98,6 +97,7 @@ Qt Qml 的 Ant 设计组件库
  DelPopup | 自带跟随主题切换的背景和阴影(替代基础Popup)。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelPopup.png" width="250" height="200" /></div>
  DelSelect | 下拉选择器(替代基础ComboBox)。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelSelect.png" width="250" height="200" /></div>
  DelPagination | 分页器，用于分隔长列表，每次只加载一个页面。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelPagination.png" width="250" height="200" /></div>
+ DelTimeline | 时间轴，可垂直展示的时间流信息。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTimeline.png" width="250" height="200" /></div>
 
 
  

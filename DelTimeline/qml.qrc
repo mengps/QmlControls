@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>DelTimeline.qml</file>
+        <file>../DelScrollBar/DelScrollBar.qml</file>
+        <file>../common/DelegateUI-Icons.ttf</file>
+        <file>../common/DelIcon.qml</file>
+        <file>../common/DelIconText.qml</file>
+        <file>../DelDivider/DelDivider.qml</file>
+        <file>../DelButton/DelButton.qml</file>
+        <file>../DelRadio/DelRadio.qml</file>
+    </qresource>
+</RCC>

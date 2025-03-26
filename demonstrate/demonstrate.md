@@ -43,10 +43,6 @@
  - Notification 悬浮出现在(全局/局部)页面上的通知提醒消息
 
  <div align=center><img src="Notification.gif" width="480" height="400" /></div>
- 
- - Timeline 可视化地呈现时间流信息的组件
-
- <div align=center><img src="Timeline.gif" width="440" height="500" /></div>
 
  - WaveProgress 动态的水波进度条
 
@@ -55,6 +51,9 @@
  - DelMoveMouseArea / DelResizeMouseArea 给任意目标添加[移动/调整大小操作]的鼠标区域
 
  <div align=center><img src="DelResizeMouseArea.gif" width="480" height="370" /></div>
+
+### 以下控件来自 [DelegateUI](https://github.com/mengps/DelegateUI)
+### 需要该部分控件文档请构建 [DelegateUI Gallery](https://github.com/mengps/DelegateUI)
 
  - DelAsyncHasher 可对任意数据(url/text/object)生成加密哈希的异步散列器
 
@@ -163,3 +162,7 @@
    - DelPagination 分页器，用于分隔长列表，每次只加载一个页面。
 
  <div align=center><img src="DelPagination.gif" width="400" height="320" /></div>
+ 
+   - DelTimeline 时间轴，可垂直展示的时间流信息。
+
+ <div align=center><img src="DelTimeline.gif" width="400" height="320" /></div>

@@ -19,7 +19,7 @@ Item {
 
     font {
         family: "微软雅黑"
-        pixelSize: 16
+        pixelSize: 14
     }
 
     property bool animationEnabled: true
