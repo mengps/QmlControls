@@ -69,7 +69,7 @@ Qt Qml 的 Ant 设计组件库
 
  名称 | 说明 | 支持 | 示例
  ---------|----------|---------|--------- 
- DelMoveMouseArea / DelResizeMouseArea | 给任意目标添加[移动/调整大小操作]的鼠标区域 | `Qt5` | <div align=center><img src="./demonstrate/DelResizeMouseArea.gif" width="260" height="190" /></div>
+ DelMoveMouseArea / DelResizeMouseArea | 给任意目标添加[移动/调整大小操作]的鼠标区域 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelResizeMouseArea.gif" width="260" height="190" /></div>
  DelAsyncHasher | 可对任意数据(url/text/object)生成加密哈希的异步散列器 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelAsyncHasher.png" width="150" height="180" /></div>
  DelRate | 对某个事物进行评级 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelRate.png" width="240" height="200" /></div>
  DelSystemThemeHelper | (Qt5/Qt6) 系统主题助手 `[Dark/Light]主题检测 & 感知` | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelSystemThemeHelper.png" width="240" height="110" /></div>
@@ -98,9 +98,7 @@ Qt Qml 的 Ant 设计组件库
  DelSelect | 下拉选择器(替代基础ComboBox)。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelSelect.png" width="250" height="200" /></div>
  DelPagination | 分页器，用于分隔长列表，每次只加载一个页面。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelPagination.png" width="250" height="200" /></div>
  DelTimeline | 时间轴，可垂直展示的时间流信息。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTimeline.png" width="250" height="200" /></div>
-
-
- 
+ DelTag | 标签，进行标记和分类的小标签。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTag.png" width="250" height="200" /></div>
 
 
 ## 许可证

@@ -51,6 +51,7 @@ add_subdirectory(DelPopup)
 add_subdirectory(DelSelect)
 add_subdirectory(DelPagination)
 add_subdirectory(DelTimeline)
+add_subdirectory(DelTag)
 
 # Deploy Script
 if(CMAKE_BUILD_TYPE MATCHES "Release")
@@ -100,6 +101,7 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelSelect.app -qmldir=DelSelect
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelPagination.app -qmldir=DelPagination
                 COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelTimeline.app -qmldir=DelTimeline
+                COMMAND ${QT_DEPLOY_QT} ${CMAKE_SOURCE_DIR}/package/DelTag.app -qmldir=DelTag
                 COMMENT "MacOs Deploying Qt Dependencies After Build........."
                 SOURCES ${CMAKE_SOURCE_DIR}/CMakeLists.txt
                 WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
@@ -151,6 +153,7 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelSelect --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelSelect.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelPagination --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelPagination.exe
                 COMMAND ${QT_DEPLOY_QT} --qmldir=DelTimeline --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelTimeline.exe
+                COMMAND ${QT_DEPLOY_QT} --qmldir=DelTag --no-translations --compiler-runtime ${CMAKE_SOURCE_DIR}/package/DelTag.exe
                 COMMENT "Windows Deploying Qt Dependencies After Build........."
                 SOURCES ${CMAKE_SOURCE_DIR}/CMakeLists.txt
                 WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}

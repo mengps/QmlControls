@@ -166,3 +166,7 @@
    - DelTimeline 时间轴，可垂直展示的时间流信息。
 
  <div align=center><img src="DelTimeline.gif" width="400" height="320" /></div>
+
+   - DelTag 标签，进行标记和分类的小标签。
+
+ <div align=center><img src="DelTag.png" width="400" height="320" /></div>
