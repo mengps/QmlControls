@@ -18,11 +18,6 @@ Button {
         Shape_Circle = 1
     }
 
-    enum IconPosition {
-        Position_Start = 0,
-        Position_End = 1
-    }
-
     property bool animationEnabled: true
     property bool effectEnabled: true
     property int hoverCursorShape: Qt.PointingHandCursor

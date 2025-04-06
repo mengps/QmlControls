@@ -162,7 +162,7 @@ Window {
 
             DelIconButton {
                 type: DelButton.Type_Text
-                iconPosition: DelButton.Position_End
+                iconPosition: DelIconButton.Position_End
                 iconSource: DelIcon.GiftOutlined
                 text: qsTr("礼物")
             }
