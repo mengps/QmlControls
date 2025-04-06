@@ -38,7 +38,7 @@
 
  - WaterfallFlow 瀑布流视图(并且可以自适应)，类似小红书
 
- <div align=center><img src="WaterfallFlow.gif" width="360" height="500" /></div>
+ <div align=center><img src="WaterfallFlow.png" width="360" height="500" /></div>
 
  - Notification 悬浮出现在(全局/局部)页面上的通知提醒消息
 
@@ -170,3 +170,7 @@
    - DelTag 标签，进行标记和分类的小标签。
 
  <div align=center><img src="DelTag.png" width="400" height="320" /></div>
+
+   - DelTableView 表格，用于展示行列数据。
+
+ <div align=center><img src="DelTableView.png" width="400" height="320" /></div>

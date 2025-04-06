@@ -99,6 +99,7 @@ Qt Qml 的 Ant 设计组件库
  DelPagination | 分页器，用于分隔长列表，每次只加载一个页面。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelPagination.png" width="250" height="200" /></div>
  DelTimeline | 时间轴，可垂直展示的时间流信息。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTimeline.png" width="250" height="200" /></div>
  DelTag | 标签，进行标记和分类的小标签。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTag.png" width="250" height="200" /></div>
+ DelTableView | 表格，用于展示行列数据。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTableView.png" width="250" height="200" /></div>
 
 
 ## 许可证
