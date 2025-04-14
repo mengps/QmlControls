@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>DelRate.qml</file>
-        <file>../common/DelegateUI-Icons.ttf</file>
-        <file>../common/DelIcon.qml</file>
-    </qresource>
-</RCC>

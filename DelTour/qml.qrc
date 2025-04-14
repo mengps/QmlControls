@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>DelTourFocus.qml</file>
-        <file>DelTourStep.qml</file>
-        <file>../DelButton/DelButton.qml</file>
-    </qresource>
-</RCC>

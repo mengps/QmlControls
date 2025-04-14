@@ -1,0 +1,3 @@
+[submodule "DelegateUI_Qt5/3rdparty/qwindowkit"]
+	path = DelegateUI_Qt5/3rdparty/qwindowkit
+	url = https://github.com/stdware/qwindowkit.git

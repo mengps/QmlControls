@@ -1,0 +1,43 @@
+<RCC>
+    <qresource prefix="/DelegateUI">
+        <file>imports/DelegateUI/Controls/DelAcrylic.qml</file>
+        <file>imports/DelegateUI/Controls/DelAutoComplete.qml</file>
+        <file>imports/DelegateUI/Controls/DelAvatar.qml</file>
+        <file>imports/DelegateUI/Controls/DelButton.qml</file>
+        <file>imports/DelegateUI/Controls/DelCaptionBar.qml</file>
+        <file>imports/DelegateUI/Controls/DelCaptionButton.qml</file>
+        <file>imports/DelegateUI/Controls/DelCard.qml</file>
+        <file>imports/DelegateUI/Controls/DelCheckBox.qml</file>
+        <file>imports/DelegateUI/Controls/DelCollapse.qml</file>
+        <file>imports/DelegateUI/Controls/DelCopyableText.qml</file>
+        <file>imports/DelegateUI/Controls/DelDivider.qml</file>
+        <file>imports/DelegateUI/Controls/DelDrawer.qml</file>
+        <file>imports/DelegateUI/Controls/DelIconButton.qml</file>
+        <file>imports/DelegateUI/Controls/DelIconText.qml</file>
+        <file>imports/DelegateUI/Controls/DelInput.qml</file>
+        <file>imports/DelegateUI/Controls/DelMenu.qml</file>
+        <file>imports/DelegateUI/Controls/DelMessage.qml</file>
+        <file>imports/DelegateUI/Controls/DelMoveMouseArea.qml</file>
+        <file>imports/DelegateUI/Controls/DelNotification.qml</file>
+        <file>imports/DelegateUI/Controls/DelOTPInput.qml</file>
+        <file>imports/DelegateUI/Controls/DelPagination.qml</file>
+        <file>imports/DelegateUI/Controls/DelPopup.qml</file>
+        <file>imports/DelegateUI/Controls/DelRadio.qml</file>
+        <file>imports/DelegateUI/Controls/DelRadioBlock.qml</file>
+        <file>imports/DelegateUI/Controls/DelRate.qml</file>
+        <file>imports/DelegateUI/Controls/DelResizeMouseArea.qml</file>
+        <file>imports/DelegateUI/Controls/DelScrollBar.qml</file>
+        <file>imports/DelegateUI/Controls/DelSelect.qml</file>
+        <file>imports/DelegateUI/Controls/DelSlider.qml</file>
+        <file>imports/DelegateUI/Controls/DelSwitch.qml</file>
+        <file>imports/DelegateUI/Controls/DelTableView.qml</file>
+        <file>imports/DelegateUI/Controls/DelTabView.qml</file>
+        <file>imports/DelegateUI/Controls/DelTag.qml</file>
+        <file>imports/DelegateUI/Controls/DelTimeline.qml</file>
+        <file>imports/DelegateUI/Controls/DelTimePicker.qml</file>
+        <file>imports/DelegateUI/Controls/DelToolTip.qml</file>
+        <file>imports/DelegateUI/Controls/DelTourFocus.qml</file>
+        <file>imports/DelegateUI/Controls/DelTourStep.qml</file>
+        <file>imports/DelegateUI/Controls/DelWindow.qml</file>
+    </qresource>
+</RCC>

@@ -5,9 +5,9 @@
 
 Qt Qml 的 Ant 设计组件库
 
-**此项目为「 DelegateUI 」Qt5 实现, 但只提供单一组件的实现**
+**此项目为「 DelegateUI 」Qt5 实现**
 
-**新的 Qt6 实现是完整的库, 并提供更加强大和一致的主题系统 [DelegateUI for Qt6](https://github.com/mengps/DelegateUI)**
+**Qt6 实现更加强大性能也更好 [DelegateUI for Qt6](https://github.com/mengps/DelegateUI)**
 
 </div>
 
@@ -31,17 +31,24 @@ Qt Qml 的 Ant 设计组件库
 
 ## 如何使用
 
+### 对于 `CustomControls` 模块
+
 - 使用 `cmake` 构建
 
-> `CMakeLists.txt` 可构建所有示例
+> `CustomControls/CMakeLists.txt` 可构建所有示例
 >
-> 如需单独构建，直接进入目录构建 `*/CMakeLists.txt` 
+> 如需单独构建，直接进入目录构建 `CustomControls/*/CMakeLists.txt` 
 
 - 使用 `qmake` 构建
 
-> `Run.pro` 可构建所有示例
+> `CustomControls/Run.pro` 可构建所有示例
 >
-> 如需单独构建，直接进入目录构建 `*.pro` 
+> 如需单独构建，直接进入目录构建 `CustomControls/*.pro` 
+
+
+### 对于 `DelegateUI_Qt5` 模块
+
+> 请参照 [DelegateUI Qt6](https://github.com/mengps/DelegateUI) 构建
 
 ## 所有控件&工具预览
 
@@ -79,7 +86,7 @@ Qt Qml 的 Ant 设计组件库
  DelDivider | 用于区隔内容的分割线。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelDivider.png" width="250" height="210" /></div>
  DelSwitch | 使用开关在两种状态之间切换。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelSwitch.png" width="250" height="210" /></div>
  DelAcrylic | 亚克力/毛玻璃效果。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelAcrylic.png" width="250" height="210" /></div>
- DelRoundRectangle | 任意角都可以是圆角的矩形。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelRoundRectangle.gif" width="250" height="210" /></div>
+ DelRectangle | 任意角都可以是圆角的矩形。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelRoundRectangle.gif" width="250" height="210" /></div>
  DelTabView | 通过选项卡标签切换内容的组件。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTabView.png" width="250" height="210" /></div>
  DelRadio | 用于在多个备选项中选中单个状态。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelRadio.png" width="250" height="200" /></div>
  DelRadioBlock | DelRadio 变体，用于在多个备选项中选中单个状态。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelRadioBlock.png" width="250" height="200" /></div>

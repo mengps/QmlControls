@@ -1,15 +1,94 @@
-debug/
-release/
-bin/
-package/
-*.user
+# This file is used to ignore files which are generated
+# ----------------------------------------------------------------------------
+
+*~
+*.autosave
+*.a
+*.core
+*.moc
+*.o
+*.obj
+*.orig
+*.rej
+*.so
+*.so.*
+*_pch.h.cpp
+*_resource.rc
+*.qm
+.#*
+*.*#
+core
+!core/
+tags
+.DS_Store
+.directory
+*.debug
+Makefile*
+*.prl
+*.app
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+Thumbs.db
+*.res
+*.rc
+.qmake.cache
+.qmake.stash
+.qtc_clangd/
+
+# qtcreator generated files
+*.pro.user*
+CMakeLists.txt.user*
+
+# xemacs temporary files
+*.flc
+
+# Vim temporary files
+.*.swp
+
+# Visual Studio generated files
+*.ib_pdb_index
+*.idb
+*.ilk
+*.pdb
+*.sln
+*.suo
+*.vcproj
+*vcproj.*.*.user
+*.ncb
+*.sdf
+*.opensdf
+*.vcxproj
+*vcxproj.*
+
+# MinGW generated files
 *.Debug
 *.Release
-Makefile
-Makefile.*
-*.stash
+
+# Python byte code
+*.pyc
+
+# Binaries
+# --------
+*.dll
 *.exe
-*.qmlc
-*qmlcache.qrc
-.qtc_clangd/
+debug/
+release/
+
+# CMake generated files
+DelegateUI/
 build/
+bin/
+package/
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+install_manifest.txt
+Makefile
+
+# VS Code
+.vscode/
+.qmlls.ini
+
+# clang
+.cache/

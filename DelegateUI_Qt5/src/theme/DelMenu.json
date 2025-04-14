@@ -1,0 +1,12 @@
+{
+    "fontFamily": "@fontPrimaryFamily",
+    "fontSize": "@fontPrimarySize",
+    "colorTextDisabled": "@colorPrimaryTextDisabled",
+    "colorText": "@colorTextBase",
+    "colorTextActive": "@colorPrimaryTextHover",
+    "colorBgDisabled": "transparent",
+    "colorBg": "$alpha(@colorPrimaryBgActive, 0)",
+    "colorBgHover": "$alpha(@colorPrimaryBgActive, 0.1)",
+    "colorBgActive": "$alpha(@colorPrimaryBgActive, 0.2)",
+    "colorEdge": "$alpha(@colorTextBase, 0.1)"
+}

@@ -1,0 +1,10 @@
+{
+    "colorBar": "@colorTextTertiary",
+    "colorBarHover": "@colorTextTertiary",
+    "colorBarActive": "@colorTextSecondary",
+    "colorBg": "$alpha(@colorBgBase, 0.6)",
+    "colorBgHover": "$alpha(@colorBgBase, 0.4)",
+    "colorBgActive": "$alpha(@colorBgBase, 0.4)",
+    "colorIcon": "@colorTextTertiary",
+    "colorIconHover": "@colorTextPrimary"
+}

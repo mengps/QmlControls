@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/DelegateUI">
+        <file>shaders/delrate.frag</file>
+        <file>shaders/deltour.frag</file>
+    </qresource>
+</RCC>

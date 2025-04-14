@@ -1,0 +1,32 @@
+<RCC>
+    <qresource prefix="/DelegateUI">
+        <file>theme/Index.json</file>
+        <file>theme/DelButton.json</file>
+        <file>theme/DelCaptionButton.json</file>
+        <file>theme/DelCard.json</file>
+        <file>theme/DelCheckBox.json</file>
+        <file>theme/DelCollapse.json</file>
+        <file>theme/DelCopyableText.json</file>
+        <file>theme/DelDivider.json</file>
+        <file>theme/DelDrawer.json</file>
+        <file>theme/DelIconText.json</file>
+        <file>theme/DelInput.json</file>
+        <file>theme/DelMenu.json</file>
+        <file>theme/DelMessage.json</file>
+        <file>theme/DelPagination.json</file>
+        <file>theme/DelPopup.json</file>
+        <file>theme/DelRadio.json</file>
+        <file>theme/DelRate.json</file>
+        <file>theme/DelScrollBar.json</file>
+        <file>theme/DelSelect.json</file>
+        <file>theme/DelSlider.json</file>
+        <file>theme/DelSwitch.json</file>
+        <file>theme/DelTableView.json</file>
+        <file>theme/DelTabView.json</file>
+        <file>theme/DelTag.json</file>
+        <file>theme/DelTimeline.json</file>
+        <file>theme/DelTimePicker.json</file>
+        <file>theme/DelToolTip.json</file>
+        <file>theme/DelTour.json</file>
+    </qresource>
+</RCC>

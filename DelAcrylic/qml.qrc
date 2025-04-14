@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>DelAcrylic.qml</file>
-        <file>img.jpg</file>
-        <file>../DelSlider/DelSlider.qml</file>
-    </qresource>
-</RCC>

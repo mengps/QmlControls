@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/">
+        <file alias="main.qml">main.qml</file>
+        <file alias="WaveProgress.qml">WaveProgress.qml</file>
+    </qresource>
+</RCC>

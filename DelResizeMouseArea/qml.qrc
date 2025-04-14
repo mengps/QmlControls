@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>DelMoveMouseArea.qml</file>
-        <file>DelResizeMouseArea.qml</file>
-    </qresource>
-</RCC>

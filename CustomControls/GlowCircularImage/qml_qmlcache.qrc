@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/">
+        <file alias="main.qml">main.qml</file>
+        <file alias="CircularImage.qml">CircularImage.qml</file>
+        <file alias="GlowCircularImage.qml">GlowCircularImage.qml</file>
+        <file alias="GlowRectangle.qml">GlowRectangle.qml</file>
+        <file alias="test.png">test.png</file>
+    </qresource>
+</RCC>

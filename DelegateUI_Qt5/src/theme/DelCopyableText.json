@@ -1,0 +1,7 @@
+{
+    "fontFamily": "@fontPrimaryFamily",
+    "fontSize": "@fontPrimarySize",
+    "colorText": "@colorTextBase",
+    "colorSelectedText": "#fff",
+    "colorSelection": "@colorPrimary"
+}

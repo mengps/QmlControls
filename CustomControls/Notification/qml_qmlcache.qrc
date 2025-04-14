@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/">
+        <file alias="main.qml">main.qml</file>
+        <file alias="Notification.qml">Notification.qml</file>
+        <file alias="../common/DelegateUI-Icons.ttf">../common/DelegateUI-Icons.ttf</file>
+        <file alias="../common/DelIcon.qml">../common/DelIcon.qml</file>
+    </qresource>
+</RCC>
