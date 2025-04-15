@@ -46,7 +46,7 @@ jobs:
         id: strings
         shell: bash
         run: |
-          echo "build-output-dir=${{ github.workspace }}\build" >> "$GITHUB_OUTPUT"
+          echo "build-output-dir=${{ github.workspace }}\DelegateUI_Qt5\build" >> "$GITHUB_OUTPUT"
           
       - name: Build
         id: build

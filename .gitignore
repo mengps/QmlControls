@@ -76,7 +76,7 @@ debug/
 release/
 
 # CMake generated files
-DelegateUI/
+/DelegateUI_Qt5/DelegateUI/
 build/
 bin/
 package/

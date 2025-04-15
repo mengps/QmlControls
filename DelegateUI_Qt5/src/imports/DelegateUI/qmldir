@@ -1,0 +1,44 @@
+module DelegateUI
+plugin DelegateUI
+classname DelegateUIPlugin
+designersupported
+typeinfo plugins.qmltypes
+
+DelButton 1.0 Controls/DelButton.qml
+DelIconButton 1.0 Controls/DelIconButton.qml
+DelCaptionButton 1.0 Controls/DelCaptionButton.qml
+DelTourFocus 1.0 Controls/DelTourFocus.qml
+DelTourStep 1.0 Controls/DelTourStep.qml
+DelIconText 1.0 Controls/DelIconText.qml
+DelCopyableText 1.0 Controls/DelCopyableText.qml
+DelCaptionBar 1.0 Controls/DelCaptionBar.qml
+DelWindow 1.0 Controls/DelWindow.qml
+DelMenu 1.0 Controls/DelMenu.qml
+DelDivider 1.0 Controls/DelDivider.qml
+DelSwitch 1.0 Controls/DelSwitch.qml
+DelScrollBar 1.0 Controls/DelScrollBar.qml
+DelResizeMouseArea 1.0 Controls/DelResizeMouseArea.qml
+DelMoveMouseArea 1.0 Controls/DelMoveMouseArea.qml
+DelAcrylic 1.0 Controls/DelAcrylic.qml
+DelSlider 1.0 Controls/DelSlider.qml
+DelTabView 1.0 Controls/DelTabView.qml
+DelToolTip 1.0 Controls/DelToolTip.qml
+DelSelect 1.0 Controls/DelSelect.qml
+DelInput 1.0 Controls/DelInput.qml
+DelOTPInput 1.0 Controls/DelOTPInput.qml
+DelRate 1.0 Controls/DelRate.qml
+DelRadio 1.0 Controls/DelRadio.qml
+DelRadioBlock 1.0 Controls/DelRadioBlock.qml
+DelCheckBox 1.0 Controls/DelCheckBox.qml
+DelTimePicker 1.0 Controls/DelTimePicker.qml
+DelDrawer 1.0 Controls/DelDrawer.qml
+DelCollapse 1.0 Controls/DelCollapse.qml
+DelAvatar 1.0 Controls/DelAvatar.qml
+DelCard 1.0 Controls/DelCard.qml
+DelPagination 1.0 Controls/DelPagination.qml
+DelPopup 1.0 Controls/DelPopup.qml
+DelTimeline 1.0 Controls/DelTimeline.qml
+DelTag 1.0 Controls/DelTag.qml
+DelTableView 1.0 Controls/DelTableView.qml
+DelMessage 1.0 Controls/DelMessage.qml
+DelAutoComplete 1.0 Controls/DelAutoComplete.qml
