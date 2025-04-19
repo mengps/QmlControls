@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(QmlControls)
+project(CustomControls)
 
 set(BUILD_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 

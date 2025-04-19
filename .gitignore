@@ -13,7 +13,7 @@
 *.so
 *.so.*
 *_pch.h.cpp
-*_resource.rc
+# *_resource.rc
 *.qm
 .#*
 *.*#
@@ -31,7 +31,6 @@ ui_*.h
 qrc_*.cpp
 Thumbs.db
 *.res
-*.rc
 .qmake.cache
 .qmake.stash
 .qtc_clangd/
@@ -79,7 +78,8 @@ release/
 /DelegateUI_Qt5/DelegateUI/
 build/
 bin/
-package/
+/CustomControls/package
+/DelegateUI_Qt5/dist
 CMakeCache.txt
 CMakeFiles
 cmake_install.cmake
