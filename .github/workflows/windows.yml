@@ -22,7 +22,8 @@ jobs:
             msvc_arch: x64
 
     env:
-      fileName: 'QmlControls'
+      fileName1: 'CustomControls'
+      fileName2: 'DelegateUI_Qt5'
 
     steps:
       - name: Checkout repository
@@ -41,41 +42,49 @@ jobs:
           version: ${{ matrix.qt_ver }}
           arch: ${{ matrix.qt_arch }}
 
-      - name: Set reusable strings
-        # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
-        id: strings
-        shell: bash
-        run: |
-          echo "build-output-dir=${{ github.workspace }}\DelegateUI_Qt5\build" >> "$GITHUB_OUTPUT"
-          
-      - name: Build
-        id: build
+      - name: Build CustomControls
+        id: build1
         shell: cmd
         run: |
           call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" ${{ matrix.msvc_arch }}
           ninja --version
-          cmake -B ${{ steps.strings.outputs.build-output-dir }} -S ${{ github.workspace }} ^
+          cmake -B ${{ github.workspace }}\CustomControls\build -S ${{ github.workspace }}\CustomControls ^
             -DCMAKE_MESSAGE_LOG_LEVEL=STATUS ^
             -DCMAKE_C_COMPILER=${{ matrix.c_compiler }} ^
             -DCMAKE_CXX_COMPILER=${{ matrix.cxx_compiler }} ^
             -DCMAKE_BUILD_TYPE=${{ matrix.build_types }} ^
             -GNinja
-          cd ${{ steps.strings.outputs.build-output-dir }}
+          cd ${{ github.workspace }}\CustomControls\build
           cmake --build . --config ${{ matrix.build_types }} --parallel --target all --
           cmake --build . --config ${{ matrix.build_types }} --parallel --target Script-DeployRelease --
           
+      - name: Build DelegateUI_Qt5
+        id: build2
+        shell: cmd
+        run: |
+          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" ${{ matrix.msvc_arch }}
+          cmake -B ${{ github.workspace }}\DelegateUI_Qt5\build -S ${{ github.workspace }}\DelegateUI_Qt5 ^
+            -DCMAKE_MESSAGE_LOG_LEVEL=STATUS ^
+            -DCMAKE_C_COMPILER=${{ matrix.c_compiler }} ^
+            -DCMAKE_CXX_COMPILER=${{ matrix.cxx_compiler }} ^
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_types }} ^
+            -GNinja
+          cd ${{ github.workspace }}\DelegateUI_Qt5\build
+          cmake --build . --config ${{ matrix.build_types }} --parallel --target all --
+
           echo winSdkDir=%WindowsSdkDir% >> %GITHUB_ENV%
           echo winSdkVer=%WindowsSdkVersion% >> %GITHUB_ENV%
           echo vcToolsInstallDir=%VCToolsInstallDir% >> %GITHUB_ENV%
           echo vcToolsRedistDir=%VCToolsRedistDir% >> %GITHUB_ENV%
           
-      - name: Package
-        id: package      
+      - name: Package CustomControls
+        id: package1
         env:
-          archiveName: ${{ env.fileName }}-${{ matrix.qt_arch }}-${{ matrix.qt_ver }}
+          archiveName: ${{ env.fileName1 }}-${{ matrix.qt_arch }}-${{ matrix.qt_ver }}
           msvcArch: ${{ matrix.msvc_arch }}          
         shell: pwsh
         run: |
+          cd .\CustomControls
           #删除 vc_redist.x64.exe
           Remove-Item -Path "package\vc_redist.x64.exe" -ErrorAction SilentlyContinue
           # 拷贝vcRedist dll
@@ -89,19 +98,72 @@ jobs:
           # 记录 packageName 给后续 step
           $name = ${env:archiveName}
           echo "packageName=$name" >> $env:GITHUB_OUTPUT
-      
-      - name: Upload Artifact
+        
+      - name: Upload CustomControls Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.package.outputs.packageName }}
-          path: package
-
-      - name: Upload Release
+          name: ${{ steps.package1.outputs.packageName }}
+          path: CustomControls\package
+  
+      - name: Upload CustomControls Release
         if: startsWith(github.event.ref, 'refs/tags/')
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ steps.package.outputs.packageName }}.zip
-          asset_name: ${{ env.fileName }}_${{  github.ref_name }}_${{ matrix.os }}_Qt${{ matrix.qt_ver }}.zip
+          file: CustomControls\${{ steps.package1.outputs.packageName }}.zip
+          asset_name: ${{ env.fileName1 }}_${{  github.ref_name }}_${{ matrix.os }}_Qt${{ matrix.qt_ver }}.zip
+          tag: ${{ github.ref }}
+          overwrite: true 
+  
+      - name: Package DelegateUI_Qt5
+        id: package2
+        env:
+          archiveName: ${{ env.fileName2 }}-${{ matrix.qt_arch }}-${{ matrix.qt_ver }}
+          msvcArch: ${{ matrix.msvc_arch }}          
+        shell: pwsh
+        run: |
+          cd .\DelegateUI_Qt5
+          # 创建文件夹
+          New-Item -ItemType Directory dist
+          # 拷贝生成文件
+          Copy-Item bin\Release\* dist -Force -Recurse | Out-Null
+          # 删除Qt生成的多余文件
+          $excludeList = @("${{ env.fileName2 }}.qmltypes", "${{ env.fileName2 }}_qml_module_dir_map.qrc", "qmldir")
+          Remove-Item -Path dist -Include $excludeList -Recurse -Force
+          # 拷贝依赖
+          windeployqt --qmldir=. `
+            --plugindir=dist\plugins `
+            --no-opengl-sw `
+            --no-widgets `
+            --compiler-runtime `
+            dist\${env:targetName}
+          # 删除不必要的文件
+          $excludeList = @("*.qmlc", "*.ilk", "*.exp", "*.lib", "*.pdb")
+          Remove-Item -Path dist -Include $excludeList -Recurse -Force
+          # 拷贝vcRedist dll
+          $redistDll="{0}{1}\*.CRT\*.dll" -f $env:vcToolsRedistDir.Trim(),$env:msvcArch
+          Copy-Item $redistDll dist\
+          # 拷贝WinSDK dll
+          $sdkDll="{0}Redist\{1}ucrt\DLLs\{2}\*.dll" -f $env:winSdkDir.Trim(),$env:winSdkVer.Trim(),$env:msvcArch
+          Copy-Item $sdkDll dist\
+          # 打包zip
+          Compress-Archive -Path dist\* -DestinationPath "${env:archiveName}.zip"
+          # 记录 packageName 给后续 step
+          $name = ${env:archiveName}
+          echo "packageName=$name" >> $env:GITHUB_OUTPUT
+        
+      - name: Upload DelegateUI_Qt5 Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.package2.outputs.packageName }}
+          path: DelegateUI_Qt5\dist
+  
+      - name: Upload DelegateUI_Qt5 Release
+        if: startsWith(github.event.ref, 'refs/tags/')
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: DelegateUI_Qt5\${{ steps.package2.outputs.packageName }}.zip
+          asset_name: ${{ env.fileName2 }}_${{  github.ref_name }}_${{ matrix.os }}_Qt${{ matrix.qt_ver }}.zip
           tag: ${{ github.ref }}
           overwrite: true 
