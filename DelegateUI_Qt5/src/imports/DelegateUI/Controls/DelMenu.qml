@@ -56,6 +56,10 @@ Item {
                     }
                 }
             }
+            if (__rootItem.menuKey !== "" && __rootItem.menuKey === __private.gotoMenuKey) {
+                __rootItem.expandParent();
+                __menuButton.clicked();
+            }
         }
 
         required property var modelData
@@ -281,6 +285,7 @@ Item {
     }
 
     function gotoMenu(key) {
+        __private.gotoMenuKey = key;
         __private.gotoMenu(key);
     }
 
@@ -293,29 +298,29 @@ Item {
 
     function set(index, object) {
         if (index >= 0 && index < __listView.model.length) {
-            __listView.model[index] = object;
-            __listView.modelChanged();
+            __private.model[index] = object;
+            __listView.model = __private.model;
         }
     }
 
     function setProperty(index, propertyName, value) {
         if (index >= 0 && index < __listView.model.length) {
-            __listView.model[index][propertyName] = value;
-            __listView.modelChanged();
+            __private.model[index][propertyName] = value;
+            __listView.model = __private.model;
         }
     }
 
     function move(from, to, count = 1) {
         if (from >= 0 && from < __listView.model.length && to >= 0 && to < __listView.model.length) {
             const objects = __listView.model.splice(from, count);
-            __listView.model.splice(to, 0, ...objects);
-            __listView.modelChanged();
+            __private.model.splice(to, 0, ...objects);
+            __listView.model = __private.model;
         }
     }
 
     function insert(index, object) {
-        __listView.model.splice(index, 0, object);
-        __listView.modelChanged();
+        __private.model.splice(index, 0, object);
+        __listView.model = __private.model;
     }
 
     function append(object) {
@@ -325,12 +330,13 @@ Item {
 
     function remove(index, count = 1) {
         if (index >= 0 && index < __listView.model.length) {
-            __listView.model.splice(index, count);
-            __listView.modelChanged();
+            __private.model.splice(index, count);
+            __listView.model = __private.model;
         }
     }
 
     function clear() {
+        __private.gotoMenuKey = '';
         __listView.model = [];
     }
 
@@ -445,6 +451,7 @@ Item {
     Item {
         id: __private
         signal gotoMenu(key: string)
+        property string gotoMenuKey: ''
         property var model: []
         property var window: Window.window
         property var selectedItem: null
