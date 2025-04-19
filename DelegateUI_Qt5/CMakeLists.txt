@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(DelegateUI_Solution)
+project(DelegateUI_Qt5_Solution)
 
 option(BUILD_DELEGATEUI_GALLERY "Build DelegateUI Gallery." ON)
 option(BUILD_DELEGATEUI_STATIC_LIBRARY "Build DelegateUI as a static library." OFF)

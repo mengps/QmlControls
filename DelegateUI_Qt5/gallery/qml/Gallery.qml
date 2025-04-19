@@ -178,6 +178,11 @@ DelWindow {
                             key: "DelPopup",
                             label: qsTr("DelPopup 弹窗"),
                             source: "./Examples/General/ExpPopup.qml"
+                        },
+                        {
+                            key: "DelText",
+                            label: qsTr("DelText 文本"),
+                            source: "./Examples/General/ExpText.qml"
                         }
                     ]
                 },

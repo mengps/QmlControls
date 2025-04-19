@@ -482,15 +482,11 @@ Item {
             height: current ? Math.min(control.popupMaxHeight, current.realHeight + topPadding + bottomPadding) : 0
             padding: 5
             onAboutToShow: {
-                const pos = control.mapToItem(null, 0, 0);
-                x = (control.width - width) * 0.5;
-                if (__private.window.height > (pos.y + control.height + height + 6)){
-                    y = control.height + 6;
-                } else if (pos.y > height) {
-                    y = -height - 6;
-                } else {
-                    y = __private.window.height - (pos.y + height + 6);
+                let toX = control.width + 4;
+                if (parentPopup) {
+                    toX += parentPopup.width + 4;
                 }
+                x = toX;
             }
             property var current: null
             property var parentPopup: null

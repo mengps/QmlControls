@@ -2293,6 +2293,14 @@ Module {
             index: 30
             isReadonly: true
         }
+        Property {
+            name: "DelAutoComplete"
+            type: "QVariantMap"
+            read: "DelAutoComplete"
+            notify: "DelAutoCompleteChanged"
+            index: 31
+            isReadonly: true
+        }
         Signal { name: "animationEnabledChanged" }
         Signal { name: "PrimaryChanged" }
         Signal { name: "DelButtonChanged" }
@@ -2322,6 +2330,7 @@ Module {
         Signal { name: "DelTagChanged" }
         Signal { name: "DelTableViewChanged" }
         Signal { name: "DelMessageChanged" }
+        Signal { name: "DelAutoCompleteChanged" }
         Signal { name: "isDarkChanged" }
         Signal { name: "darkModeChanged" }
         Method { name: "reloadTheme" }

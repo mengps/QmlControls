@@ -33,6 +33,7 @@
         <file>imports/DelegateUI/Controls/DelTableView.qml</file>
         <file>imports/DelegateUI/Controls/DelTabView.qml</file>
         <file>imports/DelegateUI/Controls/DelTag.qml</file>
+        <file>imports/DelegateUI/Controls/DelText.qml</file>
         <file>imports/DelegateUI/Controls/DelTimeline.qml</file>
         <file>imports/DelegateUI/Controls/DelTimePicker.qml</file>
         <file>imports/DelegateUI/Controls/DelToolTip.qml</file>

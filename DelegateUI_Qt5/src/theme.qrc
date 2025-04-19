@@ -28,5 +28,6 @@
         <file>theme/DelTimePicker.json</file>
         <file>theme/DelToolTip.json</file>
         <file>theme/DelTour.json</file>
+        <file>theme/DelAutoComplete.json</file>
     </qresource>
 </RCC>

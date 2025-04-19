@@ -1,6 +1,6 @@
 import QtQuick 2.15
-import QtQuick.Templates 2.15 as T
 import QtQuick.Window 2.15
+import QtQuick.Templates 2.15 as T
 import DelegateUI 1.0
 
 DelInput {
@@ -14,26 +14,80 @@ DelInput {
     property string textRole: 'label'
     property string valueRole: 'value'
     property bool tooltipVisible: false
+    property alias clearIconSource: control.iconSource
+    property alias clearIconPosition: control.iconPosition
     property int defaulPopupMaxHeight: 240
 
+    property Component labelDelegate: Text {
+        text: textData
+        color: DelTheme.DelAutoComplete.colorItemText
+        font {
+            family: DelTheme.DelAutoComplete.fontFamily
+            pixelSize: DelTheme.DelAutoComplete.fontSize
+            weight: highlighted ? Font.DemiBold : Font.Normal
+        }
+        elide: Text.ElideRight
+        verticalAlignment: Text.AlignVCenter
+    }
+    property Component labelBgDelegate: Rectangle {
+        radius: 2
+        color: highlighted ? DelTheme.DelAutoComplete.colorItemBgActive :
+                             hovered ? DelTheme.DelAutoComplete.colorItemBgHover :
+                                       DelTheme.DelAutoComplete.colorItemBg;
+    }
+    property Component clearIconDelegate: DelIconText {
+        iconSource: control.clearIconSource
+        iconSize: control.iconSize
+        colorIcon: control.enabled ?
+                       __iconMouse.hovered ? DelTheme.DelAutoComplete.colorIconHover :
+                                             DelTheme.DelAutoComplete.colorIcon : DelTheme.DelAutoComplete.colorIconDisabled
+
+        Behavior on colorIcon { enabled: control.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationFast } }
+
+        MouseArea {
+            id: __iconMouse
+            anchors.fill: parent
+            hoverEnabled: true
+            cursorShape: parent.iconSource == control.clearIconSource ? Qt.PointingHandCursor : Qt.ArrowCursor
+            onEntered: hovered = true;
+            onExited: hovered = false;
+            property bool hovered: false
+            onClicked: control.clearInput();
+        }
+    }
+
+    clearIconPosition: DelInput.Position_Right
+    iconDelegate: clearIconDelegate
     onOptionsChanged: __private.model = options;
     onTextEdited: {
         control.search(text);
         __private.filter();
         if (__private.model.length > 0)
-            __private.openPopup();
+            control.openPopup();
         else
-            __popup.close();
+            control.closePopup();
+    }
+
+    function clearInput() {
+        control.clear();
+        control.search('');
+        __popupListView.currentIndex = -1;
+        closePopup();
+    }
+
+    function openPopup() {
+        if (!__popup.opened)
+            __popup.open();
+    }
+
+    function closePopup() {
+        __popup.close();
     }
 
     Item {
         id: __private
         property var window: Window.window
         property var model: []
-        function openPopup() {
-            if (!__popup.opened)
-                __popup.open();
-        }
         function filter() {
             __private.model = options.filter(option => filterOption(text, option) === true);
         }
@@ -42,7 +96,7 @@ DelInput {
     TapHandler {
         onTapped: {
             if (__private.model.length > 0)
-                __private.openPopup();
+                control.openPopup();
         }
     }
 
@@ -87,6 +141,7 @@ DelInput {
         contentItem: ListView {
             id: __popupListView
             clip: true
+            currentIndex: -1
             model: __private.model
             boundsBehavior: Flickable.StopAtBounds
             delegate: T.ItemDelegate {
@@ -96,7 +151,7 @@ DelInput {
                 required property int index
 
                 property var textData: modelData[control.textRole]
-                property var valueData: modelData[control.valueRole]
+                property var valueData: modelData[control.valueRole] ?? textData
 
                 width: __popupListView.width
                 height: implicitContentHeight + topPadding + bottomPadding
@@ -104,27 +159,26 @@ DelInput {
                 rightPadding: 8
                 topPadding: 4
                 bottomPadding: 4
-                contentItem: Text {
-                    text: __popupDelegate.textData
-                    color: DelTheme.DelSelect.colorItemText
-                    font {
-                        family: DelTheme.DelSelect.fontFamily
-                        pixelSize: DelTheme.DelSelect.fontSize
-                        weight: highlighted ? Font.DemiBold : Font.Normal
-                    }
-                    elide: Text.ElideRight
-                    verticalAlignment: Text.AlignVCenter
+                contentItem: Loader {
+                    sourceComponent: control.labelDelegate
+                    property alias textData: __popupDelegate.textData
+                    property alias valueData: __popupDelegate.valueData
+                    property alias modelData: __popupDelegate.modelData
+                    property alias hovered: __popupDelegate.hovered
+                    property alias highlighted: __popupDelegate.highlighted
                 }
-                background: Rectangle {
-                    radius: 2
-                    color: highlighted ? DelTheme.DelSelect.colorItemBgActive :
-                                        hovered ? DelTheme.DelSelect.colorItemBgHover :
-                                                  DelTheme.DelSelect.colorItemBg;
+                background: Loader {
+                    sourceComponent: control.labelBgDelegate
+                    property alias textData: __popupDelegate.textData
+                    property alias valueData: __popupDelegate.valueData
+                    property alias modelData: __popupDelegate.modelData
+                    property alias hovered: __popupDelegate.hovered
+                    property alias highlighted: __popupDelegate.highlighted
                 }
                 highlighted: __popupListView.currentIndex === index
                 onClicked: {
                     control.select(__popupDelegate.modelData);
-                    control.text = __popupDelegate.textData;
+                    control.text = __popupDelegate.valueData;
                     __popupListView.currentIndex = index;
                     __popup.close();
                     __private.filter();

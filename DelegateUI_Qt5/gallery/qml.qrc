@@ -46,5 +46,6 @@
         <file>qml/Controls/CodeBox.qml</file>
         <file>qml/Controls/CodeRunner.qml</file>
         <file>qml/Controls/Description.qml</file>
+        <file>qml/Examples/General/ExpText.qml</file>
     </qresource>
 </RCC>

@@ -1,5 +1,5 @@
 import QtQuick 2.15
-import QtQuick.Layouts 1.15 
+import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import DelegateUI 1.0
 
@@ -43,6 +43,7 @@ colorItemBg | color | 输入项背景颜色
 radiusBg | int | 输入项背景半径
 \n支持的函数：\n
 - \`getInput()\` 获取所有项输入文本和\n
+- \`inputAtIndex(index: int)\` 获取指定索引 \`index\` 处的文本\n
 支持的信号：\n
 - \`finished(input: string)\` 最后一个项输入完成时发出\n
   - \`input\` 所有项输入文本和\n
@@ -69,8 +70,8 @@ radiusBg | int | 输入项背景半径
 通过 \`itemValidator\` 属性设置验证器。\n
                        `)
             code: `
-                import QtQuick 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import DelegateUI
 
                 Column {
                     spacing: 10
@@ -117,8 +118,8 @@ radiusBg | int | 输入项背景半径
 格式化器是形如：\`function(text: string): string { }\` 的函数。\n
                        `)
             code: `
-                import QtQuick 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import DelegateUI
 
                 Column {
                     spacing: 10
@@ -149,8 +150,8 @@ radiusBg | int | 输入项背景半径
 通过 \`currentInput\` 属性获取当前所有项输入文本和。\n
                        `)
             code: `
-                import QtQuick 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import DelegateUI
 
                 Row {
                     spacing: 10
@@ -194,8 +195,8 @@ radiusBg | int | 输入项背景半径
 通过 \`dividerDelegate\` 属性设置分隔器代理(用于分隔输入项)。\n
                        `)
             code: `
-                import QtQuick 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import DelegateUI
 
                 Row {
                     spacing: 10
