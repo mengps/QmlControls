@@ -1,6 +1,11 @@
 [
     {
         "isNew": false,
+        "name": "DelTableView",
+        "desc": "添加 clear() 函数。\n添加 appendRow() 函数。\n添加 getRow() 函数。\n添加 insertRow() 函数。\n添加 moveRow() 函数。\n添加 removeRow() 函数。\n添加 setRow() 函数。\n"
+    },
+    {
+        "isNew": false,
         "name": "DelOTPInput",
         "desc": "新增 inputAtIndex() 函数。"
     },
