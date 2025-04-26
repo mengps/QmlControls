@@ -10,6 +10,7 @@
         <file>imports/DelegateUI/Controls/DelCheckBox.qml</file>
         <file>imports/DelegateUI/Controls/DelCollapse.qml</file>
         <file>imports/DelegateUI/Controls/DelCopyableText.qml</file>
+        <file>imports/DelegateUI/Controls/DelDatePicker.qml</file>
         <file>imports/DelegateUI/Controls/DelDivider.qml</file>
         <file>imports/DelegateUI/Controls/DelDrawer.qml</file>
         <file>imports/DelegateUI/Controls/DelIconButton.qml</file>

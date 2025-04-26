@@ -1,4 +1,4 @@
-#include "delegateuiplugin.h"
+#include "delegateui_plugin.h"
 
 #include <delapi.h>
 #include <delapp.h>

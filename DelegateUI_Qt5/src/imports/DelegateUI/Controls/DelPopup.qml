@@ -42,9 +42,9 @@ T.Popup {
     background: Item {
         DropShadow {
             anchors.fill: __popupRect
-            radius: 8.0
+            radius: 16
             samples: 17
-            color: control.colorShadow
+            color: DelThemeFunctions.alpha(control.colorShadow, DelTheme.isDark ? 0.1 : 0.2)
             source: __popupRect
         }
 

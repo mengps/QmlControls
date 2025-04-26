@@ -30,6 +30,11 @@ Module {
             type: "QString"
             Parameter { name: "fileName"; type: "QString" }
         }
+        Method {
+            name: "getWeekNumber"
+            type: "int"
+            Parameter { name: "date"; type: "QDate" }
+        }
     }
     Component {
         file: "delapp.h"
@@ -2301,6 +2306,14 @@ Module {
             index: 31
             isReadonly: true
         }
+        Property {
+            name: "DelDatePicker"
+            type: "QVariantMap"
+            read: "DelDatePicker"
+            notify: "DelDatePickerChanged"
+            index: 32
+            isReadonly: true
+        }
         Signal { name: "animationEnabledChanged" }
         Signal { name: "PrimaryChanged" }
         Signal { name: "DelButtonChanged" }
@@ -2331,19 +2344,28 @@ Module {
         Signal { name: "DelTableViewChanged" }
         Signal { name: "DelMessageChanged" }
         Signal { name: "DelAutoCompleteChanged" }
+        Signal { name: "DelDatePickerChanged" }
         Signal { name: "isDarkChanged" }
         Signal { name: "darkModeChanged" }
         Method { name: "reloadTheme" }
         Method {
-            name: "installThemePrimaryColor"
+            name: "installThemeColorTextBase"
+            Parameter { name: "lightAndDark"; type: "QString" }
+        }
+        Method {
+            name: "installThemeColorBgBase"
+            Parameter { name: "lightAndDark"; type: "QString" }
+        }
+        Method {
+            name: "installThemePrimaryColorBase"
             Parameter { name: "color"; type: "QColor" }
         }
         Method {
-            name: "installThemePrimaryFontSize"
+            name: "installThemePrimaryFontSizeBase"
             Parameter { name: "fontSize"; type: "int" }
         }
         Method {
-            name: "installThemePrimaryFontFamilies"
+            name: "installThemePrimaryFontFamiliesBase"
             Parameter { name: "families"; type: "QString" }
         }
         Method {
@@ -2418,6 +2440,29 @@ Module {
         Method {
             name: "genColor"
             type: "QColor"
+            isList: true
+            isCloned: true
+            Parameter { name: "color"; type: "QColor" }
+        }
+        Method {
+            name: "genColorString"
+            type: "QString"
+            isList: true
+            Parameter { name: "color"; type: "QColor" }
+            Parameter { name: "light"; type: "bool" }
+            Parameter { name: "background"; type: "QColor" }
+        }
+        Method {
+            name: "genColorString"
+            type: "QString"
+            isList: true
+            isCloned: true
+            Parameter { name: "color"; type: "QColor" }
+            Parameter { name: "light"; type: "bool" }
+        }
+        Method {
+            name: "genColorString"
+            type: "QString"
             isList: true
             isCloned: true
             Parameter { name: "color"; type: "QColor" }

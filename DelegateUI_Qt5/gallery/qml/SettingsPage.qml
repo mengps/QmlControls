@@ -4,6 +4,8 @@ import QtGraphicalEffects 1.15
 import QtQuick.Controls 2.15
 import DelegateUI 1.0
 
+import "./Controls"
+
 DelWindow {
     id: root
     width: 400
@@ -28,74 +30,6 @@ DelWindow {
         }
     }
     captionBar.closeCallback: () => settingsLoader.visible = false;
-
-    component MySlider: RowLayout {
-        height: 30
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.margins: 30
-        spacing: 20
-
-        property alias label: __label
-        property alias slider: __slider
-        property bool scaleVisible: false
-
-        Text {
-            id: __label
-            Layout.preferredWidth: DelTheme.Primary.fontPrimarySize * 5
-            Layout.fillHeight: true
-            verticalAlignment: Text.AlignVCenter
-            font {
-                family: DelTheme.Primary.fontPrimaryFamily
-                pixelSize: DelTheme.Primary.fontPrimarySize
-            }
-            color: DelTheme.Primary.colorTextBase
-        }
-
-        Item {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-
-            Row {
-                anchors.top: parent.top
-                anchors.topMargin: 6
-                anchors.horizontalCenter: parent.horizontalCenter
-                visible: scaleVisible
-                spacing: (parent.width - 14 - ((__repeater.count - 1) * 4)) / (__repeater.count - 1)
-
-                Repeater {
-                    id: __repeater
-                    model: Math.round((__slider.max - __slider.min) / __slider.stepSize) + 1
-                    delegate: Rectangle {
-                        width: 4
-                        height: 6
-                        radius: 2
-                        color: __slider.colorBg
-
-                        Text {
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.top: parent.bottom
-                            anchors.topMargin: 8
-                            text: (__slider.stepSize) * index + __slider.min
-                            font {
-                                family: DelTheme.Primary.fontPrimaryFamily
-                                pixelSize: DelTheme.Primary.fontPrimarySize
-                            }
-                            color: DelTheme.Primary.colorTextBase
-                        }
-                    }
-                }
-            }
-
-            DelSlider {
-                id: __slider
-                anchors.fill: parent
-                min: 0.0
-                max: 1.0
-                stepSize: 0.1
-            }
-        }
-    }
 
     Item {
         anchors.fill: parent
@@ -148,7 +82,7 @@ DelWindow {
                 label.text: qsTr("背景透明度")
                 slider.value: galleryBackground.opacity
                 slider.snapMode: DelSlider.SnapOnRelease
-                /*slider.onFirstMoved: {
+                slider.onFirstMoved: {
                     galleryBackground.opacity = slider.currentValue;
                 }
                 slider.handleToolTipDelegate: DelToolTip {
@@ -156,7 +90,7 @@ DelWindow {
                     delay: 100
                     text: bgOpacitySlider.slider.currentValue.toFixed(1)
                     visible: handlePressed || handleHovered
-                }*/
+                }
             }
 
             MySlider {
@@ -166,10 +100,10 @@ DelWindow {
                 slider.stepSize: 4
                 slider.value: DelTheme.Primary.fontPrimarySizeHeading5
                 slider.snapMode: DelSlider.SnapAlways
-                /*slider.onFirstReleased: {
-                    DelTheme.installThemePrimaryFontSize(slider.currentValue);
+                slider.onFirstReleased: {
+                    DelTheme.installThemePrimaryFontSizeBase(slider.currentValue);
                 }
-                scaleVisible: true*/
+                scaleVisible: true
             }
 
             Row {

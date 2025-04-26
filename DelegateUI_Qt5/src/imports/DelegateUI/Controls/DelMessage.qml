@@ -163,9 +163,9 @@ Item {
 
                 DropShadow {
                     anchors.fill: __rootItem
-                    radius: 8.0
+                    radius: 16
                     samples: 17
-                    color: control.colorBgShadow
+                    color: DelThemeFunctions.alpha(control.colorBgShadow, DelTheme.isDark ? 0.1 : 0.2)
                     source: __bgRect
                 }
 

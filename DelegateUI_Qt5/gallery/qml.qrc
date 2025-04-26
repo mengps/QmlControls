@@ -46,6 +46,8 @@
         <file>qml/Controls/CodeBox.qml</file>
         <file>qml/Controls/CodeRunner.qml</file>
         <file>qml/Controls/Description.qml</file>
+        <file>qml/Controls/MySlider.qml</file>
         <file>qml/Examples/General/ExpText.qml</file>
+        <file>qml/Examples/DataEntry/ExpDatePicker.qml</file>
     </qresource>
 </RCC>

@@ -26,7 +26,7 @@ QList<qreal> DelSizeGenerator::generateFontSize(qreal fontSizeBase)
     }
     fontSizes[1] = fontSizeBase;
 
-    return fontSizes
+    return fontSizes;
 #else
     QVector<qreal> fontSizes(10);
 

@@ -44,7 +44,6 @@ DelWindow {
             if (created)
                 created.destroy();
             created = Qt.createQmlObject(codeEdit.text, runnerBlock);
-            created.parent = runnerBlock;
         } catch (error) {
             errorEdit.text = error.message;
         }
@@ -68,17 +67,27 @@ DelWindow {
             width: parent.width * 0.4
             height: parent.height
 
-            ScrollView {
+            Flickable {
                 width: parent.width
                 anchors.top: parent.top
                 anchors.bottom: divider1.top
+                contentWidth: codeEdit.width
+                contentHeight: codeEdit.height
                 ScrollBar.vertical: DelScrollBar { }
                 ScrollBar.horizontal: DelScrollBar { }
+                clip: true
 
-                DelCopyableText {
+                TextArea {
                     id: codeEdit
-                    readOnly: false
-                    wrapMode: Text.WrapAnywhere
+                    color: DelTheme.DelCopyableText.colorText
+                    selectByMouse: true
+                    selectByKeyboard: true
+                    selectedTextColor: DelTheme.DelCopyableText.colorSelectedText
+                    selectionColor: DelTheme.DelCopyableText.colorSelection
+                    font {
+                        family: DelTheme.DelCopyableText.fontFamily
+                        pixelSize: DelTheme.DelCopyableText.fontSize
+                    }
                 }
             }
 

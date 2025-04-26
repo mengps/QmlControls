@@ -1,5 +1,5 @@
 <div align=center>
-<img width=64 src="./common/delegateui_icon.svg">
+<img width=64 src="./CustomControls/common/delegateui_icon.svg">
 
 # 「 DelegateUI 」 基于 Qml 的现代 UI
 
@@ -72,7 +72,7 @@ Qt Qml 的 Ant 设计组件库
  WaveProgress | 动态的水波进度条 | `Qt5` | <div align=center><img src="./demonstrate/WaveProgress.gif" width="240" height="200" /></div>
 
 ### 以下控件来自 [DelegateUI](https://github.com/mengps/DelegateUI)
-### 需要该部分控件文档请构建 [DelegateUI Gallery](https://github.com/mengps/DelegateUI)
+### 需要该部分控件文档请构建 [DelegateUI_Qt5 Gallery](./DelegateUI_Qt5)
 
  名称 | 说明 | 支持 | 示例
  ---------|----------|---------|--------- 
@@ -107,6 +107,8 @@ Qt Qml 的 Ant 设计组件库
  DelTimeline | 时间轴，可垂直展示的时间流信息。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTimeline.png" width="250" height="200" /></div>
  DelTag | 标签，进行标记和分类的小标签。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTag.png" width="250" height="200" /></div>
  DelTableView | 表格，用于展示行列数据。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelTableView.png" width="250" height="200" /></div>
+ DelAutoComplete | 提供输入框自动完成功能。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelAutoComplete.png" width="250" height="200" /></div>
+ DelDatePicker | 日期选择框，输入或选择日期的控件。 | `Qt5` `Qt6` | <div align=center><img src="./demonstrate/DelDatePicker.png" width="250" height="200" /></div>
 
 
 ## 许可证

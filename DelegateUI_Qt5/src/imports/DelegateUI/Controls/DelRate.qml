@@ -67,9 +67,9 @@ Item {
 
         DropShadow {
             anchors.fill: __item
-            radius: 8.0
+            radius: 16
             samples: 17
-            color: control.colorToolTipText
+            color: DelThemeFunctions.alpha(control.colorToolTipText, DelTheme.isDark ? 0.1 : 0.2)
             source: __item
         }
 

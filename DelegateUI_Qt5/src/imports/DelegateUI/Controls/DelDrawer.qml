@@ -70,9 +70,9 @@ T.Drawer {
     background: Item {
         DropShadow {
             anchors.fill: __rect
-            radius: 8.0
+            radius: 16
             samples: 17
-            color: DelTheme.DelDrawer.colorShadow
+            color: DelThemeFunctions.alpha(DelTheme.DelDrawer.colorShadow, DelTheme.isDark ? 0.1 : 0.2)
             source: __rect
         }
 

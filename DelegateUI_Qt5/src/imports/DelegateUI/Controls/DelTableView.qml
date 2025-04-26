@@ -397,14 +397,17 @@ DelRectangle {
     }
 
     function filter() {
+        let changed = false;
         let model = [...initModel];
         columns.forEach(
                     object => {
                         if (object.hasOwnProperty('onFilter') && object.hasOwnProperty('filterInput')) {
                             model = model.filter((record, index) => object.onFilter(object.filterInput, record));
+                            changed = true;
                         }
                     });
-        __private.model = model;
+        if (changed)
+            __private.model = model;
 
         /*! 根据 activeSorter 列排序 */
         columns.forEach(
@@ -453,7 +456,7 @@ DelRectangle {
 
     function appendRow(object) {
         __private.model.push(object);
-        __cellModel.appendRow( __private.toCellObject(object));
+        __cellModel.appendRow(__private.toCellObject(object));
     }
 
     function getRow(rowIndex) {
@@ -465,7 +468,7 @@ DelRectangle {
 
     function insertRow(rowIndex, object) {
         __private.model.splice(rowIndex, 0, object);
-        __cellModel.insertRow(rowIndex,  __private.toCellObject(object));
+        __cellModel.insertRow(rowIndex, __private.toCellObject(object));
     }
 
     function moveRow(fromRowIndex, toRowIndex, count = 1) {
