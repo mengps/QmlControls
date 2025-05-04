@@ -2049,6 +2049,10 @@ Module {
             name: "DarkMode"
             values: ["Light", "Dark", "System"]
         }
+        Enum {
+            name: "TextRenderType"
+            values: ["QtRendering", "NativeRendering", "CurveRendering"]
+        }
         Property {
             name: "isDark"
             type: "bool"
@@ -2067,19 +2071,28 @@ Module {
             isFinal: true
         }
         Property {
+            name: "textRenderType"
+            type: "TextRenderType"
+            read: "textRenderType"
+            write: "setTextRenderType"
+            notify: "textRenderTypeChanged"
+            index: 2
+            isFinal: true
+        }
+        Property {
             name: "animationEnabled"
             type: "bool"
             read: "animationEnabled"
             write: "setAnimationEnabled"
             notify: "animationEnabledChanged"
-            index: 2
+            index: 3
         }
         Property {
             name: "Primary"
             type: "QVariantMap"
             read: "Primary"
             notify: "PrimaryChanged"
-            index: 3
+            index: 4
             isReadonly: true
         }
         Property {
@@ -2087,7 +2100,7 @@ Module {
             type: "QVariantMap"
             read: "DelButton"
             notify: "DelButtonChanged"
-            index: 4
+            index: 5
             isReadonly: true
         }
         Property {
@@ -2095,7 +2108,7 @@ Module {
             type: "QVariantMap"
             read: "DelIconText"
             notify: "DelIconTextChanged"
-            index: 5
+            index: 6
             isReadonly: true
         }
         Property {
@@ -2103,7 +2116,7 @@ Module {
             type: "QVariantMap"
             read: "DelCopyableText"
             notify: "DelCopyableTextChanged"
-            index: 6
+            index: 7
             isReadonly: true
         }
         Property {
@@ -2111,7 +2124,7 @@ Module {
             type: "QVariantMap"
             read: "DelCaptionButton"
             notify: "DelCaptionButtonChanged"
-            index: 7
+            index: 8
             isReadonly: true
         }
         Property {
@@ -2119,7 +2132,7 @@ Module {
             type: "QVariantMap"
             read: "DelTour"
             notify: "DelTourChanged"
-            index: 8
+            index: 9
             isReadonly: true
         }
         Property {
@@ -2127,7 +2140,7 @@ Module {
             type: "QVariantMap"
             read: "DelMenu"
             notify: "DelMenuChanged"
-            index: 9
+            index: 10
             isReadonly: true
         }
         Property {
@@ -2135,7 +2148,7 @@ Module {
             type: "QVariantMap"
             read: "DelDivider"
             notify: "DelDividerChanged"
-            index: 10
+            index: 11
             isReadonly: true
         }
         Property {
@@ -2143,7 +2156,7 @@ Module {
             type: "QVariantMap"
             read: "DelSwitch"
             notify: "DelSwitchChanged"
-            index: 11
+            index: 12
             isReadonly: true
         }
         Property {
@@ -2151,7 +2164,7 @@ Module {
             type: "QVariantMap"
             read: "DelScrollBar"
             notify: "DelScrollBarChanged"
-            index: 12
+            index: 13
             isReadonly: true
         }
         Property {
@@ -2159,7 +2172,7 @@ Module {
             type: "QVariantMap"
             read: "DelSlider"
             notify: "DelSliderChanged"
-            index: 13
+            index: 14
             isReadonly: true
         }
         Property {
@@ -2167,7 +2180,7 @@ Module {
             type: "QVariantMap"
             read: "DelTabView"
             notify: "DelTabViewChanged"
-            index: 14
+            index: 15
             isReadonly: true
         }
         Property {
@@ -2175,7 +2188,7 @@ Module {
             type: "QVariantMap"
             read: "DelToolTip"
             notify: "DelToolTipChanged"
-            index: 15
+            index: 16
             isReadonly: true
         }
         Property {
@@ -2183,7 +2196,7 @@ Module {
             type: "QVariantMap"
             read: "DelSelect"
             notify: "DelSelectChanged"
-            index: 16
+            index: 17
             isReadonly: true
         }
         Property {
@@ -2191,7 +2204,7 @@ Module {
             type: "QVariantMap"
             read: "DelInput"
             notify: "DelInputChanged"
-            index: 17
+            index: 18
             isReadonly: true
         }
         Property {
@@ -2199,7 +2212,7 @@ Module {
             type: "QVariantMap"
             read: "DelRate"
             notify: "DelRateChanged"
-            index: 18
+            index: 19
             isReadonly: true
         }
         Property {
@@ -2207,7 +2220,7 @@ Module {
             type: "QVariantMap"
             read: "DelRadio"
             notify: "DelRadioChanged"
-            index: 19
+            index: 20
             isReadonly: true
         }
         Property {
@@ -2215,7 +2228,7 @@ Module {
             type: "QVariantMap"
             read: "DelCheckBox"
             notify: "DelCheckBoxChanged"
-            index: 20
+            index: 21
             isReadonly: true
         }
         Property {
@@ -2223,7 +2236,7 @@ Module {
             type: "QVariantMap"
             read: "DelTimePicker"
             notify: "DelTimePickerChanged"
-            index: 21
+            index: 22
             isReadonly: true
         }
         Property {
@@ -2231,7 +2244,7 @@ Module {
             type: "QVariantMap"
             read: "DelDrawer"
             notify: "DelDrawerChanged"
-            index: 22
+            index: 23
             isReadonly: true
         }
         Property {
@@ -2239,7 +2252,7 @@ Module {
             type: "QVariantMap"
             read: "DelCollapse"
             notify: "DelCollapseChanged"
-            index: 23
+            index: 24
             isReadonly: true
         }
         Property {
@@ -2247,7 +2260,7 @@ Module {
             type: "QVariantMap"
             read: "DelCard"
             notify: "DelCardChanged"
-            index: 24
+            index: 25
             isReadonly: true
         }
         Property {
@@ -2255,7 +2268,7 @@ Module {
             type: "QVariantMap"
             read: "DelPagination"
             notify: "DelPaginationChanged"
-            index: 25
+            index: 26
             isReadonly: true
         }
         Property {
@@ -2263,7 +2276,7 @@ Module {
             type: "QVariantMap"
             read: "DelPopup"
             notify: "DelPopupChanged"
-            index: 26
+            index: 27
             isReadonly: true
         }
         Property {
@@ -2271,7 +2284,7 @@ Module {
             type: "QVariantMap"
             read: "DelTimeline"
             notify: "DelTimelineChanged"
-            index: 27
+            index: 28
             isReadonly: true
         }
         Property {
@@ -2279,7 +2292,7 @@ Module {
             type: "QVariantMap"
             read: "DelTag"
             notify: "DelTagChanged"
-            index: 28
+            index: 29
             isReadonly: true
         }
         Property {
@@ -2287,7 +2300,7 @@ Module {
             type: "QVariantMap"
             read: "DelTableView"
             notify: "DelTableViewChanged"
-            index: 29
+            index: 30
             isReadonly: true
         }
         Property {
@@ -2295,7 +2308,7 @@ Module {
             type: "QVariantMap"
             read: "DelMessage"
             notify: "DelMessageChanged"
-            index: 30
+            index: 31
             isReadonly: true
         }
         Property {
@@ -2303,7 +2316,7 @@ Module {
             type: "QVariantMap"
             read: "DelAutoComplete"
             notify: "DelAutoCompleteChanged"
-            index: 31
+            index: 32
             isReadonly: true
         }
         Property {
@@ -2311,7 +2324,15 @@ Module {
             type: "QVariantMap"
             read: "DelDatePicker"
             notify: "DelDatePickerChanged"
-            index: 32
+            index: 33
+            isReadonly: true
+        }
+        Property {
+            name: "DelProgress"
+            type: "QVariantMap"
+            read: "DelProgress"
+            notify: "DelProgressChanged"
+            index: 34
             isReadonly: true
         }
         Signal { name: "animationEnabledChanged" }
@@ -2345,8 +2366,10 @@ Module {
         Signal { name: "DelMessageChanged" }
         Signal { name: "DelAutoCompleteChanged" }
         Signal { name: "DelDatePickerChanged" }
+        Signal { name: "DelProgressChanged" }
         Signal { name: "isDarkChanged" }
         Signal { name: "darkModeChanged" }
+        Signal { name: "textRenderTypeChanged" }
         Method { name: "reloadTheme" }
         Method {
             name: "installThemeColorTextBase"

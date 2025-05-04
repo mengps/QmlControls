@@ -28,6 +28,7 @@
         <file>qml/Examples/Effect/ExpAcrylic.qml</file>
         <file>qml/Examples/Feedback/ExpDrawer.qml</file>
         <file>qml/Examples/Feedback/ExpMessage.qml</file>
+        <file>qml/Examples/Feedback/ExpProgress.qml</file>
         <file>qml/Examples/Feedback/ExpWatermark.qml</file>
         <file>qml/Examples/General/ExpButton.qml</file>
         <file>qml/Examples/General/ExpCaptionButton.qml</file>

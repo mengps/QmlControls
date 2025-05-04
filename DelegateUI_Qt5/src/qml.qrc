@@ -23,6 +23,7 @@
         <file>imports/DelegateUI/Controls/DelOTPInput.qml</file>
         <file>imports/DelegateUI/Controls/DelPagination.qml</file>
         <file>imports/DelegateUI/Controls/DelPopup.qml</file>
+        <file>imports/DelegateUI/Controls/DelProgress.qml</file>
         <file>imports/DelegateUI/Controls/DelRadio.qml</file>
         <file>imports/DelegateUI/Controls/DelRadioBlock.qml</file>
         <file>imports/DelegateUI/Controls/DelRate.qml</file>

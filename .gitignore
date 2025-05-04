@@ -79,7 +79,7 @@ release/
 build/
 bin/
 /CustomControls/package
-/DelegateUI_Qt5/dist
+/DelegateUI_Qt5/package
 CMakeCache.txt
 CMakeFiles
 cmake_install.cmake

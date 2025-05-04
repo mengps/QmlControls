@@ -2,6 +2,8 @@
 #include <QQmlApplicationEngine>
 #include <QQuickWindow>
 
+#include "delapp.h"
+
 #ifdef BUILD_DELEGATEUI_STATIC_LIBRARY
 #include <QtQml/qqmlextensionplugin.h>
 Q_IMPORT_QML_PLUGIN(DelegateUI)
@@ -24,6 +26,7 @@ int main(int argc, char *argv[])
     app.setApplicationDisplayName("DelegateUI Gallery");
 
     QQmlApplicationEngine engine;
+    DelApp::initialize(&engine);
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     const QUrl url(u"qrc:/Gallery/qml/Gallery.qml"_qs);

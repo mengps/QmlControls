@@ -44,3 +44,4 @@ DelMessage 1.0 Controls/DelMessage.qml
 DelAutoComplete 1.0 Controls/DelAutoComplete.qml
 DelText 1.0 Controls/DelText.qml
 DelDatePicker 1.0 Controls/DelDatePicker.qml
+DelProgress 1.0 Controls/DelProgress.qml

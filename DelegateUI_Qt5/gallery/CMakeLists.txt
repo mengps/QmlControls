@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-set(DELEGATEUI_VERSION 0.2.8.0)
+set(DELEGATEUI_VERSION 0.2.9.0)
 
 project(Gallery VERSION ${DELEGATEUI_VERSION} LANGUAGES CXX)
 
@@ -50,7 +50,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE  #VSCode 打印需要屏蔽此属性
+    WIN32_EXECUTABLE TRUE #VSCode 打印需要屏蔽此属性
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
@@ -73,19 +73,8 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
         set(QT_DEPLOY_ARGS
             ${CMAKE_SOURCE_DIR}/package/${PROJECT_NAME}.app
             --qmldir=${CMAKE_CURRENT_LIST_DIR}/qml
-            --no-opengl-sw
             --no-widgets
             --no-virtualkeyboard
-            --no-quick3dutils
-            --no-quickcontrols2windowsstyleimpl
-            --no-quickcontrols2fusion
-            --no-quickcontrols2fusionstyleimpl
-            --no-quickcontrols2material
-            --no-quickcontrols2materialstyleimpl
-            --no-quickcontrols2universal
-            --no-quickcontrols2universalstyleimpl
-            --no-quickcontrols2imagine
-            --no-quickcontrols2imaginestyleimpl
             --no-translations
         )
         add_custom_target(Script-DeployRelease
@@ -103,19 +92,8 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
         set(QT_DEPLOY_ARGS
             --qmldir=${CMAKE_CURRENT_LIST_DIR}/qml
             --plugindir=${CMAKE_SOURCE_DIR}/package/plugins
-            --no-opengl-sw
             --no-widgets
             --no-virtualkeyboard
-            --no-quick3dutils
-            --no-quickcontrols2windowsstyleimpl
-            --no-quickcontrols2fusion
-            --no-quickcontrols2fusionstyleimpl
-            --no-quickcontrols2material
-            --no-quickcontrols2materialstyleimpl
-            --no-quickcontrols2universal
-            --no-quickcontrols2universalstyleimpl
-            --no-quickcontrols2imagine
-            --no-quickcontrols2imaginestyleimpl
             --no-translations
             --compiler-runtime
             ${CMAKE_SOURCE_DIR}/package/${PROJECT_NAME}.exe
@@ -126,7 +104,6 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
                 COMMAND ${CMAKE_COMMAND} -E rm -f "${CMAKE_SOURCE_DIR}/package/${PROJECT_NAME}.qmltypes"
                 COMMAND ${CMAKE_COMMAND} -E rm -f "${CMAKE_SOURCE_DIR}/package/${PROJECT_NAME}_qml_module_dir_map.qrc"
                 COMMAND ${CMAKE_COMMAND} -E rm -f "${CMAKE_SOURCE_DIR}/package/qmldir"
-                COMMAND ${CMAKE_COMMAND} -E copy ${Qt6_DIR}/../../../bin/DelegateUI.dll ${CMAKE_SOURCE_DIR}/package
                 COMMAND ${QT_DEPLOY_QT} ${QT_DEPLOY_ARGS}
                 COMMENT "Windows Deploying Qt Dependencies After Build........."
                 SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt

@@ -48,7 +48,8 @@ Rectangle {
             property alias desc: __desc
             property alias linkIcon: __linkIcon
             property string link: ""
-            property alias isNew: __new.visible
+            property bool isNew: false
+            property alias newVisible: __new.visible
 
             Behavior on scale { NumberAnimation { duration: DelTheme.Primary.durationFast } }
 
@@ -146,8 +147,7 @@ Rectangle {
                 anchors.top: parent.top
                 anchors.topMargin: 5
                 radius: 2
-                color: "#F5222D"
-                visible: false
+                color: __cardComp.isNew ? DelTheme.Primary.colorError : DelTheme.Primary.colorSuccess
 
                 Row {
                     id: __row
@@ -162,12 +162,12 @@ Rectangle {
 
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
-                        text: "NEW"
+                        text: __cardComp.isNew ? 'NEW' : 'UPDATE'
                         font {
                             family: DelTheme.Primary.fontPrimaryFamily
                             pixelSize: DelTheme.Primary.fontPrimarySize
                         }
-                        color: "white"
+                        color: 'white'
                     }
                 }
             }
@@ -275,6 +275,7 @@ Rectangle {
                     title.text: qsTr("DelegateUI Github")
                     desc.text: qsTr("DelegateUI 是遵循「Ant Design」设计体系的一个 Qml UI 库，用于构建由「Qt Quick」驱动的用户界面。")
                     link: "https://github.com/mengps/DelegateUI"
+                    newVisible: false
                 }
             }
 
@@ -294,6 +295,7 @@ Rectangle {
                 title.text: qsTr("DelegateUI-ThemeDesigner")
                 desc.text: qsTr("DelegateUI-ThemeDesigner 是专为「DelegateUI」打造的主题设计工具。")
                 link: "https://github.com/mengps/DelegateUI-ThemeDesigner"
+                newVisible: false
             }
 
             MyText {
