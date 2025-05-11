@@ -144,7 +144,7 @@ jobs:
           $redistDll="{0}{1}\*.CRT\*.dll" -f $env:vcToolsRedistDir.Trim(),$env:msvcArch
           Copy-Item $redistDll dist\
           # 拷贝 DelegateUI.dll
-          Copy-Item ${{ env.Qt6_DIR }}\qml\DelegateUI.dll dist\
+          Copy-Item dist\DelegateUI\DelegateUI.dll dist\
           # 拷贝WinSDK dll
           $sdkDll="{0}Redist\{1}ucrt\DLLs\{2}\*.dll" -f $env:winSdkDir.Trim(),$env:winSdkVer.Trim(),$env:msvcArch
           Copy-Item $sdkDll dist\
