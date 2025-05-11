@@ -3,7 +3,9 @@
         <file>imports/DelegateUI/Controls/DelAcrylic.qml</file>
         <file>imports/DelegateUI/Controls/DelAutoComplete.qml</file>
         <file>imports/DelegateUI/Controls/DelAvatar.qml</file>
+        <file>imports/DelegateUI/Controls/DelBadge.qml</file>
         <file>imports/DelegateUI/Controls/DelButton.qml</file>
+        <file>imports/DelegateUI/Controls/DelButtonBlock.qml</file>
         <file>imports/DelegateUI/Controls/DelCaptionBar.qml</file>
         <file>imports/DelegateUI/Controls/DelCaptionButton.qml</file>
         <file>imports/DelegateUI/Controls/DelCard.qml</file>

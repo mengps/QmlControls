@@ -12,7 +12,7 @@ Item {
     signal clickMenu(deep: int, menuKey: string, menuData: var)
 
     property bool animationEnabled: DelTheme.animationEnabled
-    property string contentDescription: ""
+    property string contentDescription: ''
     property bool showEdge: false
     property bool tooltipVisible: false
     property bool compactMode: false
@@ -27,6 +27,129 @@ Item {
     property int defaultMenuSpacing: 4
     property var defaultSelectedKey: []
     property var initModel: []
+
+    onInitModelChanged: {
+        __listView.model = __private.model = initModel;
+    }
+
+    function gotoMenu(key) {
+        __private.gotoMenuKey = key;
+        __private.gotoMenu(key);
+    }
+
+    function get(index) {
+        if (index >= 0 && index < __listView.model.length) {
+            return __listView.model[index];
+        }
+        return undefined;
+    }
+
+    function set(index, object) {
+        if (index >= 0 && index < __listView.model.length) {
+            __private.model[index] = object;
+            __listView.model = __private.model;
+        }
+    }
+
+    function setProperty(index, propertyName, value) {
+        if (index >= 0 && index < __listView.model.length) {
+            __private.model[index][propertyName] = value;
+            __listView.model = __private.model;
+        }
+    }
+
+    function move(from, to, count = 1) {
+        if (from >= 0 && from < __listView.model.length && to >= 0 && to < __listView.model.length) {
+            const objects = __listView.model.splice(from, count);
+            __private.model.splice(to, 0, ...objects);
+            __listView.model = __private.model;
+        }
+    }
+
+    function insert(index, object) {
+        __private.model.splice(index, 0, object);
+        __listView.model = __private.model;
+    }
+
+    function append(object) {
+        __private.model.push(object);
+        __listView.model = __private.model;
+    }
+
+    function remove(index, count = 1) {
+        if (index >= 0 && index < __listView.model.length) {
+            __private.model.splice(index, count);
+            __listView.model = __private.model;
+        }
+    }
+
+    function clear() {
+        __private.gotoMenuKey = '';
+        __listView.model = [];
+    }
+
+    component MenuButton: DelButton {
+        id: __menuButtonImpl
+        property int iconSource: 0
+        property int iconSize: DelTheme.DelMenu.fontSize
+        property int iconSpacing: 5
+        property int iconStart: 0
+        property bool expanded: false
+        property bool expandedVisible: false
+        property bool isCurrent: false
+        property bool isGroup: false
+        property var model: undefined
+        property var contentDelegate: null
+
+        onClicked: {
+            if (expandedVisible)
+                expanded = !expanded;
+        }
+        hoverCursorShape: (isGroup && !control.compactMode) ? Qt.ArrowCursor : Qt.PointingHandCursor
+        effectEnabled: false
+        colorBorder: 'transparent'
+        colorText: {
+            if (enabled) {
+                if (isGroup) {
+                    return (isCurrent && control.compactMode) ? DelTheme.DelMenu.colorTextActive : DelTheme.DelMenu.colorTextDisabled;
+                } else {
+                    return isCurrent ? DelTheme.DelMenu.colorTextActive : DelTheme.DelMenu.colorText;
+                }
+            } else {
+                return DelTheme.DelMenu.colorTextDisabled;
+            }
+        }
+        colorBg: {
+            if (enabled) {
+                if (isGroup)
+                    return (isCurrent && control.compactMode) ? DelTheme.DelMenu.colorBgActive : DelTheme.DelMenu.colorBgDisabled;
+                else if (isCurrent)
+                    return DelTheme.DelMenu.colorBgActive;
+                else if (hovered) {
+                    return DelTheme.DelMenu.colorBgHover;
+                } else {
+                    return DelTheme.DelMenu.colorBg;
+                }
+            } else {
+                return DelTheme.DelMenu.colorBgDisabled;
+            }
+        }
+        contentItem: Loader {
+            sourceComponent: __menuButtonImpl.contentDelegate
+            property alias model: __menuButtonImpl.model
+            property alias menuButton: __menuButtonImpl
+        }
+    }
+
+    Behavior on width {
+        enabled: control.animationEnabled
+        NumberAnimation {
+            easing.type: Easing.OutCubic
+            duration: DelTheme.Primary.durationMid
+        }
+    }
+
+
 
     Component {
         id: myContentDelegate
@@ -123,10 +246,10 @@ Item {
             width: ListView.view.width
             height: {
                 switch (menuType) {
-                case "item":
-                case "group":
+                case 'item':
+                case 'group':
                     return __layout.height;
-                case "divider":
+                case 'divider':
                     return __dividerLoader.height;
                 default:
                     return __layout.height;
@@ -134,7 +257,7 @@ Item {
             }
             clip: true
             Component.onCompleted: {
-                if (menuType == "item" || menuType == "group") {
+                if (menuType == 'item' || menuType == 'group') {
                     layerPopup = __private.createPopupList(view.menuDeep);
                     let list = []
                     for (let i = 0; i < menuChildren.length; i++) {
@@ -148,7 +271,7 @@ Item {
                         }
                     }
                 }
-                if (__rootItem.menuKey !== "" && __rootItem.menuKey === __private.gotoMenuKey) {
+                if (__rootItem.menuKey !== '' && __rootItem.menuKey === __private.gotoMenuKey) {
                     __rootItem.expandParent();
                     __menuButton.clicked();
                 }
@@ -157,10 +280,10 @@ Item {
             required property var modelData
             property alias model: __rootItem.modelData
             property var view: ListView.view
-            property string menuKey: model.key || ""
-            property string menuType: model.type || "item"
+            property string menuKey: model.key || ''
+            property string menuType: model.type || 'item'
             property bool menuEnabled: model.enabled === undefined ? true : model.enabled
-            property string menuLabel: model.label || ""
+            property string menuLabel: model.label || ''
             property int menuHeight: model.height || defaultMenuHeight
             property int menuIconSize: model.iconSize || defaultMenuIconSize
             property int menuIconSource: model.iconSource || 0
@@ -230,7 +353,7 @@ Item {
             Connections {
                 target: __private
                 function onGotoMenu(key) {
-                    if (__rootItem.menuKey !== "" && __rootItem.menuKey === key) {
+                    if (__rootItem.menuKey !== '' && __rootItem.menuKey === key) {
                         __rootItem.expandParent();
                         __menuButton.clicked();
                     }
@@ -241,7 +364,7 @@ Item {
                 id: __dividerLoader
                 height: 5
                 width: parent.width
-                active: __rootItem.menuType == "divider"
+                active: __rootItem.menuType == 'divider'
                 sourceComponent: DelDivider { }
             }
 
@@ -249,28 +372,28 @@ Item {
                 id: __layout
                 width: parent.width
                 height: __menuButton.height + ((control.compactMode || control.popupMode) ? 0 : __childrenListView.height)
-                visible: menuType == "item" || menuType == "group"
+                visible: menuType == 'item' || menuType == 'group'
 
                 MenuButton {
                     id: __menuButton
                     width: parent.width
                     height: __rootItem.menuHeight
                     enabled: __rootItem.menuEnabled
-                    text: (control.compactMode && __rootItem.view.menuDeep === 0) ? "" : __rootItem.menuLabel
+                    text: (control.compactMode && __rootItem.view.menuDeep === 0) ? '' : __rootItem.menuLabel
                     checkable: true
                     iconSize: __rootItem.menuIconSize
                     iconSource: __rootItem.menuIconSource
                     iconSpacing: __rootItem.menuIconSpacing
                     iconStart: (control.compactMode && __rootItem.view.menuDeep === 0) ? (width - iconSize - leftPadding - rightPadding) * 0.5 : 0
                     expandedVisible: {
-                        if (__rootItem.menuType == "group" ||
+                        if (__rootItem.menuType == 'group' ||
                                 (control.compactMode && __rootItem.view.menuDeep === 0))
                             return false;
                         else
                             return __rootItem.menuChildrenLength > 0
                     }
                     isCurrent: __rootItem.isCurrent
-                    isGroup: __rootItem.menuType == "group"
+                    isGroup: __rootItem.menuType == 'group'
                     model: __rootItem.model
                     contentDelegate: __rootItem.menuContentDelegate
                     onClicked: {
@@ -321,7 +444,7 @@ Item {
                             return __layout;
                     }
                     height: {
-                        if (__rootItem.menuType == "group" || __menuButton.expanded)
+                        if (__rootItem.menuType == 'group' || __menuButton.expanded)
                             return realHeight;
                         else if (parent != __layout)
                             return parent.height;
@@ -370,131 +493,6 @@ Item {
                     }
                 }
             }
-        }
-    }
-
-    onInitModelChanged: {
-        clear();
-        let list = [];
-        for (let object of initModel) {
-            append(object);
-        }
-    }
-
-    function gotoMenu(key) {
-        __private.gotoMenuKey = key;
-        __private.gotoMenu(key);
-    }
-
-    function get(index) {
-        if (index >= 0 && index < __listView.model.length) {
-            return __listView.model[index];
-        }
-        return undefined;
-    }
-
-    function set(index, object) {
-        if (index >= 0 && index < __listView.model.length) {
-            __private.model[index] = object;
-            __listView.model = __private.model;
-        }
-    }
-
-    function setProperty(index, propertyName, value) {
-        if (index >= 0 && index < __listView.model.length) {
-            __private.model[index][propertyName] = value;
-            __listView.model = __private.model;
-        }
-    }
-
-    function move(from, to, count = 1) {
-        if (from >= 0 && from < __listView.model.length && to >= 0 && to < __listView.model.length) {
-            const objects = __listView.model.splice(from, count);
-            __private.model.splice(to, 0, ...objects);
-            __listView.model = __private.model;
-        }
-    }
-
-    function insert(index, object) {
-        __private.model.splice(index, 0, object);
-        __listView.model = __private.model;
-    }
-
-    function append(object) {
-        __private.model.push(object);
-        __listView.model = __private.model;
-    }
-
-    function remove(index, count = 1) {
-        if (index >= 0 && index < __listView.model.length) {
-            __private.model.splice(index, count);
-            __listView.model = __private.model;
-        }
-    }
-
-    function clear() {
-        __private.gotoMenuKey = '';
-        __listView.model = [];
-    }
-
-    component MenuButton: DelButton {
-        id: __menuButtonImpl
-        property int iconSource: 0
-        property int iconSize: DelTheme.DelMenu.fontSize
-        property int iconSpacing: 5
-        property int iconStart: 0
-        property bool expanded: false
-        property bool expandedVisible: false
-        property bool isCurrent: false
-        property bool isGroup: false
-        property var model: undefined
-        property var contentDelegate: null
-
-        onClicked: {
-            if (expandedVisible)
-                expanded = !expanded;
-        }
-        hoverCursorShape: (isGroup && !control.compactMode) ? Qt.ArrowCursor : Qt.PointingHandCursor
-        effectEnabled: false
-        colorBorder: "transparent"
-        colorText: {
-            if (enabled) {
-                if (isGroup) {
-                    return (isCurrent && control.compactMode) ? DelTheme.DelMenu.colorTextActive : DelTheme.DelMenu.colorTextDisabled;
-                } else {
-                    return isCurrent ? DelTheme.DelMenu.colorTextActive : DelTheme.DelMenu.colorText;
-                }
-            } else {
-                return DelTheme.DelMenu.colorTextDisabled;
-            }
-        }
-        colorBg: {
-            if (enabled) {
-                if (isGroup)
-                    return (isCurrent && control.compactMode) ? DelTheme.DelMenu.colorBgActive : DelTheme.DelMenu.colorBgDisabled;
-                else if (isCurrent)
-                    return DelTheme.DelMenu.colorBgActive;
-                else if (hovered) {
-                    return DelTheme.DelMenu.colorBgHover;
-                } else {
-                    return DelTheme.DelMenu.colorBg;
-                }
-            } else {
-                return DelTheme.DelMenu.colorBgDisabled;
-            }
-        }
-        contentItem: Loader {
-            sourceComponent: __menuButtonImpl.contentDelegate
-            property alias model: __menuButtonImpl.model
-            property alias menuButton: __menuButtonImpl
-        }
-    }
-
-    Behavior on width {
-        enabled: control.animationEnabled
-        NumberAnimation {
-            easing.type: Easing.OutCubic
-            duration: DelTheme.Primary.durationMid
         }
     }
 

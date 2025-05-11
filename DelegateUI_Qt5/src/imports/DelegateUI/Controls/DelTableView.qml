@@ -122,6 +122,7 @@ DelRectangle {
                                     });
                         __private.checkedKeysMapChanged();
                     }
+                    __private.updateParentCheckBox();
                 }
 
                 Connections {

@@ -9,13 +9,8 @@ Item {
     implicitHeight: __loader.height
 
     font {
-        family: DelTheme.DelRadio.fontFamily
-        pixelSize: DelTheme.DelRadio.fontSize
-    }
-
-    enum Type {
-        Type_Filled = 0,
-        Type_Outlined = 1
+        family: DelTheme.DelButton.fontFamily
+        pixelSize: DelTheme.DelButton.fontSize
     }
 
     enum Size {
@@ -23,80 +18,51 @@ Item {
         Size_Fixed = 1
     }
 
-    signal clicked(index: int, radioData: var)
+    signal pressed(index: int, buttonData: var)
+    signal released(index: int, buttonData: var)
+    signal clicked(index: int, buttonData: var)
 
     property bool animationEnabled: DelTheme.animationEnabled
     property bool effectEnabled: true
     property int hoverCursorShape: Qt.PointingHandCursor
     property var model: []
     property int count: model.length
-    property int initCheckedIndex: -1
-    property int currentCheckedIndex: -1
-    property var currentCheckedValue: undefined
-    property int type: DelRadioBlock.Type_Filled
-    property int size: DelRadioBlock.Size_Auto
-    property int radioWidth: 120
-    property int radioHeight: 30
+    property int size: DelButtonBlock.Size_Auto
+    property int buttonWidth: 120
+    property int buttonHeight: 30
+    property int buttonLeftPadding: 10
+    property int buttonRightPadding: 10
+    property int buttonTopPadding: 8
+    property int buttonBottomPadding: 8
     property font font
     property int radiusBg: 6
-    property Component radioDelegate: DelIconButton {
+    property Component buttonDelegate: DelIconButton {
         id: __rootItem
 
         required property var modelData
         required property int index
 
-        T.ButtonGroup.group: __buttonGroup
-        Component.onCompleted: {
-            if (control.initCheckedIndex == index) {
-                checked = true;
-                __buttonGroup.clicked(__rootItem);
-            }
-        }
-
+        onPressed: control.pressed(index, modelData);
+        onReleased: control.released(index, modelData);
+        onClicked: control.clicked(index, modelData);
         animationEnabled: control.animationEnabled
         effectEnabled: control.effectEnabled
+        autoRepeat: modelData.autoRepeat ?? false
         hoverCursorShape: control.hoverCursorShape
-        implicitWidth: control.size == DelRadioBlock.Size_Auto ? (implicitContentWidth + leftPadding + rightPadding) :
-                                                                 control.radioWidth
-        implicitHeight: control.size == DelRadioBlock.Size_Auto ? (implicitContentHeight + topPadding + bottomPadding) :
-                                                                  control.radioHeight
+        leftPadding: control.buttonLeftPadding
+        rightPadding: control.buttonRightPadding
+        topPadding: control.buttonTopPadding
+        bottomPadding: control.buttonBottomPadding
+        implicitWidth: control.size == DelButtonBlock.Size_Auto ? (implicitContentWidth + leftPadding + rightPadding) :
+                                                                 control.buttonWidth
+        implicitHeight: control.size == DelButtonBlock.Size_Auto ? (implicitContentHeight + topPadding + bottomPadding) :
+                                                                  control.buttonHeight
         z: (hovered || checked) ? 1 : 0
         enabled: control.enabled && (modelData.enabled === undefined ? true : modelData.enabled)
         font: control.font
-        type: DelButton.Type_Default
+        type: modelData.type ?? DelButton.Type_Default
         iconSource: modelData.icon ?? 0
         text: modelData.label
-        colorBorder: (enabled && checked) ? DelTheme.DelRadio.colorBlockBorderChecked :
-                                            DelTheme.DelRadio.colorBlockBorder;
-        colorText: {
-            if (enabled) {
-                if (control.type == DelRadioBlock.Type_Filled) {
-                    return checked ? DelTheme.DelRadio.colorBlockTextFilledChecked :
-                                     hovered ? DelTheme.DelRadio.colorBlockTextChecked :
-                                               DelTheme.DelRadio.colorBlockText;
-                } else {
-                    return (checked || hovered) ? DelTheme.DelRadio.colorBlockTextChecked :
-                                                  DelTheme.DelRadio.colorBlockText;
-                }
-            } else {
-                return DelTheme.DelRadio.colorTextDisabled;
-            }
-        }
-        colorBg: {
-            if (enabled) {
-                if (control.type == DelRadioBlock.Type_Filled) {
-                    return down ? (checked ? DelTheme.DelRadio.colorBlockBgActive : DelTheme.DelRadio.colorBlockBg) :
-                                  hovered ? (checked ? DelTheme.DelRadio.colorBlockBgHover : DelTheme.DelRadio.colorBlockBg) :
-                                            checked ? DelTheme.DelRadio.colorBlockBgChecked :
-                                                      DelTheme.DelRadio.colorBlockBg;
-                } else {
-                    return DelTheme.DelRadio.colorBlockBg;
-                }
-            } else {
-                return checked ? DelTheme.DelRadio.colorBlockBgCheckedDisabled : DelTheme.DelRadio.colorBlockBgDisabled;
-            }
-        }
-        checkable: true
         background: Item {
             Rectangle {
                 id: __effect
@@ -106,7 +72,7 @@ Item {
                 visible: __rootItem.effectEnabled
                 color: 'transparent'
                 border.width: 0
-                border.color: __rootItem.enabled ? DelTheme.DelRadio.colorBlockEffectBg : 'transparent'
+                border.color: __rootItem.enabled ? DelTheme.DelButton.colorBorderHover : 'transparent'
                 opacity: 0.2
 
                 ParallelAnimation {
@@ -156,15 +122,6 @@ Item {
                 Behavior on border.color { enabled: __rootItem.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationMid } }
             }
         }
-
-        Connections {
-            target: control
-            function onCurrentCheckedIndexChanged() {
-                if (__rootItem.index == control.currentCheckedIndex) {
-                    __rootItem.checked = true;
-                }
-            }
-        }
     }
     property string contentDescription: ''
 
@@ -176,23 +133,12 @@ Item {
             Repeater {
                 id: __repeater
                 model: control.model
-                delegate: radioDelegate
+                delegate: buttonDelegate
             }
-        }
-
-        T.ButtonGroup {
-            id: __buttonGroup
-            onClicked:
-                button => {
-                    control.currentCheckedIndex = button.index;
-                    control.currentCheckedValue = button.modelData.value;
-                    control.clicked(button.index, button.modelData);
-                }
         }
     }
 
-    Accessible.role: Accessible.RadioButton
+    Accessible.role: Accessible.Button
     Accessible.name: control.contentDescription
     Accessible.description: control.contentDescription
-    Accessible.onPressAction: control.clicked();
 }
