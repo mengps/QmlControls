@@ -61,6 +61,7 @@ icon(可选) | int | 本单选项图标
 - 用于在多个备选项中选中单个状态。\n
 - 和 [DelSelect](internal://DelSelect) 的区别是，DelRadioBlock 所有选项默认可见，方便用户在比较中选择，因此选项不宜过多。\n
 - 和 [DelRadio](internal://DelRadio) 的区别是，DelRadioBlock 是成组的，通过 \`model\` 统一设置。\n
+- 和 [DelButtonBlock](internal://DelButtonBlock) 的区别是，DelButtonBlock 每一项都是单独的按钮，并无单选状态。\n
                        `)
         }
 
@@ -81,8 +82,8 @@ icon(可选) | int | 本单选项图标
 - 线框样式的按钮(无填充) { DelRadioBlock.Type_Outlined }\n
                        `)
             code: `
-                import QtQuick 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import DelegateUI
 
                 Column {
                     spacing: 10
@@ -181,8 +182,8 @@ icon(可选) | int | 本单选项图标
 - 固定大小(将使用radioWidth/radioHeight) { DelRadioBlock.Size_Fixed }\n
                        `)
             code: `
-                import QtQuick 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import DelegateUI
 
                 Column {
                     spacing: 10
@@ -199,7 +200,7 @@ icon(可选) | int | 本单选项图标
 
                     DelRadioBlock {
                         initCheckedIndex: 0
-                        size: DelRadioBlock.Size_Fixed
+                        size: DelRadioBlock.Size_Auto
                         type: DelRadioBlock.Type_Outlined
                         model: [
                             { label: 'Apple', value: 'Apple' },
@@ -224,7 +225,7 @@ icon(可选) | int | 本单选项图标
 
                 DelRadioBlock {
                     initCheckedIndex: 0
-                    size: DelRadioBlock.Size_Fixed
+                    size: DelRadioBlock.Size_Auto
                     type: DelRadioBlock.Type_Outlined
                     model: [
                         { label: 'Apple', value: 'Apple' },

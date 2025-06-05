@@ -3,6 +3,7 @@
 #include <QQuickWindow>
 
 #include "delapp.h"
+#include "datagenerator.h"
 
 #ifdef BUILD_DELEGATEUI_STATIC_LIBRARY
 #include <QtQml/qqmlextensionplugin.h>
@@ -20,6 +21,8 @@ int main(int argc, char *argv[])
 #endif
     QQuickWindow::setDefaultAlphaBuffer(true);
 
+    qmlRegisterSingletonType<DataGenerator>("Gallery", 1, 0, "DataGenerator", &DataGenerator::create);
+
     QGuiApplication app(argc, argv);
     app.setOrganizationName("MenPenS");
     app.setApplicationName("DelegateUI");
@@ -34,10 +37,10 @@ int main(int argc, char *argv[])
     const QUrl url("qrc:/Gallery/qml/Gallery.qml");
 #endif
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-        &app, [url](QObject *obj, const QUrl &objUrl) {
-            if (!obj && url == objUrl)
-                QCoreApplication::exit(-1);
-        }, Qt::QueuedConnection);
+                     &app, [url](QObject *obj, const QUrl &objUrl) {
+                         if (!obj && url == objUrl)
+                             QCoreApplication::exit(-1);
+                     }, Qt::QueuedConnection);
     engine.load(url);
 
     return app.exec();

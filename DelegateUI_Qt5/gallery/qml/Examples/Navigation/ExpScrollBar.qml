@@ -21,12 +21,13 @@ Flickable {
 支持的代理：\n
 - 无\n
 支持的属性：\n
-属性名 | 类型 | 描述
------- | --- | ---
-animationEnabled | bool | 是否开启动画(默认true)
-colorBar | color | 把手颜色
-colorBg | color | 背景颜色
-colorIcon | color | 图标颜色(即箭头颜色)
+属性名 | 类型 | 默认值 | 描述 |
+------ | --- | :---: | ---
+animationEnabled | bool | true | 是否开启动画
+minimumHandleSize | int | 24 | 滑块的最小大小
+colorBar | color | - | 把手颜色
+colorBg | color | - | 背景颜色
+colorIcon | color | - | 图标颜色(即箭头颜色)
                        `)
         }
 
@@ -47,9 +48,9 @@ colorIcon | color | 图标颜色(即箭头颜色)
 使用方法和 \`ScrollBar\` 一致。
                        `)
             code: `
-                import QtQuick 2.15
-                import QtQuick.Controls 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import QtQuick.Controls.Basic
+                import DelegateUI
 
                 Item {
                     Flickable {

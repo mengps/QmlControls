@@ -6,7 +6,8 @@ import DelegateUI 1.0
 Item {
     id: control
 
-    width: compactMode ? compactWidth : defaultMenuWidth
+    implicitWidth: compactMode ? compactWidth : defaultMenuWidth
+    implicitHeight: __listView.contentHeight + __listView.anchors.topMargin + __listView.anchors.bottomMargin
     clip: true
 
     signal clickMenu(deep: int, menuKey: string, menuData: var)
@@ -19,6 +20,7 @@ Item {
     property int compactWidth: 50
     property bool popupMode: false
     property int popupWidth: 200
+    property int popupOffset: 4
     property int popupMaxHeight: control.height
     property int defaultMenuIconSize: DelTheme.DelMenu.fontSize
     property int defaultMenuIconSpacing: 8
@@ -27,6 +29,84 @@ Item {
     property int defaultMenuSpacing: 4
     property var defaultSelectedKey: []
     property var initModel: []
+
+    property Component menuIconDelegate: DelIconText {
+        color: menuButton.colorText
+        iconSize: menuButton.iconSize
+        iconSource: menuButton.iconSource
+        verticalAlignment: Text.AlignVCenter
+
+        Behavior on x {
+            enabled: control.animationEnabled
+            NumberAnimation { easing.type: Easing.OutCubic; duration: DelTheme.Primary.durationMid }
+        }
+        Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationFast } }
+    }
+    property Component menuLabelDelegate: DelText {
+        text: menuButton.text
+        font: menuButton.font
+        color: menuButton.colorText
+        elide: Text.ElideRight
+
+        Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationFast } }
+    }
+    property Component menuBackgroundDelegate: Rectangle {
+        radius: menuButton.radiusBg
+        color: menuButton.colorBg
+        border.color: menuButton.colorBorder
+        border.width: 1
+
+        Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationMid } }
+        Behavior on border.color { enabled: control.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationMid } }
+    }
+    property Component menuContentDelegate: Item {
+        id: __menuContentItem
+        property var __menuButton: menuButton
+
+        Loader {
+            id: __iconLoader
+            x: menuButton.iconStart
+            anchors.verticalCenter: parent.verticalCenter
+            sourceComponent: menuButton.iconDelegate
+            property var model: __menuButton.model
+            property alias menuButton: __menuContentItem.__menuButton
+        }
+
+        Loader {
+            id: __labelLoader
+            anchors.left: __iconLoader.right
+            anchors.leftMargin: menuButton.iconSpacing
+            anchors.right: menuButton.expandedVisible ? __expandedIcon.left : parent.right
+            anchors.rightMargin: menuButton.iconSpacing
+            anchors.verticalCenter: parent.verticalCenter
+            sourceComponent: menuButton.labelDelegate
+            property var model: __menuButton.model
+            property alias menuButton: __menuContentItem.__menuButton
+        }
+
+        DelIconText {
+            id: __expandedIcon
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            visible: menuButton.expandedVisible
+            iconSource: (control.compactMode || control.popupMode) ? DelIcon.RightOutlined : DelIcon.DownOutlined
+            colorIcon: menuButton.colorText
+            transform: Rotation {
+                origin {
+                    x: __expandedIcon.width * 0.5
+                    y: __expandedIcon.height * 0.5
+                }
+                axis {
+                    x: 1
+                    y: 0
+                    z: 0
+                }
+                angle: (control.compactMode || control.popupMode) ? 0 : (menuButton.expanded ? 180 : 0)
+                Behavior on angle { enabled: control.animationEnabled; NumberAnimation { duration: DelTheme.Primary.durationMid } }
+            }
+            Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationFast } }
+        }
+    }
 
     onInitModelChanged: {
         __listView.model = __private.model = initModel;
@@ -90,6 +170,7 @@ Item {
 
     component MenuButton: DelButton {
         id: __menuButtonImpl
+
         property int iconSource: 0
         property int iconSize: DelTheme.DelMenu.fontSize
         property int iconSpacing: 5
@@ -99,7 +180,10 @@ Item {
         property bool isCurrent: false
         property bool isGroup: false
         property var model: undefined
+        property var iconDelegate: null
+        property var labelDelegate: null
         property var contentDelegate: null
+        property var backgroundDelegate: null
 
         onClicked: {
             if (expandedVisible)
@@ -139,6 +223,11 @@ Item {
             property alias model: __menuButtonImpl.model
             property alias menuButton: __menuButtonImpl
         }
+        background: Loader {
+            sourceComponent: __menuButtonImpl.backgroundDelegate
+            property alias model: __menuButtonImpl.model
+            property alias menuButton: __menuButtonImpl
+        }
     }
 
     Behavior on width {
@@ -149,92 +238,11 @@ Item {
         }
     }
 
-
-
-    Component {
-        id: myContentDelegate
-
-        Item {
-            Text {
-                id: __text
-                anchors.left: parent.left
-                anchors.right: __tag.left
-                anchors.rightMargin: 5
-                anchors.verticalCenter: parent.verticalCenter
-                text: menuButton.text
-                font: menuButton.font
-                color: menuButton.colorText
-                elide: Text.ElideRight
-            }
-
-            DelTag {
-                id: __tag
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                text: 'Success'
-                tagState: DelTag.State_Success
-            }
-        }
-    }
-
-
-    Component {
-        id: __menuContentDelegate
-
-        Item {
-            DelIconText {
-                id: __icon
-                x: menuButton.iconStart
-                anchors.verticalCenter: parent.verticalCenter
-                color: menuButton.colorText
-                iconSize: menuButton.iconSize
-                iconSource: menuButton.iconSource
-                verticalAlignment: Text.AlignVCenter
-
-                Behavior on x {
-                    enabled: control.animationEnabled
-                    NumberAnimation { easing.type: Easing.OutCubic; duration: DelTheme.Primary.durationMid }
-                }
-                Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationFast } }
-            }
-
-            Text {
-                id: __text
-                anchors.left: __icon.right
-                anchors.leftMargin: menuButton.iconSpacing
-                anchors.right: menuButton.expandedVisible ? __expandedIcon.left : parent.right
-                anchors.rightMargin: menuButton.iconSpacing
-                anchors.verticalCenter: parent.verticalCenter
-                text: menuButton.text
-                font: menuButton.font
-                color: menuButton.colorText
-                elide: Text.ElideRight
-
-                Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationFast } }
-            }
-
-            DelIconText {
-                id: __expandedIcon
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                visible: menuButton.expandedVisible
-                iconSource: (control.compactMode || control.popupMode) ? DelIcon.RightOutlined : DelIcon.DownOutlined
-                colorIcon: menuButton.colorText
-                transform: Rotation {
-                    origin {
-                        x: __expandedIcon.width * 0.5
-                        y: __expandedIcon.height * 0.5
-                    }
-                    axis {
-                        x: 1
-                        y: 0
-                        z: 0
-                    }
-                    angle: (control.compactMode || control.popupMode) ? 0 : (menuButton.expanded ? 180 : 0)
-                    Behavior on angle { enabled: control.animationEnabled; NumberAnimation { duration: DelTheme.Primary.durationMid } }
-                }
-                Behavior on color { enabled: control.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationFast } }
-            }
+    Behavior on implicitWidth {
+        enabled: control.animationEnabled
+        NumberAnimation {
+            easing.type: Easing.OutCubic
+            duration: DelTheme.Primary.durationMid
         }
     }
 
@@ -290,7 +298,10 @@ Item {
             property int menuIconSpacing: model.iconSpacing || defaultMenuIconSpacing
             property var menuChildren: model.menuChildren || []
             property int menuChildrenLength: menuChildren ? menuChildren.length : 0
-            property var menuContentDelegate: model.contentDelegate ?? __menuContentDelegate
+            property var menuIconDelegate: model.iconDelegate ?? control.menuIconDelegate
+            property var menuLabelDelegate: model.labelDelegate ?? control.menuLabelDelegate
+            property var menuContentDelegate: model.contentDelegate ?? control.menuContentDelegate
+            property var menuBackgroundDelegate: model.backgroundDelegate ?? control.menuBackgroundDelegate
 
             property var parentMenu: view.menuDeep === 0 ? null : view.parentMenu
             property bool isCurrent: __private.selectedItem === __rootItem || isCurrentParent
@@ -368,16 +379,21 @@ Item {
                 sourceComponent: DelDivider { }
             }
 
-            Item {
+            Rectangle {
                 id: __layout
                 width: parent.width
+                anchors.top: parent.top
                 height: __menuButton.height + ((control.compactMode || control.popupMode) ? 0 : __childrenListView.height)
+                color: (view.menuDeep === 0 || control.compactMode || control.popupMode) ? 'transparent' : DelTheme.DelMenu.colorChildBg
                 visible: menuType == 'item' || menuType == 'group'
 
                 MenuButton {
                     id: __menuButton
                     width: parent.width
-                    height: __rootItem.menuHeight
+                    height: __rootItem.menuHeight + control.defaultMenuSpacing
+                    topInset: control.defaultMenuSpacing * 0.5
+                    leftPadding: 15 + (control.compactMode || control.popupMode ? 0 : iconSize * __rootItem.view.menuDeep)
+                    bottomInset: control.defaultMenuSpacing * 0.5
                     enabled: __rootItem.menuEnabled
                     text: (control.compactMode && __rootItem.view.menuDeep === 0) ? '' : __rootItem.menuLabel
                     checkable: true
@@ -395,7 +411,10 @@ Item {
                     isCurrent: __rootItem.isCurrent
                     isGroup: __rootItem.menuType == 'group'
                     model: __rootItem.model
+                    iconDelegate: __rootItem.menuIconDelegate
+                    labelDelegate: __rootItem.menuLabelDelegate
                     contentDelegate: __rootItem.menuContentDelegate
+                    backgroundDelegate: __rootItem.menuBackgroundDelegate
                     onClicked: {
                         if (__rootItem.menuChildrenLength == 0) {
                             control.clickMenu(__rootItem.view.menuDeep, __rootItem.menuKey, model);
@@ -424,13 +443,7 @@ Item {
                     DelToolTip {
                         position: control.compactMode || control.popupMode ? DelToolTip.Position_Right : DelToolTip.Position_Bottom
                         text: __rootItem.menuLabel
-                        visible: {
-                            if (control.compactMode || control.popupMode)
-                                return (__rootItem.layerPopup && !__rootItem.layerPopup.opened) ? parent.hovered : false;
-                            else {
-                                return control.tooltipVisible ? parent.hovered : false;
-                            }
-                        }
+                        visible: control.tooltipVisible ? parent.hovered : false
                     }
                 }
 
@@ -452,11 +465,8 @@ Item {
                             return 0;
                     }
                     anchors.top: parent ? (parent == __layout ? __menuButton.bottom : parent.top) : undefined
-                    anchors.topMargin: parent == __layout ? control.defaultMenuSpacing : 0
                     anchors.left: parent ? parent.left : undefined
-                    anchors.leftMargin: (control.compactMode || control.popupMode) ? 0 : __menuButton.iconSize * menuDeep
                     anchors.right: parent ? parent.right : undefined
-                    spacing: control.defaultMenuSpacing
                     boundsBehavior: Flickable.StopAtBounds
                     interactive: __childrenListView.visible
                     model: []
@@ -470,7 +480,8 @@ Item {
                     /* 子 ListView 从父 ListView 的深度累加可实现自动计算 */
                     property int menuDeep: __rootItem.view.menuDeep + 1
                     property var parentMenu: __rootItem
-                    property int realHeight: (contentHeight + ((count === 0 || control.compactMode || control.popupMode) ? 0 : control.defaultMenuSpacing))
+                    property int realHeight: contentHeight
+
                     Behavior on height {
                         enabled: control.animationEnabled
                         NumberAnimation { duration: DelTheme.Primary.durationFast }
@@ -537,11 +548,20 @@ Item {
             height: current ? Math.min(control.popupMaxHeight, current.realHeight + topPadding + bottomPadding) : 0
             padding: 5
             onAboutToShow: {
-                let toX = control.width + 4;
+                let toX = control.width + control.popupOffset;
                 if (parentPopup) {
-                    toX += parentPopup.width + 4;
+                    toX += parentPopup.width + control.popupOffset;
                 }
-                x = toX;
+                const pos = mapToItem(null, toX, 0);
+                if (pos.x + width > __private.window.width) {
+                    if (parentPopup) {
+                        x = parentPopup.x - parentPopup.width - control.popupOffset;
+                    } else {
+                        x = -width - control.popupOffset;
+                    }
+                } else {
+                    x = toX;
+                }
             }
             property var current: null
             property var parentPopup: null
@@ -565,12 +585,10 @@ Item {
         anchors.bottom: parent.bottom
         anchors.margins: 5
         boundsBehavior: Flickable.StopAtBounds
-        spacing: control.defaultMenuSpacing
         delegate: __menuDelegate
         onContentHeightChanged: cacheBuffer = contentHeight;
         T.ScrollBar.vertical: DelScrollBar {
             anchors.rightMargin: -8
-            policy: control.compactMode ? DelScrollBar.AsNeeded : DelScrollBar.AlwaysOn
         }
         property int menuDeep: 0
     }

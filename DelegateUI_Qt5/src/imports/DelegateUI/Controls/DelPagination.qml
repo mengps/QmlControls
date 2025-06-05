@@ -146,6 +146,10 @@ Item {
         }
         property int pageIndex: 0
 
+        Behavior on colorText { enabled: control.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationMid } }
+        Behavior on colorBg { enabled: control.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationMid } }
+        Behavior on colorBorder { enabled: control.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationMid } }
+
         DelToolTip {
             arrowVisible: false
             text: parent.text
@@ -193,8 +197,9 @@ Item {
             enabled: control.enabled && !__actionRoot.disabled
             effectEnabled: false
             colorBorder: "transparent"
-            colorBg: enabled ? (down ? DelTheme.DelPagination.colorButtonBgActive :
-                                       hovered ? DelTheme.DelPagination.colorButtonBgHover : "transparent") : "transparent"
+            colorBg: enabled ? (down ? DelTheme.DelPagination.colorActionBgActive :
+                                       hovered ? DelTheme.DelPagination.colorActionBgHover :
+                                                 DelTheme.DelPagination.colorActionBg) : DelTheme.DelPagination.colorActionBg
             onClicked: __actionRoot.clicked();
 
             DelToolTip {

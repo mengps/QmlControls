@@ -3,8 +3,11 @@
     "colorButtonTextActive": "@colorPrimaryTextActive",
     "colorButtonTextDisabled": "@colorPrimaryTextDisabled",
     "colorButtonBg": "@colorBgBase",
-    "colorButtonBgHover": "@colorFillSecondary",
-    "colorButtonBgActive": "@colorFill",
+    "colorButtonBgHover": "$onBackground(@colorFillSecondary, @colorBgBase)",
+    "colorButtonBgActive": "$onBackground(@colorFill, @colorBgBase)",
     "colorButtonBgDisabled": "@colorPrimaryContainerBgDisabled",
+    "colorActionBg": "transparent",
+    "colorActionBgHover": "@colorFillSecondary",
+    "colorActionBgActive": "@colorFill",
     "colorBorderActive": "@colorPrimaryBorderActive"
 }

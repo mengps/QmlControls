@@ -318,7 +318,7 @@ Rectangle {
                 Component.onCompleted: {
                     const updates = DelApi.readFileToString(":/Gallery/UpdateLists.json");
                     let object = JSON.parse(updates);
-                    for (let o of object)
+                    for (const o of object)
                         listModel.append(o);
                 }
                 delegate: Item {
@@ -326,13 +326,52 @@ Rectangle {
                     z: index
                     width: __card.hovered ? 390 : 250
                     height: newView.height - 30
-
                     required property int index
                     required property bool isNew
                     required property string name
                     required property string desc
 
+                    property bool preventFlicker: false
+
                     Behavior on width { NumberAnimation { duration: DelTheme.Primary.durationMid } }
+
+                    MouseArea {
+                        id: hoverArea
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        acceptedButtons: Qt.NoButton
+
+                        onEntered: {
+                            if (!__card.hovered) {
+                                __card.hovered = true;
+                                preventFlicker = true;
+                                flickerTimer.restart();
+                            }
+                        }
+
+                        onExited: {
+                            if (!__card.containsMouse) {
+                                __card.hovered = false;
+                            }
+                        }
+                    }
+
+                    Timer {
+                        id: flickerTimer
+                        interval: DelTheme.Primary.durationMid * 1.5
+                        onTriggered: {
+                            __rootItem.preventFlicker = false;
+                        }
+                    }
+
+                    Connections {
+                        target: __card
+                        function onContainsMouseChanged() {
+                            if (__card.containsMouse) {
+                                __card.hovered = true;
+                            }
+                        }
+                    }
 
                     Card {
                         id: __card

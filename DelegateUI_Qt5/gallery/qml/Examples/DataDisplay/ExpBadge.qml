@@ -30,7 +30,7 @@ count | int | 0 | 徽标展示的数字
 iconSource | enum | 0 | 徽标展示的图标(来自 DelIcon)
 dot | bool | false | 不展示数字,只有一个小红点(默认 false)
 showZero | bool | false | 当数值为 0 时, 是否展示 DelBadge
-overflowCount | int | 99 | 展示封顶的数字值dge
+overflowCount | int | 99 | 展示封顶的数字值
 font | font | - | 文本字体
 colorBg | color | - | 背景颜色
 colorBorder | color | - | 边框颜色
@@ -57,8 +57,8 @@ colorText | color | - | 文本颜色
 通过 \`showZero\` 属性设置为 0 时也显示数字。\n
                        `)
             code: `
-                import QtQuick 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import DelegateUI
 
                 Row {
                     spacing: 20
@@ -128,8 +128,8 @@ colorText | color | - | 文本颜色
 不包裹任何元素即是独立使用，可自定样式展现。\n
                        `)
             code: `
-                import QtQuick 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import DelegateUI
 
                 Row {
                     spacing: 10
@@ -178,8 +178,8 @@ colorText | color | - | 文本颜色
 超过 \`overflowCount\` 的会显示为 \`{overflowCount}+\`，默认的 \`overflowCount\` 为 99。\n
                        `)
             code: `
-                import QtQuick 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import DelegateUI
 
                 Row {
                     spacing: 20
@@ -253,8 +253,8 @@ colorText | color | - | 文本颜色
 没有具体的数字。\n
                        `)
             code: `
-                import QtQuick 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import DelegateUI
 
                 Row {
                     spacing: 20
@@ -306,8 +306,8 @@ colorText | color | - | 文本颜色
 展示动态变化的效果。\n
                        `)
             code: `
-                import QtQuick 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import DelegateUI
 
                 Column {
                     spacing: 20
@@ -418,8 +418,8 @@ colorText | color | - | 文本颜色
 - 警告状态{ DelBadge.State_Warning }\n
                        `)
             code: `
-                import QtQuick 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import DelegateUI
 
                 Column {
                     spacing: 10
@@ -529,8 +529,8 @@ colorText | color | - | 文本颜色
 **['red', 'volcano', 'orange', 'gold', 'yellow', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple', 'magenta']** \n
                        `)
             code: `
-                import QtQuick 2.15
-                import DelegateUI 1.0
+                import QtQuick
+                import DelegateUI
 
                 Column {
                     spacing: 10

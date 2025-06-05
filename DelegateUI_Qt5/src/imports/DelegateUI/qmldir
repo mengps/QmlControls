@@ -47,3 +47,7 @@ DelDatePicker 1.0 Controls/DelDatePicker.qml
 DelProgress 1.0 Controls/DelProgress.qml
 DelButtonBlock 1.0 Controls/DelButtonBlock.qml
 DelBadge 1.0 Controls/DelBadge.qml
+DelButtonBlock 1.0 Controls/DelButtonBlock.qml
+DelCarousel 1.0 Controls/DelCarousel.qml
+DelContextMenu 1.0 Controls/DelContextMenu.qml
+

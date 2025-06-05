@@ -101,7 +101,8 @@ Window {
                 windowAgent.setWindowAttribute('mica', false);
                 windowAgent.setWindowAttribute('mica-alt', false);
                 window.specialEffect = DelWindow.None;
-                break;
+                window.color = DelTheme.Primary.colorBgBase;
+                return true;
             }
         } else if (Qt.platform.os === 'osx') {
             switch (specialEffect)
@@ -118,7 +119,8 @@ Window {
             default:
                 windowAgent.setWindowAttribute('blur-effect', 'none');
                 window.specialEffect = DelWindow.None;
-                break;
+                window.color = DelTheme.Primary.colorBgBase;
+                return true;
             }
         }
 

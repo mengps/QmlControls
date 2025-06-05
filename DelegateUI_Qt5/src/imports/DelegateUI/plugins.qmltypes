@@ -2335,6 +2335,14 @@ Module {
             index: 34
             isReadonly: true
         }
+        Property {
+            name: "DelCarousel"
+            type: "QVariantMap"
+            read: "DelCarousel"
+            notify: "DelCarouselChanged"
+            index: 35
+            isReadonly: true
+        }
         Signal { name: "animationEnabledChanged" }
         Signal { name: "PrimaryChanged" }
         Signal { name: "DelButtonChanged" }
@@ -2367,6 +2375,7 @@ Module {
         Signal { name: "DelAutoCompleteChanged" }
         Signal { name: "DelDatePickerChanged" }
         Signal { name: "DelProgressChanged" }
+        Signal { name: "DelCarouselChanged" }
         Signal { name: "isDarkChanged" }
         Signal { name: "darkModeChanged" }
         Signal { name: "textRenderTypeChanged" }
@@ -2390,6 +2399,12 @@ Module {
         Method {
             name: "installThemePrimaryFontFamiliesBase"
             Parameter { name: "families"; type: "QString" }
+        }
+        Method {
+            name: "installThemePrimaryAnimationBase"
+            Parameter { name: "durationFast"; type: "int" }
+            Parameter { name: "durationMid"; type: "int" }
+            Parameter { name: "durationSlow"; type: "int" }
         }
         Method {
             name: "installIndexTheme"
@@ -2542,6 +2557,12 @@ Module {
             type: "QColor"
             isCloned: true
             Parameter { name: "color"; type: "QColor" }
+        }
+        Method {
+            name: "onBackground"
+            type: "QColor"
+            Parameter { name: "color"; type: "QColor" }
+            Parameter { name: "background"; type: "QColor" }
         }
         Method {
             name: "multiply"

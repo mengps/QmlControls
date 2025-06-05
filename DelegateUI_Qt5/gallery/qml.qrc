@@ -1,9 +1,13 @@
 <RCC>
     <qresource prefix="/Gallery">
         <file>qml/Gallery.qml</file>
-        <file>qml/AboutPage.qml</file>
-        <file>qml/HomePage.qml</file>
-        <file>qml/SettingsPage.qml</file>
+        <file>qml/Home/AboutPage.qml</file>
+        <file>qml/Home/HomePage.qml</file>
+        <file>qml/Home/SettingsPage.qml</file>
+        <file>qml/Controls/CodeBox.qml</file>
+        <file>qml/Controls/CodeRunner.qml</file>
+        <file>qml/Controls/Description.qml</file>
+        <file>qml/Controls/MySlider.qml</file>
         <file>qml/Examples/DataDisplay/ExpAvatar.qml</file>
         <file>qml/Examples/DataDisplay/ExpCard.qml</file>
         <file>qml/Examples/DataDisplay/ExpCollapse.qml</file>
@@ -48,9 +52,7 @@
         <file>qml/Examples/Navigation/ExpScrollBar.qml</file>
         <file>qml/Examples/Theme/ExpTheme.qml</file>
         <file>qml/Examples/Utils/ExpAsyncHasher.qml</file>
-        <file>qml/Controls/CodeBox.qml</file>
-        <file>qml/Controls/CodeRunner.qml</file>
-        <file>qml/Controls/Description.qml</file>
-        <file>qml/Controls/MySlider.qml</file>
+        <file>qml/Examples/DataDisplay/ExpCarousel.qml</file>
+        <file>qml/Examples/Navigation/ExpContextMenu.qml</file>
     </qresource>
 </RCC>

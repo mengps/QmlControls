@@ -44,5 +44,7 @@
         <file>imports/DelegateUI/Controls/DelTourFocus.qml</file>
         <file>imports/DelegateUI/Controls/DelTourStep.qml</file>
         <file>imports/DelegateUI/Controls/DelWindow.qml</file>
+        <file>imports/DelegateUI/Controls/DelCarousel.qml</file>
+        <file>imports/DelegateUI/Controls/DelContextMenu.qml</file>
     </qresource>
 </RCC>

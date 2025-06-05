@@ -1,10 +1,13 @@
 import QtQuick 2.15
 import DelegateUI 1.0
 
+import 'Home'
+
 DelWindow {
     id: galleryWindow
     width: 1200
     height: 800
+    opacity: 0
     minimumWidth: 800
     minimumHeight: 600
     title: qsTr('DelegateUI Gallery')
@@ -46,6 +49,16 @@ DelWindow {
         galleryMenu.compactMode = width < 1100;
     }
 
+    Behavior on opacity { NumberAnimation { } }
+
+    Timer {
+        running: true
+        interval: 200
+        onTriggered: {
+            galleryWindow.opacity = 1;
+        }
+    }
+
     Rectangle {
         id: galleryBackground
         anchors.fill: content
@@ -70,6 +83,7 @@ DelWindow {
             from: 0
             to: themeCircle.r * 2
             duration: DelTheme.Primary.durationMid
+            easing.type: Easing.OutCubic
             onStarted: {
                 galleryWindow.setWindowMode(true);
                 themeCircle.visible = true;
@@ -91,6 +105,7 @@ DelWindow {
             from: themeCircle.r * 2
             to: 0
             duration: DelTheme.Primary.durationMid
+            easing.type: Easing.OutCubic
             onStarted: {
                 galleryWindow.setWindowMode(false);
                 themeCircle.visible = true;
@@ -178,36 +193,7 @@ DelWindow {
                     visible: parent.tagState !== ''
                 }
             }
-            clearIconDelegate: Row {
-                spacing: 5
-
-                DelIconText {
-                    visible: searchComponent.length > 0
-                    iconSource: DelIcon.CloseSquareFilled
-                    iconSize: searchComponent.iconSize
-                    colorIcon: searchComponent.enabled ?
-                                   __iconMouse.hovered ? DelTheme.DelAutoComplete.colorIconHover :
-                                                         DelTheme.DelAutoComplete.colorIcon : DelTheme.DelAutoComplete.colorIconDisabled
-
-                    Behavior on colorIcon { enabled: searchComponent.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationFast } }
-
-                    MouseArea {
-                        id: __iconMouse
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        cursorShape: parent.iconSource == searchComponent.clearIconSource ? Qt.PointingHandCursor : Qt.ArrowCursor
-                        onEntered: hovered = true;
-                        onExited: hovered = false;
-                        onClicked: searchComponent.clearInput();
-                        property bool hovered: false
-                    }
-                }
-
-                DelIconText {
-                    iconSource: DelIcon.SearchOutlined
-                    iconSize: searchComponent.iconSize
-                }
-            }
+            clearIconSource: searchComponent.length > 0 ? DelIcon.CloseCircleFilled : DelIcon.SearchOutlined
 
             Behavior on width {
                 enabled: galleryMenu.compactMode && galleryMenu.width === galleryMenu.compactWidth
@@ -235,15 +221,21 @@ DelWindow {
             }
         }
 
-        Component {
-            id: menuContentDelegate
-
-            Item {
+        DelMenu {
+            id: galleryMenu
+            anchors.left: parent.left
+            anchors.top: searchComponent.bottom
+            anchors.bottom: aboutButton.top
+            showEdge: true
+            tooltipVisible: true
+            defaultMenuWidth: 300
+            defaultSelectedKey: ['HomePage']
+            menuLabelDelegate: Item {
                 property var model: parent.model
                 property var menuButton: parent.menuButton
+                property string tagState: model.state ?? ''
 
                 Text {
-                    id: __text
                     anchors.left: parent.left
                     anchors.leftMargin: menuButton.iconSpacing
                     anchors.right: __tag.left
@@ -259,31 +251,39 @@ DelWindow {
                     id: __tag
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
-                    text: model.state
-                    presetColor: model.state === 'New' ? 'red' : 'green'
+                    text: parent.tagState
+                    presetColor: parent.tagState === 'New' ? 'red' : 'green'
+                    visible: parent.tagState !== ''
                 }
             }
-        }
+            menuBackgroundDelegate: Rectangle {
+                radius: menuButton.radiusBg
+                color: menuButton.colorBg
+                border.color: menuButton.colorBorder
+                border.width: 1
 
-        DelMenu {
-            id: galleryMenu
-            anchors.left: parent.left
-            anchors.top: searchComponent.bottom
-            anchors.bottom: aboutButton.top
-            showEdge: true
-            defaultMenuWidth: 300
-            defaultMenuIconSize: 18
-            defaultSelectedKey: ['HomePage']
+                property var model: parent.model
+                property var menuButton: parent.menuButton
+                property string badgeState: model.badgeState ?? ''
+
+                Behavior on color { enabled: galleryMenu.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationMid } }
+                Behavior on border.color { enabled: galleryMenu.animationEnabled; ColorAnimation { duration: DelTheme.Primary.durationMid } }
+
+                DelBadge {
+                    anchors.left: undefined
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    anchors.bottom: undefined
+                    anchors.margins: 1
+                    dot: true
+                    presetColor: parent.badgeState == 'New' ? 'red' : 'green'
+                    visible: parent.badgeState !== ''
+                }
+            }
             onClickMenu: function(deep, key, data) {
                 console.debug('onClickMenu', deep, key, JSON.stringify(data));
-                if (data && data.source) {
-                    containerLoader.visible = true;
-                    themeLoader.visible = false;
-                    containerLoader.source = '';
-                    containerLoader.source = data.source;
-                } else if (data && data.isTheme) {
-                    containerLoader.visible = false;
-                    themeLoader.visible = true;
+                if (data) {
+                    gallerySwitchEffect.switchToSource(data.source);
                 }
             }
             Component.onCompleted: {
@@ -291,7 +291,20 @@ DelWindow {
                 for (let i = 0; i < defaultModel.length; i++) {
                     let item = defaultModel[i];
                     if (item && item.menuChildren) {
+                        let hasNew = false;
+                        let hasUpdate = false;
                         item.menuChildren.sort((a, b) => a.key.localeCompare(b.key));
+                        item.menuChildren.forEach(
+                            object => {
+                                if (object.state) {
+                                    if (object.state === 'New') hasNew = true;
+                                    if (object.state === 'Update') hasUpdate = true;
+                                }
+                            });
+                        if (hasNew)
+                            item.badgeState = 'New';
+                        else
+                            item.badgeState = hasUpdate ? 'Update' : '';
                     }
                     list.push(item);
                 }
@@ -302,7 +315,7 @@ DelWindow {
                     key: 'HomePage',
                     label: qsTr('首页'),
                     iconSource: DelIcon.HomeOutlined,
-                    source: './HomePage.qml'
+                    source: './Home/HomePage.qml'
                 },
                 {
                     type: 'divider'
@@ -316,7 +329,6 @@ DelWindow {
                             label: qsTr('DelWindow 无边框窗口'),
                             source: './Examples/General/ExpWindow.qml',
                             state: 'Update',
-                            contentDelegate: menuContentDelegate
                         },
                         {
                             key: 'DelButton',
@@ -363,7 +375,6 @@ DelWindow {
                             label: qsTr('DelButtonBlock 按钮块'),
                             source: './Examples/General/ExpButtonBlock.qml',
                             state: 'New',
-                            contentDelegate: menuContentDelegate
                         }
                     ]
                 },
@@ -387,7 +398,6 @@ DelWindow {
                             label: qsTr('DelMenu 菜单'),
                             source: './Examples/Navigation/ExpMenu.qml',
                             state: 'Update',
-                            contentDelegate: menuContentDelegate
                         },
                         {
                             key: 'DelScrollBar',
@@ -398,6 +408,12 @@ DelWindow {
                             key: 'DelPagination',
                             label: qsTr('DelPagination 分页'),
                             source: './Examples/Navigation/ExpPagination.qml',
+                        },
+                        {
+                            key: 'DelContextMenu',
+                            label: qsTr('DelContextMenu 上下文菜单'),
+                            source: './Examples/Navigation/ExpContextMenu.qml',
+                            state: 'New',
                         }
                     ]
                 },
@@ -430,7 +446,6 @@ DelWindow {
                             label: qsTr('DelOTPInput 一次性口令输入框'),
                             source: './Examples/DataEntry/ExpOTPInput.qml',
                             state: 'Update',
-                            contentDelegate: menuContentDelegate
                         },
                         {
                             key: 'DelRate',
@@ -522,13 +537,19 @@ DelWindow {
                             key: 'DelTableView',
                             label: qsTr('DelTableView 表格'),
                             source: './Examples/DataDisplay/ExpTableView.qml',
+                            state: 'Update',
                         },
                         {
                             key: 'DelBadge',
                             label: qsTr('DelBadge 徽标数'),
                             source: './Examples/DataDisplay/ExpBadge.qml',
                             state: 'New',
-                            contentDelegate: menuContentDelegate
+                        },
+                        {
+                            key: 'DelCarousel',
+                            label: qsTr('DelCarousel 走马灯'),
+                            source: './Examples/DataDisplay/ExpCarousel.qml',
+                            state: 'New',
                         }
                     ]
                 },
@@ -540,6 +561,12 @@ DelWindow {
                             key: 'DelAcrylic',
                             label: qsTr('DelAcrylic 亚克力效果'),
                             source: './Examples/Effect/ExpAcrylic.qml',
+                        },
+                        {
+                            key: 'DelSwitchEffect',
+                            label: qsTr('DelSwitchEffect 切换特效'),
+                            source: './Examples/Effect/ExpSwitchEffect.qml',
+                            state: 'New',
                         }
                     ]
                 },
@@ -578,7 +605,6 @@ DelWindow {
                             label: qsTr('DelProgress 进度条'),
                             source: './Examples/Feedback/ExpProgress.qml',
                             state: 'New',
-                            contentDelegate: menuContentDelegate
                         }
                     ]
                 },
@@ -593,7 +619,7 @@ DelWindow {
                         {
                             key: 'DelTheme',
                             label: qsTr('DelTheme 主题定制'),
-                            isTheme: true
+                            source: './Examples/Theme/ExpTheme.qml',
                         }
                     ]
                 }
@@ -630,12 +656,7 @@ DelWindow {
             iconSize: galleryMenu.defaultMenuIconSize
             iconSource: DelIcon.UserOutlined
             onClicked: {
-                if (aboutLoader.visible)
-                    aboutLoader.visible = false;
-                else {
-                    aboutLoader.visible = true;
-                    settingsLoader.visible = false;
-                }
+                aboutLoader.visible = !aboutLoader.visible;
             }
         }
 
@@ -651,12 +672,7 @@ DelWindow {
             iconSize: galleryMenu.defaultMenuIconSize
             iconSource: DelIcon.SettingOutlined
             onClicked: {
-                if (settingsLoader.visible)
-                    settingsLoader.visible = false;
-                else {
-                    settingsLoader.visible = true;
-                    aboutLoader.visible = false;
-                }
+                settingsLoader.visible = !settingsLoader.visible;
             }
         }
 
@@ -669,23 +685,17 @@ DelWindow {
             anchors.margins: 5
             clip: true
 
-            Loader {
-                id: containerLoader
-                anchors.fill: parent
+            Item {
+                id: gallerySwitchEffect
 
-                NumberAnimation on opacity {
-                    running: containerLoader.status == Loader.Ready
-                    from: 0
-                    to: 1
-                    duration: DelTheme.Primary.durationSlow
+                function switchToSource(source) {
+                    containerLoader.source = source;
                 }
             }
 
             Loader {
-                id: themeLoader
+                id: containerLoader
                 anchors.fill: parent
-                source: './Examples/Theme/ExpTheme.qml'
-                visible: false
             }
         }
     }
