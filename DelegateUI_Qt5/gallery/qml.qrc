@@ -50,9 +50,10 @@
         <file>qml/Examples/Navigation/ExpMenu.qml</file>
         <file>qml/Examples/Navigation/ExpPagination.qml</file>
         <file>qml/Examples/Navigation/ExpScrollBar.qml</file>
+        <file>qml/Examples/Navigation/ExpContextMenu.qml</file>
+        <file>qml/Examples/Navigation/ExpBreadcrumb.qml</file>
         <file>qml/Examples/Theme/ExpTheme.qml</file>
         <file>qml/Examples/Utils/ExpAsyncHasher.qml</file>
         <file>qml/Examples/DataDisplay/ExpCarousel.qml</file>
-        <file>qml/Examples/Navigation/ExpContextMenu.qml</file>
     </qresource>
 </RCC>

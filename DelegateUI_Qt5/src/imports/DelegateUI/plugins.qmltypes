@@ -2343,6 +2343,14 @@ Module {
             index: 35
             isReadonly: true
         }
+        Property {
+            name: "DelBreadcrumb"
+            type: "QVariantMap"
+            read: "DelBreadcrumb"
+            notify: "DelBreadcrumbChanged"
+            index: 36
+            isReadonly: true
+        }
         Signal { name: "animationEnabledChanged" }
         Signal { name: "PrimaryChanged" }
         Signal { name: "DelButtonChanged" }
@@ -2376,6 +2384,7 @@ Module {
         Signal { name: "DelDatePickerChanged" }
         Signal { name: "DelProgressChanged" }
         Signal { name: "DelCarouselChanged" }
+        Signal { name: "DelBreadcrumbChanged" }
         Signal { name: "isDarkChanged" }
         Signal { name: "darkModeChanged" }
         Signal { name: "textRenderTypeChanged" }

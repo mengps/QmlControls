@@ -16,7 +16,7 @@ RowLayout {
 
     Text {
         id: __label
-        Layout.preferredWidth: DelTheme.Primary.fontPrimarySize * 8
+        Layout.preferredWidth: DelTheme.Primary.fontPrimarySize * 6
         Layout.fillHeight: true
         verticalAlignment: Text.AlignVCenter
         font {

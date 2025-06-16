@@ -32,5 +32,6 @@
         <file>theme/DelDatePicker.json</file>
         <file>theme/DelProgress.json</file>
         <file>theme/DelCarousel.json</file>
+        <file>theme/DelBreadcrumb.json</file>
     </qresource>
 </RCC>

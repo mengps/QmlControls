@@ -79,7 +79,7 @@ DelWindow {
 
             MySlider {
                 id: themeSpeed
-                label.text: qsTr('控件动画基础速度')
+                label.text: qsTr('动画基础速度')
                 slider.min: 20
                 slider.max: 200
                 slider.stepSize: 1

@@ -6,15 +6,15 @@ import DelegateUI 1.0
 Rectangle {
     id: control
 
-    color: "transparent"
+    color: 'transparent'
 
     property var targetWindow: null
     property DelWindowAgent windowAgent: null
 
     property alias layoutDirection: __row.layoutDirection
 
-    property string winTitle: targetWindow ? targetWindow.title : ""
-    property string winIcon: ""
+    property string winTitle: targetWindow ? targetWindow.title : ''
+    property string winIcon: ''
     property alias winIconWidth: __winIconLoader.width
     property alias winIconHeight: __winIconLoader.height
     property alias winIconVisible: __winIconLoader.visible
@@ -27,14 +27,14 @@ Rectangle {
     property color winTitleColor: DelTheme.Primary.colorTextBase
     property alias winTitleVisible: __winTitleLoader.visible
 
-    property string contentDescription: targetWindow ? targetWindow.title : ""
+    property string contentDescription: targetWindow ? targetWindow.title : ''
 
     property bool returnButtonVisible: false
     property bool themeButtonVisible: false
     property bool topButtonVisible: false
-    property bool minimizeButtonVisible: Qt.platform.os !== "osx"
-    property bool maximizeButtonVisible: Qt.platform.os !== "osx"
-    property bool closeButtonVisible: Qt.platform.os !== "osx"
+    property bool minimizeButtonVisible: Qt.platform.os !== 'osx'
+    property bool maximizeButtonVisible: Qt.platform.os !== 'osx'
+    property bool closeButtonVisible: Qt.platform.os !== 'osx'
 
     property var returnCallback: () => { }
     property var themeCallback: () => { DelTheme.darkMode = DelTheme.isDark ? DelTheme.Light : DelTheme.Dark; }
@@ -82,7 +82,7 @@ Rectangle {
             iconSource: DelTheme.isDark ? DelIcon.MoonOutlined : DelIcon.SunOutlined
             iconSize: 16
             onClicked: themeCallback();
-            contentDescription: qsTr("明暗主题切换")
+            contentDescription: qsTr('明暗主题切换')
         }
 
         DelCaptionButton {
@@ -92,7 +92,7 @@ Rectangle {
             iconSize: 16
             checkable: true
             onClicked: topCallback(checked);
-            contentDescription: qsTr("置顶")
+            contentDescription: qsTr('置顶')
         }
 
         DelCaptionButton {
@@ -100,7 +100,7 @@ Rectangle {
             visible: control.minimizeButtonVisible
             iconSource: DelIcon.LineOutlined
             onClicked: minimizeCallback();
-            contentDescription: qsTr("最小化")
+            contentDescription: qsTr('最小化')
         }
 
         DelCaptionButton {
@@ -108,7 +108,7 @@ Rectangle {
             visible: control.maximizeButtonVisible
             iconSource: targetWindow ? (targetWindow.visibility === Window.Maximized ? DelIcon.SwitcherOutlined : DelIcon.BorderOutlined) : 0
             onClicked: maximizeCallback();
-            contentDescription: qsTr("最大化")
+            contentDescription: qsTr('最大化')
         }
 
         DelCaptionButton {
@@ -117,7 +117,7 @@ Rectangle {
             iconSource: DelIcon.CloseOutlined
             isError: true
             onClicked: closeCallback();
-            contentDescription: qsTr("关闭")
+            contentDescription: qsTr('关闭')
         }
     }
 
@@ -143,7 +143,7 @@ Rectangle {
             iconSize: DelTheme.DelCaptionButton.fontSize + 2
             visible: control.returnButtonVisible
             onClicked: returnCallback();
-            contentDescription: qsTr("返回")
+            contentDescription: qsTr('返回')
         }
 
         Item {
@@ -157,10 +157,10 @@ Rectangle {
 
             Row {
                 height: parent.height
-                anchors.left: Qt.platform.os === "osx" ? undefined : parent.left
-                anchors.leftMargin: Qt.platform.os === "osx" ? 0 : 8
+                anchors.left: Qt.platform.os === 'osx' ? undefined : parent.left
+                anchors.leftMargin: Qt.platform.os === 'osx' ? 0 : 8
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenter: Qt.platform.os === "osx" ? parent.horizontalCenter : undefined
+                anchors.horizontalCenter: Qt.platform.os === 'osx' ? parent.horizontalCenter : undefined
                 spacing: 5
 
                 Loader {

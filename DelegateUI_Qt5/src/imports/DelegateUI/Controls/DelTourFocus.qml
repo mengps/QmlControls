@@ -58,7 +58,7 @@ T.Popup {
     NumberAnimation {
         id: __closeAnimation
         target: control
-        property: "opacity"
+        property: 'opacity'
         from: 1.0
         to: 0.0
         duration: control.animationEnabled ? DelTheme.Primary.durationMid : 0
@@ -71,7 +71,7 @@ T.Popup {
 
     enter: Transition {
         NumberAnimation {
-            property: "opacity";
+            property: 'opacity';
             from: 0.0
             to: 1.0
             duration: control.animationEnabled ? DelTheme.Primary.durationMid : 0
@@ -96,7 +96,7 @@ T.Popup {
                 property real xMax: (__private.focusX + __private.focusWidth) / source.width
                 property real yMin: __private.focusY / source.height
                 property real yMax: (__private.focusY + __private.focusHeight) / source.height
-                fragmentShader: "qrc:/DelegateUI/shaders/deltour.frag.qsb"
+                fragmentShader: 'qrc:/DelegateUI/shaders/deltour.frag.qsb'
             }
         }
     }

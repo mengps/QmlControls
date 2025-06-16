@@ -4,6 +4,7 @@
 
 #include "delapp.h"
 #include "datagenerator.h"
+#include "themeswitchitem.h"
 
 #ifdef BUILD_DELEGATEUI_STATIC_LIBRARY
 #include <QtQml/qqmlextensionplugin.h>
@@ -21,6 +22,7 @@ int main(int argc, char *argv[])
 #endif
     QQuickWindow::setDefaultAlphaBuffer(true);
 
+    qmlRegisterType<ThemeSwitchItem>("Gallery", 1, 0, "ThemeSwitchItem");
     qmlRegisterSingletonType<DataGenerator>("Gallery", 1, 0, "DataGenerator", &DataGenerator::create);
 
     QGuiApplication app(argc, argv);
