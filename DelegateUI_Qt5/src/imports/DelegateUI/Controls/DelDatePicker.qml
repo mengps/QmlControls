@@ -24,6 +24,8 @@ Item {
         Mode_Day = 4
     }
 
+    signal clicked(date: var)
+
     property bool animationEnabled: DelTheme.animationEnabled
     property alias placeholderText: __input.placeholderText
     property int iconPosition: DelDatePicker.Position_Right
@@ -41,7 +43,7 @@ Item {
     property int visualMonth: control.currentMonth
     property int visualQuarter: control.currentQuarter
 
-    property string dateFormat: "yyyy-MM-dd"
+    property string dateFormat: 'yyyy-MM-dd'
 
     property Component dayDelegate: DelButton {
         padding: 0
@@ -254,6 +256,7 @@ Item {
             control.currentDay = date.getDate();
             control.currentWeekNumber = weekNumber;
 
+            control.clicked(date);
             control.closePicker();
         }
     }
@@ -284,12 +287,17 @@ Item {
                 onEntered: hovered = true;
                 onExited: hovered = false;
                 onClicked: {
-                    if (initDate) {
-                        __private.selectDate(initDate);
-                        __input.clear();
+                    if (__input.length === 0) {
+                        if (!__picker.opened)
+                            __picker.open();
                     } else {
-                        __private.selectDate(new Date());
-                        __input.clear();
+                        if (control.initDate) {
+                            __private.selectDate(control.initDate);
+                            __input.clear();
+                        } else {
+                            __private.selectDate(new Date());
+                            __input.clear();
+                        }
                     }
                 }
                 property bool hovered: false

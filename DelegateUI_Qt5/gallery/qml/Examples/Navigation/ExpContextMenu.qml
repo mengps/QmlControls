@@ -253,9 +253,11 @@ radiusBg | int | 6 | 背景圆角半径
                         onClickMenu:
                             (deep, menuKey, menuData) => {
                                 if (menuKey === 'Dark') {
-                                    galleryWindow.captionBar.themeCallback();
+                                    if (!DelTheme.isDark)
+                                        galleryWindow.captionBar.themeCallback();
                                 } else if (menuKey === 'Light') {
-                                    galleryWindow.captionBar.themeCallback();
+                                    if (DelTheme.isDark)
+                                        galleryWindow.captionBar.themeCallback();
                                 }
                             }
                     }

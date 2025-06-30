@@ -949,8 +949,6 @@ DelRectangle {
                     }
                 }
             }
-
-            Behavior on contentY { NumberAnimation {}}
         }
     }
 

@@ -22,6 +22,7 @@
         <file>qml/Examples/DataEntry/ExpAutoComplete.qml</file>
         <file>qml/Examples/DataEntry/ExpCheckBox.qml</file>
         <file>qml/Examples/DataEntry/ExpInput.qml</file>
+        <file>qml/Examples/DataEntry/ExpInputNumber.qml</file>
         <file>qml/Examples/DataEntry/ExpOTPInput.qml</file>
         <file>qml/Examples/DataEntry/ExpRadio.qml</file>
         <file>qml/Examples/DataEntry/ExpRadioBlock.qml</file>

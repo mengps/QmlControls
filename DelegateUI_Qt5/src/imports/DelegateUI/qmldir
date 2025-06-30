@@ -51,4 +51,5 @@ DelButtonBlock 1.0 Controls/DelButtonBlock.qml
 DelCarousel 1.0 Controls/DelCarousel.qml
 DelContextMenu 1.0 Controls/DelContextMenu.qml
 DelBreadcrumb 1.0 Controls/DelBreadcrumb.qml
+DelInputNumber 1.0 Controls/DelInputNumber.qml
 

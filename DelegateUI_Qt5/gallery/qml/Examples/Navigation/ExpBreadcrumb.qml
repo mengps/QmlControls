@@ -67,7 +67,7 @@ items | list | 可选 | 菜单模型
 - \`clear()\` 清空所有模型数据 \n
 - \`string getPath()\` 获取当前路由路径 \n
 \n支持的信号：\n
-- \`clickMenu(index: int, data: var)\` 点击路由项时发出\n
+- \`click(index: int, data: var)\` 点击路由项时发出\n
   - \`index\` 路由项索引\n
   - \`data\` 路由项数据\n
 - \`clickMenu(deep: int, menuKey: string, menuData: var)\` 点击路由-菜单项时发出\n
@@ -97,8 +97,8 @@ items | list | 可选 | 菜单模型
 最简单的用法。
                        `)
             code: `
-                import QtQuick
-                import DelegateUI
+                import QtQuick 2.15
+                import DelegateUI 1.0
 
                 Column {
                     width: parent.width
@@ -153,8 +153,8 @@ items | list | 可选 | 菜单模型
 通过 \`iconSource\` 将图标放在文字前面, 如果设置了 \`loading\`, 则显示为加载中。
                        `)
             code: `
-                import QtQuick
-                import DelegateUI
+                import QtQuick 2.15
+                import DelegateUI 1.0
 
                 DelBreadcrumb {
                     width: parent.width
@@ -181,8 +181,8 @@ items | list | 可选 | 菜单模型
 通过 \`separator\` 属性设置分隔符。
                        `)
             code: `
-                import QtQuick
-                import DelegateUI
+                import QtQuick 2.15
+                import DelegateUI 1.0
 
                 DelBreadcrumb {
                     width: parent.width
@@ -213,8 +213,8 @@ items | list | 可选 | 菜单模型
 通过 \`model.separator\` 属性自定义单独的分隔符。
                        `)
             code: `
-                import QtQuick
-                import DelegateUI
+                import QtQuick 2.15
+                import DelegateUI 1.0
 
                 DelBreadcrumb {
                     width: parent.width
@@ -246,8 +246,8 @@ items | list | 可选 | 菜单模型
 通过 \`model.menu.width\` 属性设置菜单的宽度：\n
                        `)
             code: `
-                import QtQuick
-                import DelegateUI
+                import QtQuick 2.15
+                import DelegateUI 1.0
 
                 DelBreadcrumb {
                     width: parent.width

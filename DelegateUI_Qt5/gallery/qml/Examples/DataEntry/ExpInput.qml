@@ -3,7 +3,7 @@ import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import DelegateUI 1.0
 
-import "../../Controls"
+import '../../Controls'
 
 Flickable {
     contentHeight: column.height
@@ -39,7 +39,7 @@ contentDescription | string | 内容描述(提高可用性)
         }
 
         Description {
-            title: qsTr("何时使用")
+            title: qsTr('何时使用')
             desc: qsTr(`
 - 需要用户输入表单域内容时。\n
 - 提供组合型输入框，带搜索的输入框，还可以进行大小选择。\n
@@ -47,7 +47,7 @@ contentDescription | string | 内容描述(提高可用性)
         }
 
         Description {
-            title: qsTr("代码演示")
+            title: qsTr('代码演示')
         }
 
         CodeBox {
@@ -67,21 +67,21 @@ contentDescription | string | 内容描述(提高可用性)
 
                     DelInput {
                         width: 120
-                        placeholderText: qsTr("Basic usage")
+                        placeholderText: qsTr('Basic usage')
                     }
 
                     DelInput {
                         width: 120
                         iconPosition: DelInput.Position_Left
                         iconSource: DelIcon.UserOutlined
-                        placeholderText: qsTr("Username")
+                        placeholderText: qsTr('Username')
                     }
 
                     DelInput {
                         width: 120
                         iconPosition: DelInput.Position_Right
                         iconSource: DelIcon.UserOutlined
-                        placeholderText: qsTr("Username")
+                        placeholderText: qsTr('Username')
                     }
                 }
 
@@ -91,21 +91,21 @@ contentDescription | string | 内容描述(提高可用性)
 
                 DelInput {
                     width: 120
-                    placeholderText: qsTr("Basic usage")
+                    placeholderText: qsTr('Basic usage')
                 }
 
                 DelInput {
                     width: 120
                     iconPosition: DelInput.Position_Left
                     iconSource: DelIcon.UserOutlined
-                    placeholderText: qsTr("Username")
+                    placeholderText: qsTr('Username')
                 }
 
                 DelInput {
                     width: 120
                     iconPosition: DelInput.Position_Right
                     iconSource: DelIcon.UserOutlined
-                    placeholderText: qsTr("Username")
+                    placeholderText: qsTr('Username')
                 }
             }
         }

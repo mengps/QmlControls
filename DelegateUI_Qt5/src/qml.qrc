@@ -47,5 +47,6 @@
         <file>imports/DelegateUI/Controls/DelCarousel.qml</file>
         <file>imports/DelegateUI/Controls/DelContextMenu.qml</file>
         <file>imports/DelegateUI/Controls/DelBreadcrumb.qml</file>
+        <file>imports/DelegateUI/Controls/DelInputNumber.qml</file>
     </qresource>
 </RCC>
